@@ -1,0 +1,17 @@
+{
+    "name": "davidruiz/tieflingstavern",
+    "description": "Web application of a bar",
+    "type": "project",
+    "authors": [
+        {
+            "name": "David Ruiz",
+            "email": "davidruizfp23@ibf.cat"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
