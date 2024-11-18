@@ -1,6 +1,6 @@
 <?php
 
-define('BASE_PATH', '/');
+define('ASSETS_PATH', '/assets/');
+define('BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/");
 define('APPLICATION_PATH', BASE_PATH . 'src/');
-define('ASSETS_PATH', BASE_PATH . 'assets/');
-define('VIEWS_PATH', BASE_PATH . 'views/');
+define('VIEWS_PATH', APPLICATION_PATH . "views/");
