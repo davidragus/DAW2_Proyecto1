@@ -14,7 +14,8 @@
             "App\\": "src/"
         },
         "files": [
-            "config/config.php"
+            "config/config.php",
+            "src/helpers/assetsHelper.php"
         ]
     }
 }
