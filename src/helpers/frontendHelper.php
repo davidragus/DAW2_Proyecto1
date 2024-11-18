@@ -1,11 +1,7 @@
 <?php
 
-$defaultParams = [
-    "pageTitle" => "Tiefling's Tavern",
-];
-
 // TODO: Add more customization options
-function view($fileName, $params = $defaultParams)
+function view($fileName, $params = null)
 {
     require_once(VIEWS_PATH . "$fileName.php");
 }

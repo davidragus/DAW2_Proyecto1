@@ -15,8 +15,8 @@
         },
         "files": [
             "config/config.php",
-            "src/helpers/assetsHelper.php",
-            "src/helpers/frontendHelper.php"
+            "src/Helpers/assetsHelper.php",
+            "src/Helpers/frontendHelper.php"
         ]
     }
 }
