@@ -1,0 +1,21 @@
+/* OPEN SANS */
+@font-face {
+	font-family: "Open Sans";
+	src: url('../fonts/OpenSans-Light.ttf');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Open Sans";
+	src: url('../fonts/OpenSans-Regular.ttf');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Open Sans";
+	src: url('../fonts/OpenSans-SemiBold.ttf');
+	font-weight: 600;
+	font-style: normal;
+}
