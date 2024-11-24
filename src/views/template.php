@@ -27,7 +27,7 @@
 		<?= view($params['pageHeader']) ?>
 	</header>
 
-
+	<?= view($params['pageContent'], $params['variables']) ?>
 
 	<footer>
 		<?= view($params['pageFooter']) ?>

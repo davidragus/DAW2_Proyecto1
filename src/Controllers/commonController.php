@@ -5,8 +5,8 @@ namespace App\Controllers;
 abstract class commonController
 {
 
-	protected $pageHeader;
-	protected $pageFooter;
+	protected $pageHeader = 'common/mainHeader';
+	protected $pageFooter = 'common/mainFooter';
 
 	abstract function index();
 
