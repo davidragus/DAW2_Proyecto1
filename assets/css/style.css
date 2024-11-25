@@ -15,6 +15,10 @@ header {
 	border-bottom: 4px solid var(--color2);
 }
 
+h4 {
+	font-weight: 600;
+}
+
 .btn-primary {
 	font-weight: 600;
 	background: linear-gradient(90deg, var(--color2) 0%, var(--color3) 100%);
@@ -37,6 +41,7 @@ header {
 }
 
 .btn-primary-small {
+	clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 101%, 0 101%);
 	font-size: 16px;
 	padding: var(--bs-btn-padding-y) 18px;
 }
@@ -62,6 +67,10 @@ header {
 	color: var(--color5) !important;
 	font-size: 16px !important;
 	transition: none;
+}
+
+.active {
+	color: var(--color2) !important;
 }
 
 li.dropdown:hover>div.dropdown-menu {
@@ -121,7 +130,29 @@ li.dropdown:hover>div.dropdown-menu {
 	border: none;
 }
 
-@media (max-width: 992px) {
+a.card {
+	text-decoration: none;
+	box-shadow: 0 18px 35px 0 #00000009;
+	clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
+}
+
+a.card:hover {
+	background-color: #F2F2F2;
+}
+
+.category-container {
+	max-width: 310px !important;
+	height: 320px !important;
+}
+
+.category-image {
+	object-fit: cover;
+	height: 212px;
+}
+
+/* 370, 255 */
+
+@media (max-width: 991px) {
 	header {
 		border: none;
 	}
