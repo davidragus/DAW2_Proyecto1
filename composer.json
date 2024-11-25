@@ -17,7 +17,8 @@
             "config/config.php",
             "config/db.php",
             "src/Helpers/assetsHelper.php",
-            "src/Helpers/frontendHelper.php"
+            "src/Helpers/frontendHelper.php",
+            "src/Helpers/urlHelper.php"
         ]
     }
 }

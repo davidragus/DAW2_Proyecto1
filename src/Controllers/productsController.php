@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\CategoryDAO;
 use App\Models\ProductDAO;
 
 class productsController extends commonController
@@ -9,6 +10,7 @@ class productsController extends commonController
 	public function index()
 	{
 
+		$categories = CategoryDAO::getCategories();
 		$products = ProductDAO::getProducts();
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern - Products",
@@ -16,7 +18,8 @@ class productsController extends commonController
 			'pageContent' => 'products/index',
 			'pageFooter' => $this->pageFooter,
 			'variables' => [
-				'products' => $products
+				'products' => $products,
+				'categories' => $categories
 			]
 		];
 
