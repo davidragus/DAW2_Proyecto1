@@ -10,7 +10,7 @@ abstract class CategoryDAO
 	public static function getCategories()
 	{
 		$conn = DBConnection::connect();
-		$stmt = $conn->prepare("SELECT * FROM categories");
+		$stmt = $conn->prepare("SELECT * FROM categories WHERE subcategory IS NULL");
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$categories = [];
