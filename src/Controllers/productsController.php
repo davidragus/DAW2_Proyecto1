@@ -11,6 +11,7 @@ class productsController extends commonController
 	{
 
 		$categories = CategoryDAO::getCategories();
+		$subcategories = CategoryDAO::getSubcategories();
 		$products = ProductDAO::getProducts();
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern - Products",
@@ -19,7 +20,8 @@ class productsController extends commonController
 			'pageFooter' => $this->pageFooter,
 			'variables' => [
 				'products' => $products,
-				'categories' => $categories
+				'categories' => $categories,
+				'subcategories' => $subcategories
 			]
 		];
 
