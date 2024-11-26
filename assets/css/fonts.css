@@ -19,3 +19,11 @@
 	font-weight: 600;
 	font-style: normal;
 }
+
+/* DIN NEXT LT PRO */
+@font-face {
+	font-family: "DIN Next LT Pro";
+	src: url('../fonts/DINNextLTPro-Bold.ttf');
+	font-weight: 700;
+	font-style: normal;
+}

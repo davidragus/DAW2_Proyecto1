@@ -17,7 +17,7 @@
 					<li class="nav-item d-lg-flex align-items-lg-center dropdown position-static px-lg-2"
 						id="productsDropdown">
 						<a class="nav-link <?= isset($_GET['controller']) && $_GET['controller'] == 'products' ? 'active' : '' ?> d-lg-flex align-items-lg-center p-lg-0 dropdown-toggle"
-							href="products" aria-expanded="false">
+							href="<?= url("products") ?>" aria-expanded=" false">
 							<span>OUR MENU</span>
 						</a>
 						<div class="dropdown-menu pb-0 start-0 end-0 rounded-0 bg-black justify-content-center">

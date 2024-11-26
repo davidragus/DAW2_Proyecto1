@@ -15,6 +15,36 @@ header {
 	border-bottom: 4px solid var(--color2);
 }
 
+h1 {
+	font-family: 'DIN Next LT Pro', sans-serif;
+	font-weight: 700;
+	font-size: 52px;
+}
+
+h1.dark {
+	color: var(--color5);
+}
+
+h2 {
+	font-family: 'DIN Next LT Pro', sans-serif;
+	font-weight: 700;
+	font-size: 42px;
+}
+
+h2.dark {
+	color: var(--color5);
+}
+
+h3 {
+	font-family: 'DIN Next LT Pro', sans-serif;
+	font-weight: 700;
+	font-size: 32px;
+}
+
+h3.dark {
+	color: var(--color5);
+}
+
 h4 {
 	font-weight: 600;
 }
@@ -150,7 +180,28 @@ a.card:hover {
 	height: 212px;
 }
 
-/* 370, 255 */
+.products-container {
+	margin-top: 60px;
+}
+
+.product-container {
+	max-width: 365px !important;
+	height: 375px !important;
+}
+
+.product-container img {
+	object-fit: cover;
+	height: 212px;
+}
+
+/* 365 375 */
+
+@media (max-width: 1399px) {
+	.category-container {
+		max-width: 410px !important;
+		height: 320px !important;
+	}
+}
 
 @media (max-width: 991px) {
 	header {
@@ -200,6 +251,17 @@ a.card:hover {
 		background-color: rgba(0, 0, 0, 0.5);
 		opacity: 1 !important;
 	}
+
+	.category-container {
+		max-width: 280px !important;
+		height: 116px !important;
+		margin: 10px 10px;
+	}
+
+	.category-image {
+		display: none;
+	}
+
 }
 
 @media (min-width: 992px) {
