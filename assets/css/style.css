@@ -175,7 +175,7 @@ a.card:hover {
 	height: 320px !important;
 }
 
-.category-image {
+.category-container img {
 	object-fit: cover;
 	height: 212px;
 }
