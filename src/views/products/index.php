@@ -3,6 +3,7 @@
 		<h1 class="dark d-flex justify-content-center">Our Menu</h1>
 	</div>
 	<div class="row justify-content-center">
+		<?= view('common/categoryContainer') ?>
 		<?php foreach ($params['categories'] as $category): ?>
 			<?= view('common/categoryContainer', $category) ?>
 		<?php endforeach; ?>
