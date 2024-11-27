@@ -89,8 +89,9 @@ h4 {
 	min-height: 100%;
 }
 
-.navbar-brand img {
-	max-height: 42px;
+.navbar-brand svg {
+	height: 42px !important;
+	width: 128px !important;
 }
 
 .nav-link {

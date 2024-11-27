@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary py-0">
 	<div class="navbar-container justify-content-center container-fluid px-0">
-		<a class="navbar-brand py-0 me-4" href="/"> <img src="<?= images('Logo') ?>" alt="LOGO"> </a>
+		<a class="navbar-brand py-0 me-4" href="/"> <?= images('Logo', 'svg') ?> </a>
 		<button class="navbar-toggler position-absolute start-0 p-1 m-2" type="button" data-bs-toggle="offcanvas"
 			data-bs-target="#offcanvasNav" aria-controls="offcanvasNav">
 			<span class="navbar-toggler-icon"></span>

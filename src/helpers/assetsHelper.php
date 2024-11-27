@@ -1,24 +1,34 @@
 <?php
 
-function getAsset($fileType, $fileName)
+function getAsset($fileType, $fileName, $fileExtension = null)
 {
-    $fileExtension = match ($fileType) {
-        'images' => 'webp',
-        'icons' => 'svg',
-        default => $fileType
-    };
+    if (!$fileExtension) {
+        $fileExtension = match ($fileType) {
+            'images' => 'webp',
+            'icons' => 'svg',
+            default => $fileType
+        };
+    }
 
-    return ASSETS_PATH . "$fileType/$fileName.$fileExtension";
+    if ($fileExtension == 'svg') {
+        include_once(BASE_PATH . "assets/images/$fileName.$fileExtension");
+    } else {
+        return ASSETS_PATH . "$fileType/$fileName.$fileExtension";
+    }
 }
 
-function images($fileName)
+function images($fileName, $fileExtension = null)
 {
-    return getAsset('images', $fileName);
+    if (!$fileExtension || $fileExtension != 'svg') {
+        return getAsset('images', $fileName, $fileExtension);
+    } else {
+        getAsset('images', $fileName, $fileExtension);
+    }
 }
 
 function icons($fileName)
 {
-    return getAsset('icons', $fileName);
+    getAsset('icons', $fileName);
 }
 
 function css($fileName)
