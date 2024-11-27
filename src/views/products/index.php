@@ -8,13 +8,13 @@
 			<?= view('common/categoryContainer', $category) ?>
 		<?php endforeach; ?>
 	</div>
-	<div class="container products-container p-0">
+	<div class="container p-0">
 		<?php foreach ($params['products'] as $categoryName => $content): ?>
-			<div class="row">
+			<div class="row justify-content-center">
 				<h2 class="dark text-center mt-5"><?= $categoryName ?></h2>
 				<?php foreach ($content as $subcategoryName => $value): ?>
 					<?php if (is_array($value)): ?>
-						<div class="row">
+						<div class="row justify-content-center p-0">
 							<h3 class="dark text-center mt-5"><?= $subcategoryName ?></h3>
 							<?php foreach ($value as $products): ?>
 								<?= view('common/productContainer', $products) ?>

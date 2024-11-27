@@ -179,10 +179,6 @@ a.card:hover {
 	background-color: #f7f7f7;
 }
 
-.products-container {
-	margin-top: 60px;
-}
-
 .product-container {
 	max-width: 365px !important;
 	height: 375px !important;
@@ -198,6 +194,15 @@ a.card:hover {
 @media (max-width: 1399px) {
 	.category-container {
 		max-width: 280px !important;
+	}
+
+	.product-container {
+		max-width: 340px !important;
+		height: 320px !important;
+	}
+
+	.product-container img {
+		height: 182px;
 	}
 }
 
@@ -252,6 +257,12 @@ a.card:hover {
 
 	.category-container {
 		max-width: 240px !important;
+		margin: 10px 10px;
+	}
+
+	.product-container {
+		max-width: 300px !important;
+		height: 300px !important;
 		margin: 10px 10px;
 	}
 
