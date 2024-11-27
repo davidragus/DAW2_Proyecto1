@@ -5,12 +5,13 @@ namespace App\Models;
 abstract class Product
 {
 
-	protected $product_id, $category_id, $name, $description, $price, $image;
+	protected $product_id, $category_id, $subcategory_id, $name, $description, $price, $image;
 
-	public function __construct($id, $categoryId, $name, $description, $price, $image)
+	public function __construct($id, $categoryId, $subcategory_id, $name, $description, $price, $image)
 	{
 		$this->id = $id;
 		$this->categoryId = $categoryId;
+		$this->subcategory_id = $subcategory_id;
 		$this->name = $name;
 		$this->description = $description;
 		$this->price = $price;
@@ -25,6 +26,11 @@ abstract class Product
 	public function getCategoryId()
 	{
 		return $this->category_id;
+	}
+
+	public function getSubcategoryId()
+	{
+		return $this->subcategory_id;
 	}
 
 	public function getName()

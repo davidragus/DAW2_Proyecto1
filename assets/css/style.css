@@ -258,7 +258,7 @@ a.card:hover {
 		margin: 10px 10px;
 	}
 
-	.category-image {
+	.category-container img {
 		display: none;
 	}
 

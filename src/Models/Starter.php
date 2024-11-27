@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class RaidPreparation extends Product
+class Starter extends Product
 {
 
 	public function __construct()

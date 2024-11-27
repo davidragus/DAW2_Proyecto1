@@ -9,13 +9,19 @@
 		<?php endforeach; ?>
 	</div>
 	<div class="container products-container p-0">
-		<?php foreach ($params['categories'] as $category): ?>
+		<?php foreach ($params['products'] as $categoryName => $content): ?>
 			<div class="row">
-				<h2 class="dark text-center mt-5"><?= $category->getName() ?></h2>
-				<?php foreach ($params['subcategories'] as $subcategories): ?>
-					<?php if ($subcategories->getParentId() == $category->getCategoryId()): ?>
-						<h3 class="dark text-center"><?= $subcategories->getName() ?></h3>
-						<?= view('common/productContainer') ?>
+				<h2 class="dark text-center mt-5"><?= $categoryName ?></h2>
+				<?php foreach ($content as $subcategoryName => $value): ?>
+					<?php if (is_array($value)): ?>
+						<div class="row">
+							<h3 class="dark text-center mt-5"><?= $subcategoryName ?></h3>
+							<?php foreach ($value as $products): ?>
+								<?= view('common/productContainer', $products) ?>
+							<?php endforeach; ?>
+						</div>
+					<?php else: ?>
+						<?= view('common/productContainer', $value) ?>
 					<?php endif; ?>
 				<?php endforeach; ?>
 			</div>

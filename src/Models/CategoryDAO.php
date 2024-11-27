@@ -20,10 +20,26 @@ abstract class CategoryDAO
 		return $categories;
 	}
 
-	public static function getSubcategories()
+	public static function getCategory($categoryId)
 	{
 		$conn = DBConnection::connect();
-		$stmt = $conn->prepare("SELECT * FROM categories WHERE subcategory = 1");
+		$stmt = $conn->prepare("SELECT * FROM categories WHERE category_id = ?");
+		$stmt->bind_param("i", $categoryId);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$categories = [];
+		while ($rows = $result->fetch_object('App\\Models\\Category')) {
+			$categories[] = $rows;
+		}
+		return $categories;
+	}
+
+	public static function getSubcategories($category)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("SELECT * FROM categories WHERE parent_id = ?");
+		$categoryId = $category->getCategoryId();
+		$stmt->bind_param("i", $categoryId);
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$subcategories = [];
