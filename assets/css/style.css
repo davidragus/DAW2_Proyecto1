@@ -171,13 +171,12 @@ a.card:hover {
 }
 
 .category-container {
-	max-width: 310px !important;
-	height: 320px !important;
+	max-width: 240px !important;
+	height: 116px !important;
 }
 
-.category-container img {
-	object-fit: cover;
-	height: 212px;
+.category-container.active {
+	background-color: #f7f7f7;
 }
 
 .products-container {
@@ -198,8 +197,7 @@ a.card:hover {
 
 @media (max-width: 1399px) {
 	.category-container {
-		max-width: 410px !important;
-		height: 320px !important;
+		max-width: 280px !important;
 	}
 }
 
@@ -253,13 +251,8 @@ a.card:hover {
 	}
 
 	.category-container {
-		max-width: 280px !important;
-		height: 116px !important;
+		max-width: 240px !important;
 		margin: 10px 10px;
-	}
-
-	.category-container img {
-		display: none;
 	}
 
 }
