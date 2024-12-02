@@ -11,6 +11,7 @@ class usersController extends commonController
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'users/index',
 			'pageFooter' => $this->pageFooter,
+			'variables' => []
 		];
 		view('template', $pageParams);
 	}
@@ -22,6 +23,7 @@ class usersController extends commonController
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'users/login',
 			'pageFooter' => $this->pageFooter,
+			'variables' => []
 		];
 		view('template', $pageParams);
 	}
@@ -33,6 +35,7 @@ class usersController extends commonController
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'users/signup',
 			'pageFooter' => $this->pageFooter,
+			'variables' => []
 		];
 		view('template', $pageParams);
 	}

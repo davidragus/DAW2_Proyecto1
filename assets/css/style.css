@@ -55,6 +55,8 @@ h4 {
 	border: 2px solid var(--color4);
 	clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 101%, 0 101%);
 	transition: ease-in-out .1s;
+	font-size: 22px;
+	padding: 12px 42px;
 }
 
 .btn-primary i {
@@ -188,6 +190,26 @@ a.card:hover {
 .product-container img {
 	object-fit: cover;
 	height: 212px;
+}
+
+.login-form-container {
+	background-image: url("../images/LoginFormBackground.webp");
+	background-repeat: no-repeat;
+	background-position: center;
+	height: auto;
+	max-width: none !important;
+}
+
+.login-form {
+	clip-path: polygon(0 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%);
+}
+
+.form-link {
+	text-decoration: none;
+}
+
+.form-link:hover {
+	color: var(--color3) !important;
 }
 
 /* 365 375 */

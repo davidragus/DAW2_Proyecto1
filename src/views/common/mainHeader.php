@@ -53,12 +53,14 @@
 				<!-- TODO: Add container to switch between login/signup buttons and profile button -->
 				<ul class="navbar-nav d-lg-flex align-items-lg-center px-lg-2">
 					<li class="nav-item d-lg-flex align-items-lg-center px-lg-2">
-						<a class="nav-link d-lg-flex align-items-lg-center p-lg-0" href="#"><span>LOG IN</span><i
-								class="bi bi-chevron-right d-lg-none"></i></a>
+						<a class="nav-link d-lg-flex align-items-lg-center p-lg-0"
+							href="<?= url('users/login') ?>"><span>LOG
+								IN</span><i class="bi bi-chevron-right d-lg-none"></i></a>
 					</li>
 					<li class="nav-item d-lg-flex align-items-lg-center px-lg-2">
-						<a class="nav-link d-lg-flex align-items-lg-center p-lg-0" href="#"><span>SIGN UP</span><i
-								class="bi bi-chevron-right d-lg-none"></i></a>
+						<a class="nav-link d-lg-flex align-items-lg-center p-lg-0"
+							href="<?= url('users/signup') ?>"><span>SIGN
+								UP</span><i class="bi bi-chevron-right d-lg-none"></i></a>
 					</li>
 					<li id="yourCartButtonNav" class="nav-item d-lg-flex align-items-lg-center px-lg-2">
 						<a class="btn btn-primary btn-primary-small rounded-0" href="#"><i class="bi-cart-fill"></i>YOUR
