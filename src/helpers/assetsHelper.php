@@ -11,7 +11,7 @@ function getAsset($fileType, $fileName, $fileExtension = null)
     }
 
     if ($fileExtension == 'svg') {
-        include_once(BASE_PATH . "assets/images/$fileName.$fileExtension");
+        include_once(BASE_PATH . "assets/$fileType/$fileName.$fileExtension");
     } else {
         return ASSETS_PATH . "$fileType/$fileName.$fileExtension";
     }
