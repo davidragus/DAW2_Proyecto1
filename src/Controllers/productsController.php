@@ -10,7 +10,7 @@ class productsController extends commonController
 	public function index()
 	{
 
-		$categories = CategoryDAO::getCategories();
+		$categories = $this->getCategories();
 		$finalArray = [];
 		foreach ($categories as $category) {
 			$categoryId = $category->getCategoryId();
@@ -50,4 +50,10 @@ class productsController extends commonController
 		view('template', $pageParams);
 
 	}
+
+	public static function getCategories()
+	{
+		return CategoryDAO::getCategories();
+	}
+
 }

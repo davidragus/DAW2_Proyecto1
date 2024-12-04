@@ -25,11 +25,11 @@
 								<li class="dropdown-sublist-container">
 									<span class="list-header pb-1 text-white">AVAILABLE PRODUCTS</span>
 									<ul class="dropdown-sublist px-0 pt-3">
-										<li><a class="dropdown-sublist-link" href="#">Raid Preparations</a></li>
-										<li><a class="dropdown-sublist-link" href="#">Tavernkeeper’s Sandwiches</a></li>
-										<li><a class="dropdown-sublist-link" href="#">Arcane Trickster’s Sweet
-												Temptations</a></li>
-										<li><a class="dropdown-sublist-link" href="#">Alchemist’s Potions</a></li>
+										<?php foreach ($categories as $category): ?>
+											<li><a class="dropdown-sublist-link"
+													href="<?= url("products/index/" . $category->getCategoryId()) ?>"><?= $category->getName() ?></a>
+											</li>
+										<?php endforeach; ?>
 									</ul>
 								</li>
 							</ul>
