@@ -9,6 +9,7 @@
 
 body {
 	background-color: #EBEBE6;
+	overflow-x: hidden;
 }
 
 header {
@@ -201,6 +202,7 @@ a.card:hover {
 }
 
 .login-form {
+	margin: 100px 0;
 	clip-path: polygon(0 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%);
 }
 
@@ -210,6 +212,37 @@ a.card:hover {
 
 .form-link:hover {
 	color: var(--color3) !important;
+}
+
+.footer-container {
+	background-image: url("../images/FooterImage.webp");
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-color: #000;
+	max-width: none !important;
+	height: 540px;
+}
+
+.back-top-button-container {
+	top: -40px;
+}
+
+.back-top-button {
+	width: 160px;
+	height: 40px;
+	font-size: 10px;
+	font-weight: 700;
+	text-decoration: none;
+	clip-path: polygon(50% 0%, 0 100%, 100% 100%) !important;
+	background: radial-gradient(ellipse at bottom, var(--color5) 20%, #000 75%);
+}
+
+.back-top-button:hover {
+	background: radial-gradient(ellipse at bottom, var(--color2) 20%, #000 75%);
+}
+
+.back-top-button i::before {
+	font-size: 48px;
 }
 
 /* 365 375 */

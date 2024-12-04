@@ -22,22 +22,21 @@
 </head>
 
 <body>
+	<div id="top">
+		<header class="sticky-top">
+			<?= view($params['pageHeader']) ?>
+		</header>
 
-	<header class="sticky-top">
-		<?= view($params['pageHeader']) ?>
-	</header>
+		<?= view($params['pageContent'], $params['variables']) ?>
 
-	<?= view($params['pageContent'], $params['variables']) ?>
-
-	<footer>
-		<?= view($params['pageFooter']) ?>
-	</footer>
-
+		<footer>
+			<?= view($params['pageFooter']) ?>
+		</footer>
+	</div>
 	<!-- BOOTSTRAP JS -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
-
 </body>
 
 </html>

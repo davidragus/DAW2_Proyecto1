@@ -53,12 +53,12 @@
 				<!-- TODO: Add container to switch between login/signup buttons and profile button -->
 				<ul class="navbar-nav d-lg-flex align-items-lg-center px-lg-2">
 					<li class="nav-item d-lg-flex align-items-lg-center px-lg-2">
-						<a class="nav-link d-lg-flex align-items-lg-center p-lg-0"
+						<a class="nav-link <?= (isset($_GET['controller']) && $_GET['controller'] == 'users') && (isset($_GET['action']) && $_GET['action'] == 'login') ? 'active' : '' ?> d-lg-flex align-items-lg-center p-lg-0"
 							href="<?= url('users/login') ?>"><span>LOG
 								IN</span><i class="bi bi-chevron-right d-lg-none"></i></a>
 					</li>
 					<li class="nav-item d-lg-flex align-items-lg-center px-lg-2">
-						<a class="nav-link d-lg-flex align-items-lg-center p-lg-0"
+						<a class="nav-link <?= (isset($_GET['controller']) && $_GET['controller'] == 'users') && (isset($_GET['action']) && $_GET['action'] == 'signup') ? 'active' : '' ?> d-lg-flex align-items-lg-center p-lg-0"
 							href="<?= url('users/signup') ?>"><span>SIGN
 								UP</span><i class="bi bi-chevron-right d-lg-none"></i></a>
 					</li>
