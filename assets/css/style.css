@@ -203,6 +203,16 @@ a.card:hover {
 	height: 212px;
 }
 
+.on-sale-tag {
+	transform: rotate(45deg);
+	background-color: var(--color3);
+	font-size: 20px;
+	font-weight: 600;
+	padding: 0 25px;
+	top: 20px;
+	right: -30px;
+}
+
 .login-form-container {
 	background-image: url("../images/LoginFormBackground.webp");
 	background-repeat: no-repeat;
