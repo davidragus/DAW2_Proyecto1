@@ -213,6 +213,16 @@ a.card:hover {
 	right: -30px;
 }
 
+.adult-tag {
+	transform: rotate(-45deg);
+	color: var(--color3);
+	font-size: 20px;
+	font-weight: 600;
+	padding: 0 50px;
+	top: 20px;
+	left: -40px;
+}
+
 .login-form-container {
 	background-image: url("../images/LoginFormBackground.webp");
 	background-repeat: no-repeat;
