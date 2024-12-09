@@ -20,6 +20,12 @@ header {
 	border-bottom: 4px solid var(--color2);
 }
 
+p {
+	font-family: 'DIN Next LT Pro', sans-serif;
+	font-weight: 400;
+	font-size: 21px;
+}
+
 h1 {
 	font-family: 'DIN Next LT Pro', sans-serif;
 	font-weight: 700;
@@ -247,6 +253,51 @@ a.card:hover {
 
 .back-top-button i::before {
 	font-size: 48px;
+}
+
+.main-banner {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../images/MainBanner.webp");
+	background-repeat: no-repeat;
+	background-position: top;
+	height: 540px;
+}
+
+.first-banner {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../images/FirstBanner.webp");
+	background-repeat: no-repeat;
+	background-position: top left;
+	height: 610px;
+}
+
+.second-banner {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../images/SecondBanner.webp");
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 610px;
+}
+
+.carousel-button {
+	width: 50px;
+	height: 50px;
+	background-color: #00000000;
+	border: 1px solid var(--color2);
+}
+
+.carousel-left-button {
+	right: 49px;
+}
+
+.carousel-button i {
+	color: var(--color2);
+	font-size: 20px;
+}
+
+.carousel-button:hover {
+	background-color: var(--color2);
+}
+
+.carousel-button:hover i {
+	color: white;
 }
 
 /* 365 375 */
