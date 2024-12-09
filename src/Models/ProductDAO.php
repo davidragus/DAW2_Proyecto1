@@ -16,7 +16,7 @@ abstract class ProductDAO
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$products = [];
-		while ($rows = $result->fetch_object("App\\Models\\{$category->getProductModel($category->getCategoryId())}")) {
+		while ($rows = $result->fetch_object("App\\Models\\Product")) {
 			$products[] = $rows;
 		}
 		return $products;

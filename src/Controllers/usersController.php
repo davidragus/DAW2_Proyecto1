@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\UserDAO, App\Models\User;
+
 class usersController extends commonController
 {
 	public function index()
@@ -38,5 +40,23 @@ class usersController extends commonController
 			'variables' => []
 		];
 		view('template', $pageParams);
+	}
+
+	public function register()
+	{
+		$user = UserDAO::getUserByMail($_POST['email']);
+		if ($user) {
+			redirect('users/signup');
+			return;
+		}
+		if (
+			!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,20}$/', $_POST['password'])
+		) {
+			redirect('users/signup');
+			return;
+		}
+		$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+		UserDAO::createUser($_POST['email'], $password, $_POST['firstName'], $_POST['lastName']);
+		redirect('homepage');
 	}
 }

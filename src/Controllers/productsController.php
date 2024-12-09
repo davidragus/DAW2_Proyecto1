@@ -24,6 +24,7 @@ class productsController extends commonController
 			if (empty($subcategories)) {
 				$finalArray[$categoryName] = $products;
 			} else {
+				$finalArray[$categoryName] = [];
 				foreach ($subcategories as $subcategory) {
 					$subcategoryName = $subcategory->getName();
 					$subcategoryId = $subcategory->getCategoryId();
