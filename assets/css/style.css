@@ -9,7 +9,12 @@
 
 body {
 	background-color: #EBEBE6;
-	overflow-x: hidden;
+}
+
+.container,
+.row {
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .hidden {
