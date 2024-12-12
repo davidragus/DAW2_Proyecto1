@@ -41,10 +41,10 @@
 							<span>OUR MENU</span><i class="bi bi-chevron-right d-lg-none"></i>
 						</a>
 					</li>
-					<li class="nav-item d-lg-flex align-items-lg-center px-lg-2">
+					<!-- <li class="nav-item d-lg-flex align-items-lg-center px-lg-2">
 						<a class="nav-link d-lg-flex align-items-lg-center p-lg-0" href="#"><span>LATEST
 								EVENTS</span><i class="bi bi-chevron-right d-lg-none"></i></a>
-					</li>
+					</li> -->
 					<li class="nav-item d-lg-flex align-items-lg-center px-lg-2">
 						<a class="nav-link d-lg-flex align-items-lg-center p-lg-0" href="#"><span>BOOKINGS</span><i
 								class="bi bi-chevron-right d-lg-none"></i></a>

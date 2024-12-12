@@ -179,7 +179,7 @@ li.dropdown:hover>div.dropdown-menu {
 	border: none;
 }
 
-a.card {
+.card {
 	text-decoration: none;
 	box-shadow: 0 18px 35px 0 #00000009;
 	clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
@@ -325,6 +325,20 @@ a.card:hover {
 	color: white;
 }
 
+.carousel-image {
+	object-fit: cover;
+	height: 196px;
+}
+
+.card-link {
+	color: var(--color2);
+	width: fit-content;
+}
+
+.card-link i {
+	font-size: 26px;
+}
+
 /* 365 375 */
 
 @media (max-width: 1399px) {
@@ -424,5 +438,31 @@ a.card:hover {
 
 	.nav-link {
 		min-height: inherit;
+	}
+
+	.carousel-card {
+		width: 365px;
+	}
+
+	.carousel-inner .carousel-item.active,
+	.carousel-inner .carousel-item-next,
+	.carousel-inner .carousel-item-prev {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.carousel-inner .carousel-item-end.active,
+	.carousel-inner .carousel-item-next {
+		transform: translateX(20.2%);
+	}
+
+	.carousel-inner .carousel-item-start.active,
+	.carousel-inner .carousel-item-prev {
+		transform: translateX(-20.2%);
+	}
+
+	.carousel-inner .carousel-item-end,
+	.carousel-inner .carousel-item-start {
+		transform: translateX(0);
 	}
 }
