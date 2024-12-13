@@ -7,6 +7,11 @@ use App\Models\ProductDAO;
 
 class productsController extends commonController
 {
+	public function __construct()
+	{
+		parent::__construct();
+	}
+
 	public function index()
 	{
 

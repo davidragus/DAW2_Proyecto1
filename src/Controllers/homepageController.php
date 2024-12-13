@@ -5,6 +5,11 @@ namespace App\Controllers;
 class homepageController extends commonController
 {
 
+	public function __construct()
+	{
+		parent::__construct();
+	}
+
 	public function index()
 	{
 		$pageParams = [

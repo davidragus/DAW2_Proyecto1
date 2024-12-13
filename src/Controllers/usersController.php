@@ -6,9 +6,14 @@ use App\Models\UserDAO, App\Models\User;
 
 class usersController extends commonController
 {
+
+	public function __construct()
+	{
+		parent::__construct();
+	}
+
 	public function index()
 	{
-		session_start();
 		if (!checkSessionVar(USER_SESSION_VAR)) {
 			redirect("users/login");
 			exit;
@@ -26,7 +31,6 @@ class usersController extends commonController
 
 	public function login()
 	{
-		session_start();
 		if (checkSessionVar(USER_SESSION_VAR)) {
 			redirect('');
 			exit;
@@ -44,7 +48,6 @@ class usersController extends commonController
 
 	public function checkLogin()
 	{
-		session_start();
 		if (checkSessionVar(USER_SESSION_VAR)) {
 			redirect('');
 			exit;
@@ -69,7 +72,6 @@ class usersController extends commonController
 
 	public function signup()
 	{
-		session_start();
 		if (checkSessionVar(USER_SESSION_VAR)) {
 			redirect('');
 			exit;
@@ -87,7 +89,6 @@ class usersController extends commonController
 
 	public function register()
 	{
-		session_start();
 		if (checkSessionVar(USER_SESSION_VAR)) {
 			redirect('');
 			exit;
