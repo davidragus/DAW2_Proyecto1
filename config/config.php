@@ -14,4 +14,5 @@ define('APPLICATION_PATH', BASE_PATH . 'src/');
 define('VIEWS_PATH', APPLICATION_PATH . "Views/");
 
 define('USER_SESSION_VAR', 'userSession');
+define('ROLE_SESSION_VAR', 'roleSession');
 define('CART_SESSION_VAR', 'cartSession');

@@ -67,6 +67,7 @@ class usersController extends commonController
 		}
 
 		$_SESSION[USER_SESSION_VAR] = $user->getUserId();
+		$_SESSION[ROLE_SESSION_VAR] = $user->getRole();
 		redirect('');
 	}
 
@@ -111,6 +112,7 @@ class usersController extends commonController
 		$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 		$newUserId = UserDAO::createUser($_POST['email'], $password, $_POST['firstName'], $_POST['lastName']);
 		$_SESSION[USER_SESSION_VAR] = $newUserId;
+		$_SESSION[ROLE_SESSION_VAR] = 'USER';
 		redirect('');
 	}
 }

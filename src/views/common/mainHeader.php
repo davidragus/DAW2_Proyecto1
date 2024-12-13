@@ -65,7 +65,13 @@
 								UP</span><i class="bi bi-chevron-right d-lg-none"></i></a>
 					</li>
 					<li
-						class="nav-item d-lg-flex align-items-lg-center px-lg-2 <?= !checkSessionVar(USER_SESSION_VAR) ? 'hidden' : '' ?>">
+						class="nav-item d-lg-flex align-items-lg-center px-lg-2 <?= checkSessionVar(USER_SESSION_VAR) && checkSessionVarValue(ROLE_SESSION_VAR, 'ADMIN') ? '' : 'hidden' ?>">
+						<a class="nav-link <?= (isset($_GET['controller']) && $_GET['controller'] == 'users') && (isset($_GET['action']) && $_GET['action'] == 'signup') ? 'active' : '' ?> d-lg-flex align-items-lg-center p-lg-0"
+							href="<?= url('users') ?>"><span>ADMIN PANEL</span><i
+								class="bi bi-chevron-right d-lg-none"></i></a>
+					</li>
+					<li
+						class="nav-item d-lg-flex align-items-lg-center px-lg-2 <?= checkSessionVar(USER_SESSION_VAR) ? '' : 'hidden' ?>">
 						<a class="nav-link <?= (isset($_GET['controller']) && $_GET['controller'] == 'users') && (isset($_GET['action']) && $_GET['action'] == 'signup') ? 'active' : '' ?> d-lg-flex align-items-lg-center p-lg-0"
 							href="<?= url('users') ?>"><span>PROFILE SETTINGS</span><i
 								class="bi bi-chevron-right d-lg-none"></i></a>

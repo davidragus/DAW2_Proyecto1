@@ -6,3 +6,10 @@ function checkSessionVar($key)
 		return true;
 	return false;
 }
+
+function checkSessionVarValue($key, $value)
+{
+	if (checkSessionVar($key) && $_SESSION[$key] == $value)
+		return true;
+	return false;
+}
