@@ -25,6 +25,10 @@ header {
 	border-bottom: 4px solid var(--color2);
 }
 
+ul {
+	list-style-type: none;
+}
+
 p {
 	font-family: 'DIN Next LT Pro', sans-serif;
 	font-weight: 400;
@@ -144,6 +148,7 @@ li.dropdown:hover>div.dropdown-menu {
 
 .list-header {
 	font-size: 16px;
+	font-weight: 700;
 	border-bottom: 2px solid transparent;
 	border-image: linear-gradient(90deg, #000 1%, var(--color2) 52%, #000);
 	border-image-slice: 1;
@@ -153,15 +158,10 @@ li.dropdown:hover>div.dropdown-menu {
 .dropdown-list {
 	width: 1200px;
 	padding-bottom: 100px;
-	list-style-type: none;
 }
 
 .dropdown-sublist-container {
 	width: 20%;
-}
-
-.dropdown-sublist {
-	list-style-type: none;
 }
 
 .dropdown-sublist-link {
@@ -256,6 +256,25 @@ a.card:hover {
 	background-color: #000;
 	max-width: none !important;
 	height: 540px;
+}
+
+.footer-content {
+	max-width: 1240px;
+}
+
+.round-button {
+	width: 50px;
+	height: 50px;
+	background-color: #242424;
+}
+
+.round-button:hover {
+	background-color: #000;
+}
+
+.round-button svg {
+	width: 32px;
+	height: 32px;
 }
 
 .back-top-button-container {
@@ -354,6 +373,7 @@ a.card:hover {
 	.product-container img {
 		height: 182px;
 	}
+
 }
 
 @media (max-width: 991px) {
@@ -414,6 +434,10 @@ a.card:hover {
 		max-width: 300px !important;
 		height: 300px !important;
 		margin: 10px 10px;
+	}
+
+	.footer-container {
+		background-image: none;
 	}
 
 }
