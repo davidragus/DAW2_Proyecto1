@@ -9,7 +9,7 @@ class usersController extends commonController
 	public function index()
 	{
 		session_start();
-		if (!checkIfLoggedIn()) {
+		if (!checkSessionVar(USER_SESSION_VAR)) {
 			redirect("users/login");
 			exit;
 		}
@@ -27,7 +27,8 @@ class usersController extends commonController
 	public function login()
 	{
 		session_start();
-		if (checkIfLoggedIn()) {
+		if (checkSessionVar(USER_SESSION_VAR)) {
+			redirect('');
 			exit;
 		}
 
@@ -44,7 +45,11 @@ class usersController extends commonController
 	public function checkLogin()
 	{
 		session_start();
-		if (checkIfLoggedIn()) {
+		if (checkSessionVar(USER_SESSION_VAR)) {
+			redirect('');
+			exit;
+		} else if (!isset($_POST['email'])) {
+			redirect('users/login');
 			exit;
 		}
 
@@ -58,14 +63,15 @@ class usersController extends commonController
 			exit;
 		}
 
-		$_SESSION['userSession'] = $user->getUserId();
-		redirect('homepage');
+		$_SESSION[USER_SESSION_VAR] = $user->getUserId();
+		redirect('');
 	}
 
 	public function signup()
 	{
 		session_start();
-		if (checkIfLoggedIn()) {
+		if (checkSessionVar(USER_SESSION_VAR)) {
+			redirect('');
 			exit;
 		}
 
@@ -82,7 +88,11 @@ class usersController extends commonController
 	public function register()
 	{
 		session_start();
-		if (checkIfLoggedIn()) {
+		if (checkSessionVar(USER_SESSION_VAR)) {
+			redirect('');
+			exit;
+		} else if (!isset($_POST['email'])) {
+			redirect('users/signup');
 			exit;
 		}
 
@@ -99,7 +109,7 @@ class usersController extends commonController
 		}
 		$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 		$newUserId = UserDAO::createUser($_POST['email'], $password, $_POST['firstName'], $_POST['lastName']);
-		$_SESSION['userSession'] = $newUserId;
-		redirect('homepage');
+		$_SESSION[USER_SESSION_VAR] = $newUserId;
+		redirect('');
 	}
 }

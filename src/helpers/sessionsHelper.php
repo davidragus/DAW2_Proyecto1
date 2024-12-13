@@ -1,10 +1,8 @@
 <?php
 
-function checkIfLoggedIn()
+function checkSessionVar($key)
 {
-	if (isset($_SESSION['userSession'])) {
-		redirect('homepage');
+	if (isset($_SESSION[$key]))
 		return true;
-	}
 	return false;
 }

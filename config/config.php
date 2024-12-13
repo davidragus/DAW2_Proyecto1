@@ -12,3 +12,6 @@ define('ASSETS_PATH', '/assets/');
 define('BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/");
 define('APPLICATION_PATH', BASE_PATH . 'src/');
 define('VIEWS_PATH', APPLICATION_PATH . "Views/");
+
+define('USER_SESSION_VAR', 'userSession');
+define('CART_SESSION_VAR', 'cartSession');
