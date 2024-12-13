@@ -11,4 +11,5 @@ return array(
     '530687010661e52dd53e703b7a7cdc61' => $baseDir . '/src/Helpers/assetsHelper.php',
     'c9ce731bae67f4567b8ff082302a93b9' => $baseDir . '/src/Helpers/frontendHelper.php',
     'b0c229222069834d6adb20efd99ccf18' => $baseDir . '/src/Helpers/urlHelper.php',
+    'eaf8f1498fc65d210c6193851e9a9f81' => $baseDir . '/src/Helpers/sessionsHelper.php',
 );

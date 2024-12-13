@@ -27,6 +27,7 @@ abstract class UserDAO
 		$stmt = $conn->prepare("INSERT INTO users(email, password, first_name, last_name) VALUES(?, ?, ?, ?)");
 		$stmt->bind_param("ssss", $email, $password, $firstName, $lastName);
 		$stmt->execute();
+		return $stmt->insert_id;
 	}
 
 }

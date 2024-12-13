@@ -3,12 +3,13 @@
 		<div class="col-4 login-form bg-black py-5 px-3 d-flex flex-column align-items-center"
 			style="--bs-bg-opacity: .9;">
 			<h1 class="text-white">Log In</h1>
-			<form action="" class="d-flex flex-column align-items-center my-2">
+			<form method="post" action="<?= url('users/checkLogin') ?>"
+				class="d-flex flex-column align-items-center my-2">
 				<div class="row mb-3 w-100">
 					<div class="col">
 						<div class="form-floating">
 							<input type="email" class="form-control" id="emailInput" name="email"
-								placeholder="example@email.com">
+								placeholder="example@email.com" required>
 							<label for="emailInput">Email address</label>
 						</div>
 					</div>
@@ -17,7 +18,7 @@
 					<div class="col">
 						<div class="form-floating">
 							<input type="password" class="form-control" id="passwordInput" name="password"
-								placeholder="Password">
+								placeholder="Password" required>
 							<label for="passwordInput">Password</label>
 							<div id="passwordHelpBlock" class="form-text text-white-50">
 								Your password must be 8-20 characters long, contain letters and numbers, and must not
