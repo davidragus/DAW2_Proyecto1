@@ -20,11 +20,6 @@
 							<input type="password" class="form-control" id="passwordInput" name="password"
 								placeholder="Password" required>
 							<label for="passwordInput">Password</label>
-							<div id="passwordHelpBlock" class="form-text text-white-50">
-								Your password must be 8-20 characters long, contain letters and numbers, and must not
-								contain
-								spaces, special characters, or emoji.
-							</div>
 						</div>
 					</div>
 				</div>
