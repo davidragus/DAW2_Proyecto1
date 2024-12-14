@@ -8,6 +8,7 @@ class adminController extends commonController
 	public function __construct()
 	{
 		parent::__construct();
+		$this->pageHeader = 'admin/common/adminHeader';
 	}
 
 	public function index()

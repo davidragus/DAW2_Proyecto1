@@ -5,7 +5,6 @@
 			data-bs-target="#offcanvasNav" aria-controls="offcanvasNav">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<!-- TODO: Add offcanvas for the cart -->
 		<button id="yourCartButtonNavMobile" class="navbar-toggler d-lg-none position-absolute end-0 p-1 m-2"
 			type="button">
 			<i class="bi-cart-fill"></i>
