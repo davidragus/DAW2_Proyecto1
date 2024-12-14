@@ -67,7 +67,7 @@
 					<?php if (checkSessionVar(USER_SESSION_VAR) && checkSessionVarValue(ROLE_SESSION_VAR, 'ADMIN')): ?>
 						<li class="nav-item d-lg-flex align-items-lg-center px-lg-2">
 							<a class="nav-link <?= (isset($_GET['controller']) && $_GET['controller'] == 'users') && (isset($_GET['action']) && $_GET['action'] == 'signup') ? 'active' : '' ?> d-lg-flex align-items-lg-center p-lg-0"
-								href="<?= url('users') ?>"><span>ADMIN PANEL</span><i
+								href="<?= url('admin') ?>"><span>ADMIN PANEL</span><i
 									class="bi bi-chevron-right d-lg-none"></i></a>
 						</li>
 					<?php endif; ?>
