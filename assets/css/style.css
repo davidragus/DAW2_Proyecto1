@@ -129,7 +129,6 @@ h4 {
 li.dropdown:hover>div.dropdown-menu {
 	display: flex !important;
 	pointer-events: auto !important;
-	top: 100%;
 }
 
 .nav-item:hover .nav-link {
@@ -144,6 +143,7 @@ li.dropdown:hover>div.dropdown-menu {
 	border: none;
 	border-top: 4px solid var(--color2);
 	padding-top: 30px;
+	top: 100%;
 }
 
 .list-header {
@@ -172,6 +172,17 @@ li.dropdown:hover>div.dropdown-menu {
 }
 
 .dropdown-sublist-link:hover {
+	color: var(--color2);
+}
+
+.sublist-link {
+	color: white;
+	font-size: 17px;
+	text-decoration: none;
+	transition: color .1s ease-in-out;
+}
+
+.sublist-link:hover {
 	color: var(--color2);
 }
 
@@ -255,7 +266,6 @@ a.card:hover {
 	background-position: right top;
 	background-color: #000;
 	max-width: none !important;
-	height: 540px;
 }
 
 .footer-content {
@@ -371,6 +381,10 @@ fieldset {
 .admin-table th {
 	background-color: #E7E7DB;
 	border-bottom: 4px solid var(--color2);
+}
+
+.footer-copy {
+	font-size: 14px;
 }
 
 /* 365 375 */
