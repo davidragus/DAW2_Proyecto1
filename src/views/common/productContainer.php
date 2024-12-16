@@ -6,7 +6,9 @@
 	<span class="on-sale-tag position-absolute text-light">
 		ON SALE
 	</span>
-	<span class="adult-tag position-absolute bg-white">
-		+18
-	</span>
+	<?php if ($params->getAdultsOnly() == 1): ?>
+		<span class="adult-tag position-absolute bg-white">
+			+18
+		</span>
+	<?php endif; ?>
 </a>

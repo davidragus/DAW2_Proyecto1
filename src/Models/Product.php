@@ -5,7 +5,7 @@ namespace App\Models;
 class Product
 {
 
-	protected $product_id, $category_id, $subcategory_id, $name, $description, $price, $image;
+	protected $product_id, $category_id, $subcategory_id, $name, $description, $price, $image, $adults_only;
 
 	public function getId()
 	{
@@ -40,6 +40,11 @@ class Product
 	public function getImage()
 	{
 		return $this->image;
+	}
+
+	public function getAdultsOnly()
+	{
+		return $this->adults_only;
 	}
 
 }
