@@ -4,7 +4,7 @@
 			style="--bs-bg-opacity: .9;">
 			<h1 class="text-white">Log In</h1>
 			<form method="post" action="<?= url('users/checkLogin') ?>"
-				class="d-flex flex-column align-items-center my-2">
+				class="d-flex flex-column align-items-center my-2 w-75">
 				<div class="row mb-3 w-100">
 					<div class="col">
 						<div class="form-floating">
