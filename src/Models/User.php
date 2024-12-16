@@ -37,4 +37,16 @@ class User
 		return $this->last_name;
 	}
 
+	public function jsonSerialize()
+	{
+		return [
+			"id" => $this->getUserId(),
+			"role" => $this->getRole(),
+			"email" => $this->getEmail(),
+			"password" => $this->getPassword(),
+			"first_name" => $this->getFirstName(),
+			"last_name" => $this->getLastName()
+		];
+	}
+
 }

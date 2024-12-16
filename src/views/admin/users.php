@@ -39,7 +39,7 @@
 			</fieldset>
 		</form>
 	</div>
-	<table class="container admin-table mb-5">
+	<table id="usersTable" class="container admin-table mb-5">
 		<tr>
 			<th>ID</th>
 			<th>Role</th>
@@ -74,3 +74,4 @@
 		</tr> -->
 	</table>
 </main>
+<script src="<?= js('userManagement') ?>"></script>

@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\UserDAO, App\Models\User;
+use App\Models\UserDAO;
 
 class usersController extends commonController
 {

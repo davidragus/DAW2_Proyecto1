@@ -30,4 +30,17 @@ abstract class UserDAO
 		return $stmt->insert_id;
 	}
 
+	public static function getUsersJson()
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("SELECT * FROM users");
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$users = [];
+		while ($rows = $result->fetch_object("App\\Models\\User")) {
+			$users[] = $rows->jsonSerialize();
+		}
+		return $users;
+	}
+
 }
