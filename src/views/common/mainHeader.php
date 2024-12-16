@@ -66,10 +66,28 @@
 						</li>
 					<?php endif; ?>
 					<?php if (checkSessionVar(USER_SESSION_VAR)): ?>
-						<li class="nav-item d-lg-flex align-items-lg-center px-lg-2">
+						<!-- <li class="nav-item d-lg-flex align-items-lg-center px-lg-2">
 							<a class="nav-link <?= (isset($_GET['controller']) && $_GET['controller'] == 'users') && (isset($_GET['action']) && $_GET['action'] == 'signup') ? 'active' : '' ?> d-lg-flex align-items-lg-center p-lg-0"
 								href="<?= url('users') ?>"><span>PROFILE SETTINGS</span><i
 									class="bi bi-chevron-right d-lg-none"></i></a>
+						</li> -->
+						<li class="nav-item d-lg-flex align-items-lg-center dropdown position-static px-lg-2"
+							id="userSettingsDropdown">
+							<a class="nav-link d-lg-flex align-items-lg-center p-lg-0 dropdown-toggle"
+								href="<?= url("products") ?>" aria-expanded=" false">
+								<span>PROFILE SETTINGS</span>
+							</a>
+							<div class="dropdown-menu pb-0 start-0 end-0 rounded-0 bg-black justify-content-center">
+								<ul class="dropdown-list px-0">
+									<li class="dropdown-sublist-container">
+										<span class="list-header pb-1 text-white">SETTINGS</span>
+										<ul class="dropdown-sublist px-0 pt-3">
+											<li><a class="dropdown-sublist-link" href="">Edit your profile</a></li>
+											<li><a class="dropdown-sublist-link" href="">Log out</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
 						</li>
 					<?php endif; ?>
 					<li id="yourCartButtonNav" class="nav-item d-lg-flex align-items-lg-center px-lg-2">
