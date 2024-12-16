@@ -1,6 +1,6 @@
 <main class="container pb-5">
 	<div class="row py-4">
-		<h1 class="dark d-flex justify-content-center">Manage Users</h1>
+		<h1 class="dark d-flex justify-content-center">Manage Products</h1>
 	</div>
 	<div class="container mb-2">
 		<form action="" class="d-flex flex-column align-items-center my-2">
