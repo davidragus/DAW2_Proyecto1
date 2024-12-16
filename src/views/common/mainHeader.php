@@ -83,7 +83,8 @@
 										<span class="list-header pb-1 text-white">SETTINGS</span>
 										<ul class="dropdown-sublist px-0 pt-3">
 											<li><a class="dropdown-sublist-link" href="">Edit your profile</a></li>
-											<li><a class="dropdown-sublist-link" href="">Log out</a></li>
+											<li><a class="dropdown-sublist-link" href="<?= url('users/logout') ?>">Log
+													out</a></li>
 										</ul>
 									</li>
 								</ul>

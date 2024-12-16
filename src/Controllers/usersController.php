@@ -115,4 +115,13 @@ class usersController extends commonController
 		$_SESSION[ROLE_SESSION_VAR] = 'USER';
 		redirect('');
 	}
+
+	public function logout()
+	{
+		if (checkSessionVar(USER_SESSION_VAR)) {
+			session_destroy();
+		}
+		redirect('');
+	}
+
 }
