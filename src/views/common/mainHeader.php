@@ -66,11 +66,6 @@
 						</li>
 					<?php endif; ?>
 					<?php if (checkSessionVar(USER_SESSION_VAR)): ?>
-						<!-- <li class="nav-item d-lg-flex align-items-lg-center px-lg-2">
-							<a class="nav-link <?= (isset($_GET['controller']) && $_GET['controller'] == 'users') && (isset($_GET['action']) && $_GET['action'] == 'signup') ? 'active' : '' ?> d-lg-flex align-items-lg-center p-lg-0"
-								href="<?= url('users') ?>"><span>PROFILE SETTINGS</span><i
-									class="bi bi-chevron-right d-lg-none"></i></a>
-						</li> -->
 						<li class="nav-item d-lg-flex align-items-lg-center dropdown position-static px-lg-2"
 							id="userSettingsDropdown">
 							<a class="nav-link d-lg-flex align-items-lg-center p-lg-0 dropdown-toggle"
@@ -90,11 +85,11 @@
 								</ul>
 							</div>
 						</li>
+						<li id="yourCartButtonNav" class="nav-item d-lg-flex align-items-lg-center px-lg-2">
+							<a class="btn btn-primary btn-primary-small rounded-0" href="#"><i class="bi-cart-fill"></i>YOUR
+								CART</a>
+						</li>
 					<?php endif; ?>
-					<li id="yourCartButtonNav" class="nav-item d-lg-flex align-items-lg-center px-lg-2">
-						<a class="btn btn-primary btn-primary-small rounded-0" href="#"><i class="bi-cart-fill"></i>YOUR
-							CART</a>
-					</li>
 				</ul>
 			</div>
 		</div>
