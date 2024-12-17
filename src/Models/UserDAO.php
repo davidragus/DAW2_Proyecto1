@@ -30,15 +30,33 @@ abstract class UserDAO
 		return $stmt->insert_id;
 	}
 
-	public static function getUsersJson()
+	public static function getUsersArray($filters)
 	{
 		$conn = DBConnection::connect();
-		$stmt = $conn->prepare("SELECT * FROM users");
+		$query = "SELECT * FROM users";
+		if (!empty($filters)) {
+			$whereStatements = [];
+			foreach ($filters as $key => $value) {
+				$whereStatements[] = "$key LIKE ?";
+			}
+			$query .= " WHERE " . implode(" AND ", $whereStatements);
+		}
+		$stmt = $conn->prepare($query);
+
+		$bindings = [];
+		if (!empty($filters)) {
+			foreach ($filters as $value) {
+				$bindings[] = $value;
+			}
+			$types = str_repeat('s', count($bindings));
+			$stmt->bind_param($types, ...$bindings);
+		}
+
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$users = [];
 		while ($rows = $result->fetch_object("App\\Models\\User")) {
-			$users[] = $rows->jsonSerialize();
+			$users[] = $rows->toArray();
 		}
 		return $users;
 	}

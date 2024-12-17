@@ -14,13 +14,11 @@
 							href="<?= url('admin/orders') ?>"><span>MANAGE ORDERS</span><i
 								class="bi bi-chevron-right d-none"></i></a>
 					</li>
-					<?php if (false): ?>
-						<li class="nav-item d-flex align-items-center px-2">
-							<a class="nav-link d-flex align-items-center p-0 <?= $_GET['action'] == 'users' ? 'active' : '' ?>"
-								href="<?= url('admin/users') ?>"><span>MANAGE USERS</span><i
-									class="bi bi-chevron-right d-none"></i></a>
-						</li>
-					<?php endif; ?>
+					<li class="nav-item d-flex align-items-center px-2">
+						<a class="nav-link d-flex align-items-center p-0 <?= $_GET['action'] == 'users' ? 'active' : '' ?>"
+							href="<?= url('admin/users') ?>"><span>MANAGE USERS</span><i
+								class="bi bi-chevron-right d-none"></i></a>
+					</li>
 				</ul>
 				<ul class="navbar-nav d-flex align-items-center px-2">
 					<li class="nav-item d-flex align-items-center px-2">
@@ -28,7 +26,8 @@
 							VIEW</a>
 					</li>
 					<li class="nav-item d-flex align-items-center px-2">
-						<a class="btn btn-primary btn-primary-small rounded-0" href="#">LOG OUT</a>
+						<a class="btn btn-primary btn-primary-small rounded-0" href="<?= url('users/logout') ?>">LOG
+							OUT</a>
 					</li>
 				</ul>
 			</div>

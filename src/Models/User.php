@@ -37,7 +37,7 @@ class User
 		return $this->last_name;
 	}
 
-	public function jsonSerialize()
+	public function toArray()
 	{
 		return [
 			"id" => $this->getUserId(),

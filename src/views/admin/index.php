@@ -16,13 +16,11 @@
 						<h3 class="dark card-text text-center">Manage orders</h3>
 					</div>
 				</a>
-				<?php if (false): ?>
-					<a class="card rounded-0 border-0 p-0 py-4 col-3" href="<?= url('admin/users') ?>">
-						<div class="card-body d-flex align-items-center justify-content-center px-3">
-							<h3 class="dark card-text text-center">Manage users</h3>
-						</div>
-					</a>
-				<?php endif; ?>
+				<a class="card rounded-0 border-0 p-0 py-4 col-3" href="<?= url('admin/users') ?>">
+					<div class="card-body d-flex align-items-center justify-content-center px-3">
+						<h3 class="dark card-text text-center">Manage users</h3>
+					</div>
+				</a>
 			</div>
 		</div>
 	</div>

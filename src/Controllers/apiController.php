@@ -14,15 +14,17 @@ class apiController
 
 	public function getUsers()
 	{
-		$users = UserDAO::getUsersJson();
+		$filters = [];
+		if (isset($_GET['role']))
+			$filters['role'] = $_GET['role'];
+		if (isset($_GET['email']))
+			$filters['email'] = "%" . $_GET['email'] . "%";
+		if (isset($_GET['first_name']))
+			$filters['first_name'] = "%" . $_GET['first_name'] . "%";
+		if (isset($_GET['last_name']))
+			$filters['last_name'] = "%" . $_GET['last_name'] . "%";
 
-		if (empty($users)) {
-			echo json_encode([
-				'status' => 'error',
-				'data' => 'No users found'
-			]);
-			exit;
-		}
+		$users = UserDAO::getUsersArray($filters);
 
 		echo json_encode([
 			'status' => 'success',

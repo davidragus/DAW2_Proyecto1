@@ -11,7 +11,7 @@ if (isset($controllerName)) {
 		$controller = new $controllerClass();
 		if (isset($_GET['action']) && method_exists($controller, $actionName)) {
 			$action = $actionName;
-		} else {
+		} else { //TODO: Retocar a donde se redirige
 			$action = DEFAULT_ACTION;
 		}
 		$controller->$action();
