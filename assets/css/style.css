@@ -383,6 +383,14 @@ fieldset {
 	border-bottom: 4px solid var(--color2);
 }
 
+.admin-table i {
+	color: var(--color2);
+}
+
+.admin-table i:hover {
+	color: var(--color1);
+}
+
 .footer-copy {
 	font-size: 14px;
 }

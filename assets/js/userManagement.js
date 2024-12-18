@@ -1,3 +1,4 @@
+// TODO: Aplicar clases
 const API_URL = new URL('http://www.tieflingstavern.com/api/');
 const filtersForm = document.getElementById('filtersForm');
 const usersTable = document.getElementById('usersTable');
@@ -28,14 +29,7 @@ async function getUsers(params = []) {
 function modifyTableDom(jsonResponse) {
 	const dataRows = document.querySelectorAll('.data-row').forEach(e => e.remove());
 	jsonResponse.data.forEach((user) => {
-		delete user.password;
-		const userRow = document.createElement('tr');
-		userRow.className = 'data-row';
-		for (const key in user) {
-			const userCell = document.createElement('td');
-			userCell.innerHTML = user[key];
-			userRow.appendChild(userCell);
-		};
-		usersTable.appendChild(userRow);
+		const currentUser = new User(user);
+		usersTable.appendChild(currentUser.createRowOfData());
 	});
 }

@@ -53,4 +53,5 @@
 		</tr>
 	</table>
 </main>
+<script src="<?= js('adminClasses') ?>"></script>
 <script src="<?= js('userManagement') ?>"></script>
