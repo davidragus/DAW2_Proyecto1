@@ -47,4 +47,18 @@ class Product
 		return $this->adults_only;
 	}
 
+	public function toArray()
+	{
+		return [
+			'id' => $this->getId(),
+			'category' => $this->getCategoryId(),
+			'subcategory' => $this->getSubcategoryId(),
+			'name' => $this->getName(),
+			'description' => $this->getDescription(),
+			'price' => $this->getPrice(),
+			'image' => $this->getImage(),
+			'adults_only' => $this->getAdultsOnly(),
+		];
+	}
+
 }

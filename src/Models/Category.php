@@ -5,13 +5,7 @@ namespace App\Models;
 class Category
 {
 
-	protected const product_model = [
-		1 => "Starter",
-		2 => "Sandwich",
-		3 => "Dessert",
-		4 => "Drink",
-	];
-	protected $category_id, $name, $subcategory, $parent_id, $image;
+	protected $category_id, $name, $subcategory, $parent_id;
 
 	public function getCategoryId()
 	{
@@ -23,7 +17,7 @@ class Category
 		return $this->name;
 	}
 
-	public function getSubsubcategory()
+	public function getSubcategory()
 	{
 		return $this->subcategory;
 	}
@@ -33,14 +27,14 @@ class Category
 		return $this->parent_id;
 	}
 
-	public function getImage()
+	public function toArray()
 	{
-		return $this->image;
-	}
-
-	public function getProductModel($id)
-	{
-		return Category::product_model[$id];
+		return [
+			'id' => $this->getCategoryId(),
+			'name' => $this->getName(),
+			'subcategory' => $this->getSubcategory(),
+			'parent_id' => $this->getParentId(),
+		];
 	}
 
 }

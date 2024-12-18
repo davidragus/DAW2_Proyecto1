@@ -1,12 +1,13 @@
-// TODO: Aplicar clases
 const API_URL = new URL('http://www.tieflingstavern.com/api/');
 const filtersForm = document.getElementById('filtersForm');
 const usersTable = document.getElementById('usersTable');
 
 document.addEventListener('DOMContentLoaded', (e) => getUsers());
+
 document.getElementById('clearFilter').addEventListener('click', function (e) {
 	filtersForm.reset();
 });
+
 filtersForm.addEventListener('submit', function (e) {
 	e.preventDefault();
 	const data = new FormData(filtersForm);
