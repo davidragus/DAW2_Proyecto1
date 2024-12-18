@@ -39,9 +39,9 @@
 					</div>
 				</div>
 				<div class="row">
-					<input class="btn btn-primary rounded-0 col mx-2" type="submit" value="APPLY FILTERS">
-					<input id="clearFilter" class="btn btn-primary rounded-0 col mx-2" type="submit"
-						value="CLEAR FILTERS">
+					<button class="btn btn-primary rounded-0 col mx-2" form="filtersForm" type="submit">SEARCH</button>
+					<button id="clearFilter" class="btn btn-primary rounded-0 col mx-2" form="filtersForm"
+						type="submit">CLEAR</button>
 				</div>
 			</fieldset>
 		</form>
