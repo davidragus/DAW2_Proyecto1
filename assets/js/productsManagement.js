@@ -58,7 +58,6 @@ async function modifyTableDom(jsonResponse) {
 	const dataRows = document.querySelectorAll('.data-row').forEach(e => e.remove());
 	jsonResponse.data.forEach((product) => {
 		const currentProduct = new Product(product);
-		console.log(currentProduct);
 		productsTable.appendChild(currentProduct.createRowOfData(categories, subcategories));
 	});
 }

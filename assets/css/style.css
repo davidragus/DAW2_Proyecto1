@@ -375,12 +375,19 @@ fieldset {
 .admin-table th,
 .admin-table td {
 	padding: 10px;
-	/* border: 1px solid var(--color5); */
+}
+
+.admin-table,
+.admin-table th {
+	border-bottom: 4px solid var(--color2);
+}
+
+.admin-table td {
+	border-bottom: 2px solid #E7E7DB;
 }
 
 .admin-table th {
 	background-color: #E7E7DB;
-	border-bottom: 4px solid var(--color2);
 }
 
 .admin-table i {
