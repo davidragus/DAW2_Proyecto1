@@ -6,7 +6,7 @@ use DBConnection;
 
 abstract class ProductDAO
 {
-
+	// TODO: Agregar gestión de errores
 	public static function getProductsByCategory($category)
 	{
 		$conn = DBConnection::connect();
@@ -29,10 +29,7 @@ abstract class ProductDAO
 		$stmt->bind_param("i", $id);
 		$stmt->execute();
 		$result = $stmt->get_result();
-		$product = [];
-		while ($rows = $result->fetch_object("App\\Models\\Product")) {
-			$product[] = $rows;
-		}
+		$product = $result->fetch_object("App\\Models\\Product");
 		return $product;
 	}
 
