@@ -57,6 +57,33 @@ class productsController extends commonController
 
 	}
 
+	public function show()
+	{
+
+		if (isset($_GET['id'])) {
+
+			$product = ProductDAO::getProductById($_GET['id']);
+
+			if ($product) {
+				$pageParams = [
+					'pageTitle' => "Tiefling's Tavern - Products",
+					'pageHeader' => $this->pageHeader,
+					'pageContent' => 'products/show',
+					'pageFooter' => $this->pageFooter,
+					'variables' => [
+						'product' => $product
+					]
+				];
+				view('template', $pageParams);
+				exit;
+			}
+			echo 'not found';
+		} else {
+			echo 'not found';
+		}
+
+	}
+
 	public static function getCategories()
 	{
 		return CategoryDAO::getCategories();

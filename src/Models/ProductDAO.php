@@ -22,6 +22,20 @@ abstract class ProductDAO
 		return $products;
 	}
 
+	public static function getProductById($id)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("SELECT * FROM products WHERE product_id = ?");
+		$stmt->bind_param("i", $id);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$product = [];
+		while ($rows = $result->fetch_object("App\\Models\\Product")) {
+			$product[] = $rows;
+		}
+		return $product;
+	}
+
 	public static function getProductsArray($filters)
 	{
 		$conn = DBConnection::connect();
