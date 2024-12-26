@@ -402,6 +402,32 @@ fieldset {
 	font-size: 14px;
 }
 
+.go-back-button {
+	color: var(--color5);
+	font-size: 18px;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.go-back-button:hover {
+	color: var(--color2);
+}
+
+.product-image {
+	height: 300px;
+	object-fit: cover;
+}
+
+.card-product-info {
+	font-size: 32px;
+	background-color: var(--color2);
+}
+
+.card-product-subtitle {
+	font-size: 28px;
+	color: var(--color2);
+}
+
 /* 365 375 */
 
 @media (max-width: 1399px) {
