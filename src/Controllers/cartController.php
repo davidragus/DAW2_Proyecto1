@@ -22,6 +22,7 @@ class cartController extends commonController
 		$userCart = [];
 		foreach ($products as $product) {
 			$userCart[$product->getName()] = [
+				'id' => $product->getId(),
 				'image' => $product->getImage(),
 				'quantity' => $_SESSION[CART_SESSION_VAR][$product->getId()],
 				'price' => number_format($product->getPrice() * $_SESSION[CART_SESSION_VAR][$product->getId()], 2)
