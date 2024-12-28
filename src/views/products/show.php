@@ -29,7 +29,10 @@
 			<div class="d-flex justify-content-end">
 				<h3 class="dark"><?= $params['product']->getPrice() ?>€</h3>
 			</div>
-			<a class="btn btn-primary rounded-0" href="#"><i class="bi-cart-fill"></i>ADD TO CART</a>
+			<form method="post" id="addToCart" action="<?= url('cart/addToCart/' . $params['product']->getId()) ?>">
+				<button type="submit" form="addToCart" class="btn btn-primary rounded-0"><i class="bi-cart-fill"></i>ADD
+					TO CART</button>
+			</form>
 		</div>
 	</div>
 </main>

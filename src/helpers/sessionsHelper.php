@@ -7,6 +7,13 @@ function checkSessionVar($key)
 	return false;
 }
 
+function checkSessionObject($key, $index)
+{
+	if (isset($_SESSION[$key][$index]))
+		return true;
+	return false;
+}
+
 function checkSessionVarValue($key, $value)
 {
 	if (checkSessionVar($key) && $_SESSION[$key] == $value)

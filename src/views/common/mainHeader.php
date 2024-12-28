@@ -86,7 +86,8 @@
 							</div>
 						</li>
 						<li id="yourCartButtonNav" class="nav-item d-lg-flex align-items-lg-center px-lg-2">
-							<a class="btn btn-primary btn-primary-small rounded-0" href="#"><i class="bi-cart-fill"></i>YOUR
+							<a class="btn btn-primary btn-primary-small rounded-0" href="<?= url('cart') ?>"><i
+									class="bi-cart-fill"></i>YOUR
 								CART</a>
 						</li>
 					<?php endif; ?>
