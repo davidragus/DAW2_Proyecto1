@@ -26,13 +26,21 @@
 			</div>
 		</div>
 		<div class="w-auto">
-			<div class="d-flex justify-content-end">
-				<h3 class="dark"><?= $params['product']->getPrice() ?>€</h3>
+			<div class="d-flex justify-content-end mb-1">
+				<button class="product-quantity-buttons border-0 bg-transparent" id="lessButton"><i
+						class="bi bi-dash-lg"></i></button>
+				<h3 class="dark m-0 mx-3" id="counter">1</h3>
+				<button class="product-quantity-buttons border-0 bg-transparent" id="moreButton"><i
+						class="bi bi-plus-lg"></i></button>
+				<h3 class="dark m-0 ms-5" id="price"><?= $params['product']->getPrice() ?>€</h3>
 			</div>
-			<form method="post" id="addToCart" action="<?= url('cart/addToCart/' . $params['product']->getId()) ?>">
+			<form class="d-flex justify-content-end" method="post" id="addToCart"
+				action="<?= url('cart/addToCart/' . $params['product']->getId()) ?>">
+				<input type="hidden" name="productQuantity" id="productQuantity" value="1">
 				<button type="submit" form="addToCart" class="btn btn-primary rounded-0"><i class="bi-cart-fill"></i>ADD
 					TO CART</button>
 			</form>
 		</div>
 	</div>
 </main>
+<script src="<?= js('quantityButtons') ?>"></script>

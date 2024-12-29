@@ -474,6 +474,16 @@ fieldset {
 	font-size: 20px;
 }
 
+.product-quantity-buttons i {
+	color: var(--color2);
+	font-weight: 800;
+	font-size: 22px !important;
+}
+
+.product-quantity-buttons i:hover {
+	color: var(--color1);
+}
+
 /* 365 375 */
 
 @media (max-width: 1399px) {
