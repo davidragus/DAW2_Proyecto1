@@ -12,13 +12,14 @@
 						<div class="row d-flex align-items-center justify-content-between m-0">
 							<a class="cart-product-name w-auto"
 								href="<?= url('products/show/' . $data['id']) ?>"><?= $productName ?></a>
-							<a class="w-auto" href=""><i class="bi bi-trash-fill"></i></a>
+							<a class="w-auto" href="<?= url('cart/deleteFromCart/' . $data['id']) ?>"><i
+									class="bi bi-trash-fill"></i></a>
 						</div>
 						<div class="row justify-content-end m-0">
 							<div class="quantity-container d-flex w-auto">
-								<a href=""><i class="bi bi-plus-lg"></i></a>
+								<a href="<?= url('cart/removeOneFromCart/' . $data['id']) ?>"><i class="bi bi-dash-lg"></i></a>
 								<span class="m-0 mx-3"><?= $data['quantity'] ?></span>
-								<a href=""><i class="bi bi-dash-lg"></i></a>
+								<a href="<?= url('cart/addOneToCart/' . $data['id']) ?>"><i class="bi bi-plus-lg"></i></a>
 								<span class="ms-5 m-0"><?= $data['price'] ?>€</span>
 							</div>
 						</div>

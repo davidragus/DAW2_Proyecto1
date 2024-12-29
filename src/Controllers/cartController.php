@@ -19,7 +19,7 @@ class cartController extends commonController
 			exit;
 		}
 
-		if (checkSessionVar(CART_SESSION_VAR)) {
+		if (checkSessionVar(CART_SESSION_VAR) && !empty($_SESSION[CART_SESSION_VAR])) {
 			$products = ProductDAO::getProductsByIds(array_keys($_SESSION[CART_SESSION_VAR]));
 			$userCart = [];
 			foreach ($products as $product) {
@@ -73,5 +73,51 @@ class cartController extends commonController
 		}
 		redirect('products');
 		exit;
+	}
+
+	public function deleteFromCart()
+	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect('users/login');
+			exit;
+		}
+
+		if (checkSessionObject(CART_SESSION_VAR, $_GET['id'])) {
+			unset($_SESSION[CART_SESSION_VAR][$_GET['id']]);
+		}
+
+		redirect('cart');
+
+	}
+
+	public function addOneToCart()
+	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect('users/login');
+			exit;
+		}
+
+		if (checkSessionObject(CART_SESSION_VAR, $_GET['id'])) {
+			$_SESSION[CART_SESSION_VAR][$_GET['id']] += 1;
+		}
+
+		redirect('cart');
+	}
+
+	public function removeOneFromCart()
+	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect('users/login');
+			exit;
+		}
+
+		if (checkSessionObject(CART_SESSION_VAR, $_GET['id'])) {
+			$_SESSION[CART_SESSION_VAR][$_GET['id']] -= 1;
+			if ($_SESSION[CART_SESSION_VAR][$_GET['id']] < 1) {
+				unset($_SESSION[CART_SESSION_VAR][$_GET['id']]);
+			}
+		}
+
+		redirect('cart');
 	}
 }
