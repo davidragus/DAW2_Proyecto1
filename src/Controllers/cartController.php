@@ -62,10 +62,14 @@ class cartController extends commonController
 			exit;
 		}
 
+		if (!isset($_POST['productQuantity']) || intval($_POST['productQuantity']) < 1) {
+			$_POST['productQuantity'] = 1;
+		}
+
 		if (!checkSessionObject(CART_SESSION_VAR, $_GET['id'])) {
-			$_SESSION[CART_SESSION_VAR][$_GET['id']] = 1;
+			$_SESSION[CART_SESSION_VAR][$_GET['id']] = $_POST['productQuantity'];
 		} else {
-			$_SESSION[CART_SESSION_VAR][$_GET['id']] += 1;
+			$_SESSION[CART_SESSION_VAR][$_GET['id']] += $_POST['productQuantity'];
 		}
 		redirect('products');
 		exit;
