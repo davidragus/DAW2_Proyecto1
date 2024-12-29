@@ -18,15 +18,30 @@ class cartController extends commonController
 			redirect('users/login');
 			exit;
 		}
-		$products = ProductDAO::getProductsByIds(array_keys($_SESSION[CART_SESSION_VAR]));
-		$userCart = [];
-		foreach ($products as $product) {
-			$userCart[$product->getName()] = [
-				'id' => $product->getId(),
-				'image' => $product->getImage(),
-				'quantity' => $_SESSION[CART_SESSION_VAR][$product->getId()],
-				'price' => number_format($product->getPrice() * $_SESSION[CART_SESSION_VAR][$product->getId()], 2)
+
+		if (checkSessionVar(CART_SESSION_VAR)) {
+			$products = ProductDAO::getProductsByIds(array_keys($_SESSION[CART_SESSION_VAR]));
+			$userCart = [];
+			foreach ($products as $product) {
+				$userCart[$product->getName()] = [
+					'id' => $product->getId(),
+					'image' => $product->getImage(),
+					'quantity' => $_SESSION[CART_SESSION_VAR][$product->getId()],
+					'price' => number_format($product->getPrice() * $_SESSION[CART_SESSION_VAR][$product->getId()], 2)
+				];
+			}
+
+			$pageParams = [
+				'pageTitle' => "Tiefling's Tavern",
+				'pageHeader' => $this->pageHeader,
+				'pageContent' => 'cart/index',
+				'pageFooter' => $this->pageFooter,
+				'variables' => [
+					'userCart' => $userCart
+				]
 			];
+			view('template', $pageParams);
+			exit;
 		}
 
 		$pageParams = [
@@ -34,12 +49,10 @@ class cartController extends commonController
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'cart/index',
 			'pageFooter' => $this->pageFooter,
-			'variables' => [
-				'userCart' => $userCart
-			]
+			'variables' => []
 		];
-
 		view('template', $pageParams);
+
 	}
 
 	public function addToCart()
