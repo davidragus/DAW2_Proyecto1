@@ -76,16 +76,19 @@
 	<div class="container pb-4">
 		<h2 class="dark d-flex justify-content-center">Your Addresses</h2>
 		<div class="container">
-			<div class="row address-row d-flex justify-content-between py-2">
-				<div class="w-auto">
-					<h3 class="dark m-0">Test</h3>
-					<span>test</span>
+			<?php foreach ($params['addresses'] as $address): ?>
+				<div class="row address-row d-flex justify-content-between py-2">
+					<div class="w-auto d-flex flex-column">
+						<h3 class="dark m-0"><?= $address->getAlias() ?></h3>
+						<span><?= $address->getAddress() ?></span>
+						<span><?= $address->getCity() ?> 	<?= $address->getCP() ?></span>
+					</div>
+					<div class="w-auto d-flex align-items-center">
+						<a href="" class="me-2"><i class="bi bi-pencil-fill"></i></a>
+						<a href=""><i class="bi bi-trash-fill"></i></a>
+					</div>
 				</div>
-				<div class="w-auto d-flex align-items-center">
-					<a href="" class="me-2"><i class="bi bi-pencil-fill"></i></a>
-					<a href=""><i class="bi bi-trash-fill"></i></a>
-				</div>
-			</div>
+			<?php endforeach; ?>
 		</div>
 	</div>
 </main>

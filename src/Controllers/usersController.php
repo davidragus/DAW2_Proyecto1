@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\UserDAO;
+use App\Models\UserDAO, App\Models\AddressDAO;
 
 class usersController extends commonController
 {
@@ -20,6 +20,7 @@ class usersController extends commonController
 		}
 
 		$user = UserDAO::getUserById($_SESSION[USER_SESSION_VAR]);
+		$addresses = AddressDAO::getAddressesByUserId($_SESSION[USER_SESSION_VAR]);
 
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern - Edit your profile",
@@ -30,6 +31,9 @@ class usersController extends commonController
 				'user' => $user
 			]
 		];
+		if (!empty($addresses)) {
+			$pageParams['variables'] += ['addresses' => $addresses];
+		}
 		view('template', $pageParams);
 	}
 
