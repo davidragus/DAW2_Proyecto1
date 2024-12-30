@@ -34,7 +34,7 @@
 			<span>Products price: <?= number_format($productsPrice, 2) ?>€</span>
 			<span>Taxes (10%): <?= number_format($taxPrice, 2) ?>€</span>
 			<span class="total-price pt-2">Total price: <?= number_format($productsPrice + $taxPrice, 2) ?>€</span>
-			<a class="btn btn-primary rounded-0 mt-4" href="<?= url('orders/createOrder') ?>">PLACE ORDER</a>
+			<a class="btn btn-primary rounded-0 mt-4" href="<?= url('orders/store') ?>">PLACE ORDER</a>
 		</div>
 	<?php else: ?>
 		<div class="container py-4 d-flex flex-column align-items-center">

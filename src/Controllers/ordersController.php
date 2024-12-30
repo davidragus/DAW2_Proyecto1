@@ -48,14 +48,14 @@ class ordersController extends commonController
 		view('template', $pageParams);
 	}
 
-	public function createOrder()
+	public function store()
 	{
 		if (!checkSessionVar(USER_SESSION_VAR)) {
 			redirect("users/login");
 			exit;
 		}
 
-		OrderDAO::insertOrder(null);
+		OrderDAO::insertOrder($_SESSION[CART_SESSION_VAR], $_SESSION[USER_SESSION_VAR]);
 		unset($_SESSION[CART_SESSION_VAR]);
 		redirect('orders');
 	}
