@@ -34,7 +34,8 @@
 				</div>
 			</fieldset>
 		</form>
-		<form method="post" action="" class="d-flex flex-column align-items-center my-2" id="changePasswordForm">
+		<form method="post" action="<?= url('users/changePassword') ?>"
+			class="d-flex flex-column align-items-center my-2" id="changePasswordForm">
 			<fieldset class="d-flex flex-column align-items-center p-4 mb-5 w-100">
 				<legend class="float-none w-auto">
 					<h2 class="dark px-2">Change your password</h2>
@@ -42,19 +43,21 @@
 				<div class="row w-100 mb-4">
 					<div class="col-4">
 						<div class="form-floating">
-							<input type="password" class="form-control" id="currentPassword" name="currentPassword">
+							<input type="password" class="form-control" id="currentPassword" name="currentPassword"
+								required>
 							<label for="currentPassword">Current password</label>
 						</div>
 					</div>
 					<div class="col-4">
 						<div class="form-floating">
-							<input type="password" class="form-control" id="newPassword" name="newPassword">
+							<input type="password" class="form-control" id="newPassword" name="newPassword" required>
 							<label for="newPassword">New password</label>
 						</div>
 					</div>
 					<div class="col-4">
 						<div class="form-floating">
-							<input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
+							<input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+								required>
 							<label for="confirmPassword">Confirm new password</label>
 						</div>
 					</div>

@@ -21,6 +21,17 @@ abstract class UserDAO
 		return $user;
 	}
 
+	public static function getUserById($id)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("SELECT * FROM users WHERE user_id = ?");
+		$stmt->bind_param("i", $id);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$user = $result->fetch_object("App\\Models\\User");
+		return $user;
+	}
+
 	public static function createUser($email, $password, $firstName, $lastName)
 	{
 		$conn = DBConnection::connect();
@@ -30,6 +41,15 @@ abstract class UserDAO
 		return $stmt->insert_id;
 	}
 
+	public static function updateUserPassword($id, $password)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("UPDATE users SET password = ? WHERE user_id = ?");
+		$stmt->bind_param("si", $password, $id);
+		$stmt->execute();
+	}
+
+	// TODO: Modificar esta función para que siempre pille todos los usuarios y gestionar el filtrado desde js
 	public static function getUsersArray($filters)
 	{
 		$conn = DBConnection::connect();

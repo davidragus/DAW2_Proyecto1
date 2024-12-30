@@ -103,9 +103,7 @@ class usersController extends commonController
 			redirect('users/signup');
 			exit;
 		}
-		if (
-			!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,20}$/', $_POST['password'])
-		) {
+		if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,20}$/', $_POST['password'])) {
 			redirect('users/signup');
 			exit;
 		}
@@ -122,6 +120,35 @@ class usersController extends commonController
 			session_destroy();
 		}
 		redirect('');
+	}
+
+	// TODO: Añadir mensajes de error o de confirmación del cambio
+	public function changePassword()
+	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect("users/login");
+			exit;
+		}
+
+		$user = UserDAO::getUserById($_SESSION[USER_SESSION_VAR]);
+		if (!isset($_POST['currentPassword']) || !password_verify($_POST['currentPassword'], $user->getPassword())) {
+			redirect('users');
+			exit;
+		}
+
+		if ((!isset($_POST['newPassword']) || !isset($_POST['confirmPassword'])) || $_POST['newPassword'] != $_POST['confirmPassword']) {
+			redirect('users');
+			exit;
+		}
+
+		if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,20}$/', $_POST['newPassword'])) {
+			redirect('users');
+			exit;
+		}
+
+		UserDAO::updateUserPassword($_SESSION[USER_SESSION_VAR], password_hash($_POST['newPassword'], PASSWORD_DEFAULT));
+		redirect('users');
+
 	}
 
 }
