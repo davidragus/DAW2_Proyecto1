@@ -23,7 +23,7 @@ abstract class OrderDAO
 		return $orders;
 	}
 
-	public static function insertOrder($products, $userId)
+	public static function insertOrder($productsData, $userId)
 	{
 		$conn = DBConnection::connect();
 		$query = "INSERT INTO orders(user_id) VALUES (?)";
@@ -31,7 +31,7 @@ abstract class OrderDAO
 		$stmt->bind_param("i", $userId);
 		$stmt->execute();
 
-		$products = ProductDAO::getProductsByIds(array_keys($products));
+		$products = ProductDAO::getProductsByIds(array_keys($productsData));
 		$unitPrice = [];
 		foreach ($products as $product) {
 			$unitPrice[$product->getId()] = $product->getPrice();
@@ -39,7 +39,7 @@ abstract class OrderDAO
 
 		$orderLines = [];
 		$counter = 1;
-		foreach ($products as $product_id => $quantity) {
+		foreach ($productsData as $product_id => $quantity) {
 			$orderLines[] = [
 				'order_id' => $stmt->insert_id,
 				'line_id' => $counter,
