@@ -20,7 +20,7 @@ class usersController extends commonController
 		}
 
 		$pageParams = [
-			'pageTitle' => "Tiefling's Tavern - Your Profile",
+			'pageTitle' => "Tiefling's Tavern - Edit your profile",
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'users/index',
 			'pageFooter' => $this->pageFooter,

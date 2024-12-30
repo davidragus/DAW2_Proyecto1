@@ -506,7 +506,25 @@ table i:hover {
 	font-size: 22px !important;
 }
 
-/* 365 375 */
+.address-row {
+	border-bottom: 2px solid #E7E7DB;
+}
+
+.address-row:first-child {
+	border-top: 2px solid #E7E7DB;
+}
+
+.address-row span {
+	font-size: 18px;
+}
+
+.address-row i {
+	color: var(--color2);
+}
+
+.address-row i:hover {
+	color: var(--color1);
+}
 
 @media (max-width: 1399px) {
 	.category-container {

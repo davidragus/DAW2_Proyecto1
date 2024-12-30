@@ -5,6 +5,12 @@
 	<?php if (isset($params['orders'])): ?>
 		<div class="container last-order-container d-flex flex-column align-items-center py-4">
 			<h2 class="dark">Your Last Order</h2>
+			<div class="row">
+				<span class="w-auto">Test</span>
+				<span class="w-auto">Test</span>
+				<span class="w-auto">Test</span>
+				<span class="w-auto">Test</span>
+			</div>
 			<div class="container my-2">
 				<?php $counter = 0; ?>
 				<?php foreach ($params['lastOrderLines'] as $orderLine): ?>
