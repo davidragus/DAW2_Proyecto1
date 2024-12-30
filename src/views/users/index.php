@@ -74,7 +74,12 @@
 		</form>
 	</div>
 	<div class="container pb-4">
-		<h2 class="dark d-flex justify-content-center">Your Addresses</h2>
+		<div class="mb-3">
+			<h2 class="dark d-flex justify-content-center m-0">Your Addresses <a
+					href="<?= url('addresses/create') ?>"><i class="bi bi-plus"></i></a>
+			</h2>
+			<span class="d-flex justify-content-center">Limited to 5 addresses per user</span>
+		</div>
 		<div class="container">
 			<?php foreach ($params['addresses'] as $address): ?>
 				<div class="row address-row d-flex justify-content-between py-2">
@@ -84,7 +89,8 @@
 						<span><?= $address->getCity() ?> 	<?= $address->getCP() ?></span>
 					</div>
 					<div class="w-auto d-flex align-items-center">
-						<a href="" class="me-2"><i class="bi bi-pencil-fill"></i></a>
+						<a href="<?= url('addresses/edit/' . $address->getAddressId()) ?>" class="me-2"><i
+								class="bi bi-pencil-fill"></i></a>
 						<a href=""><i class="bi bi-trash-fill"></i></a>
 					</div>
 				</div>
