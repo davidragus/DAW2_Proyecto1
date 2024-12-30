@@ -91,7 +91,8 @@
 					<div class="w-auto d-flex align-items-center">
 						<a href="<?= url('addresses/edit/' . $address->getAddressId()) ?>" class="me-2"><i
 								class="bi bi-pencil-fill"></i></a>
-						<a href=""><i class="bi bi-trash-fill"></i></a>
+						<a href="<?= url('addresses/destroy/' . $address->getAddressId()) ?>"><i
+								class="bi bi-trash-fill"></i></a>
 					</div>
 				</div>
 			<?php endforeach; ?>
