@@ -41,28 +41,33 @@
 	</div>
 	<div class="container d-flex flex-column align-items-center py-4">
 		<h2 class="dark">Order History</h2>
-		<div class="container my-2">
+		<table class="container my-2">
+			<tr>
+				<th>ID</th>
+				<th>Date</th>
+				<th>Amount of products</th>
+				<th>Total price</th>
+				<th>Status</th>
+				<th>Actions</th>
+			</tr>
 			<?php foreach ($params['orders'] as $order): ?>
-				<div class="row cart-row d-flex justify-content-between align-items-center">
-					<div class="w-auto order-info">
-						<span class="me-5">Date: <?= date('d-m-Y', strtotime($order->getDate())) ?></span>
-						<?php
-						$totalPrice = 0;
-						$totalAmount = 0;
-						foreach ($order->getOrderLines() as $orderLine) {
-							$totalPrice += number_format($orderLine->getUnitPrice() * $orderLine->getAmount(), 2);
-							$totalAmount += $orderLine->getAmount();
-						}
-						?>
-						<span class="me-5">Amount of products: <?= $totalAmount ?></span>
-						<span class="me-5">Total price: <?= number_format($totalPrice + $totalPrice * 0.1, 2) ?>€</span>
-						<span>Status: <?= $order->getStatus() ?></span>
-					</div>
-					<div class="w-auto">
-						<a href=""><i class="bi bi-eye-fill"></i></a>
-					</div>
-				</div>
+				<?php
+				$totalPrice = 0;
+				$totalAmount = 0;
+				foreach ($order->getOrderLines() as $orderLine) {
+					$totalPrice += number_format($orderLine->getUnitPrice() * $orderLine->getAmount(), 2);
+					$totalAmount += $orderLine->getAmount();
+				}
+				?>
+				<tr>
+					<td><?= $order->getOrderId() ?></td>
+					<td><?= date('d-m-Y', strtotime($order->getDate())) ?></td>
+					<td><?= $totalAmount ?> products</td>
+					<td><?= number_format($totalPrice + $totalPrice * 0.1, 2) ?>€</td>
+					<td><?= $order->getStatus() ?></td>
+					<td><a href=""><i class="bi bi-eye-fill"></i></a></td>
+				</tr>
 			<?php endforeach; ?>
-		</div>
+		</table>
 	</div>
 </main>
