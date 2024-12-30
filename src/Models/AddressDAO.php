@@ -21,4 +21,15 @@ abstract class AddressDAO
 		return $addresses;
 	}
 
+	public static function getAddressById($id)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("SELECT * FROM addresses WHERE address_id = ?");
+		$stmt->bind_param("i", $id);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$address = $result->fetch_object("App\\Models\\Address");
+		return $address;
+	}
+
 }
