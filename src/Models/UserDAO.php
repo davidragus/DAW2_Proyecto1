@@ -41,6 +41,14 @@ abstract class UserDAO
 		return $stmt->insert_id;
 	}
 
+	public static function updateUserInfo($id, $firstName, $lastName, $email)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("UPDATE users SET first_name = ?, last_name = ?, email = ? WHERE user_id = ?");
+		$stmt->bind_param("sssi", $firstName, $lastName, $email, $id);
+		$stmt->execute();
+	}
+
 	public static function updateUserPassword($id, $password)
 	{
 		$conn = DBConnection::connect();

@@ -3,7 +3,8 @@
 		<h1 class="dark d-flex justify-content-center">Edit Your Profile</h1>
 	</div>
 	<div class="container">
-		<form method="post" action="" class="d-flex flex-column align-items-center my-2" id="changeInfoForm">
+		<form method="post" action="<?= url('users/changeInfo') ?>" class="d-flex flex-column align-items-center my-2"
+			id="changeInfoForm">
 			<fieldset class="d-flex flex-column align-items-center p-4 mb-5 w-100">
 				<legend class="float-none w-auto">
 					<h2 class="dark px-2">Change your information</h2>
@@ -11,19 +12,22 @@
 				<div class="row w-100 mb-4">
 					<div class="col-4">
 						<div class="form-floating">
-							<input type="text" class="form-control" id="firstName" name="firstName" value="">
+							<input type="text" class="form-control" id="firstName" name="firstName"
+								value="<?= $params['user']->getFirstName() ?>">
 							<label for="firstName">First name</label>
 						</div>
 					</div>
 					<div class="col-4">
 						<div class="form-floating">
-							<input type="text" class="form-control" id="lastName" name="lastName" value="">
+							<input type="text" class="form-control" id="lastName" name="lastName"
+								value="<?= $params['user']->getLastName() ?>">
 							<label for="lastName">Last name</label>
 						</div>
 					</div>
 					<div class="col-4">
 						<div class="form-floating">
-							<input type="email" class="form-control" id="email" name="email" value="">
+							<input type="email" class="form-control" id="email" name="email"
+								value="<?= $params['user']->getEmail() ?>">
 							<label for="email">Email</label>
 						</div>
 					</div>

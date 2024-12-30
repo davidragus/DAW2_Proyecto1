@@ -19,12 +19,16 @@ class usersController extends commonController
 			exit;
 		}
 
+		$user = UserDAO::getUserById($_SESSION[USER_SESSION_VAR]);
+
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern - Edit your profile",
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'users/index',
 			'pageFooter' => $this->pageFooter,
-			'variables' => []
+			'variables' => [
+				'user' => $user
+			]
 		];
 		view('template', $pageParams);
 	}
@@ -120,6 +124,35 @@ class usersController extends commonController
 			session_destroy();
 		}
 		redirect('');
+	}
+
+	// TODO: Añadir mensajes de error o de confirmación del cambio
+	public function changeInfo()
+	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect("users/login");
+			exit;
+		}
+
+		$user = UserDAO::getUserById($_SESSION[USER_SESSION_VAR]);
+
+		if (empty($_POST['firstName']))
+			$_POST['firstName'] = $user->getFirstName();
+		if (empty($_POST['lastName']))
+			$_POST['lastName'] = $user->getLastName();
+		if (empty($_POST['email'])) {
+			$_POST['email'] = $user->getEmail();
+		} else {
+			$checkUser = UserDAO::getUserByMail($_POST['email']);
+			if ($checkUser && $checkUser->getUserId() != $_SESSION[USER_SESSION_VAR]) {
+				redirect('users');
+				exit;
+			}
+		}
+
+		UserDAO::updateUserInfo($_SESSION[USER_SESSION_VAR], $_POST['firstName'], $_POST['lastName'], $_POST['email']);
+		redirect('users');
+
 	}
 
 	// TODO: Añadir mensajes de error o de confirmación del cambio
