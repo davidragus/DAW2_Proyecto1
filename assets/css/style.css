@@ -484,6 +484,28 @@ fieldset {
 	color: var(--color1);
 }
 
+.last-order-container {
+	border-top: 4px solid var(--color2);
+	border-bottom: 4px solid var(--color2);
+}
+
+.more-products {
+	font-size: 14px;
+	color: var(--color5);
+}
+
+.more-products a {
+	color: var(--color2);
+}
+
+.more-products a:hover {
+	color: var(--color1);
+}
+
+.order-info {
+	font-size: 22px !important;
+}
+
 /* 365 375 */
 
 @media (max-width: 1399px) {

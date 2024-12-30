@@ -20,7 +20,7 @@
 							<span>OUR MENU</span>
 						</a>
 						<div class="dropdown-menu pb-0 start-0 end-0 rounded-0 bg-black justify-content-center">
-							<ul class="dropdown-list px-0">
+							<ul class="dropdown-list px-0 d-flex">
 								<li class="dropdown-sublist-container">
 									<span class="list-header pb-1 text-white">AVAILABLE PRODUCTS</span>
 									<ul class="dropdown-sublist px-0 pt-3">
@@ -70,10 +70,17 @@
 							id="userSettingsDropdown">
 							<a class="nav-link d-lg-flex align-items-lg-center p-lg-0 dropdown-toggle"
 								href="<?= url("products") ?>" aria-expanded=" false">
-								<span>PROFILE SETTINGS</span>
+								<span>YOUR PROFILE</span>
 							</a>
 							<div class="dropdown-menu pb-0 start-0 end-0 rounded-0 bg-black justify-content-center">
-								<ul class="dropdown-list px-0">
+								<ul class="dropdown-list px-0 d-flex">
+									<li class="dropdown-sublist-container">
+										<span class="list-header pb-1 text-white">ORDERS</span>
+										<ul class="dropdown-sublist px-0 pt-3">
+											<li><a class="dropdown-sublist-link" href="<?= url('orders') ?>">Your orders</a>
+											</li>
+										</ul>
+									</li>
 									<li class="dropdown-sublist-container">
 										<span class="list-header pb-1 text-white">SETTINGS</span>
 										<ul class="dropdown-sublist px-0 pt-3">

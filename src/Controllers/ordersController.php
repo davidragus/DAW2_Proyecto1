@@ -17,7 +17,7 @@ class ordersController extends commonController
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern - Your Profile",
 			'pageHeader' => $this->pageHeader,
-			'pageContent' => 'users/index',
+			'pageContent' => 'orders/index',
 			'pageFooter' => $this->pageFooter,
 			'variables' => []
 		];
