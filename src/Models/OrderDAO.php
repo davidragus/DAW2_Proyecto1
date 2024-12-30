@@ -7,6 +7,22 @@ use DBConnection;
 abstract class OrderDAO
 {
 
+	public static function getOrdersByUserId($userId)
+	{
+		$conn = DBConnection::connect();
+		$query = "SELECT * FROM orders WHERE user_id = ? ORDER BY date DESC";
+		$stmt = $conn->prepare($query);
+		$stmt->bind_param("i", $userId);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$orders = [];
+		while ($rows = $result->fetch_object("App\\Models\\Order")) {
+			$rows->setOrderLines(OrderLineDAO::getOrderLinesByOrderId($rows->getOrderId()));
+			$orders[] = $rows;
+		}
+		return $orders;
+	}
+
 	public static function insertOrder($products)
 	{
 		$conn = DBConnection::connect();

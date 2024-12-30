@@ -7,6 +7,21 @@ use DBConnection;
 abstract class OrderLineDAO
 {
 
+	public static function getOrderLinesByOrderId($orderId)
+	{
+		$conn = DBConnection::connect();
+		$query = "SELECT * FROM orderlines WHERE order_id = ?";
+		$stmt = $conn->prepare($query);
+		$stmt->bind_param("i", $orderId);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$orderLines = [];
+		while ($rows = $result->fetch_object("App\\Models\\OrderLine")) {
+			$orderLines[] = $rows;
+		}
+		return $orderLines;
+	}
+
 	public static function insertOrderLines($data)
 	{
 		$conn = DBConnection::connect();

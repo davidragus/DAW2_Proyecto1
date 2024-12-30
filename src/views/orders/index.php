@@ -5,23 +5,35 @@
 	<div class="container last-order-container d-flex flex-column align-items-center py-4">
 		<h2 class="dark">Your Last Order</h2>
 		<div class="container my-2">
-			<div class="row cart-row">
-				<img class="p-0" src="<?= images('logo') ?>" alt="test">
-				<div class="col d-flex flex-column justify-content-between">
-					<div class="row d-flex align-items-center justify-content-between m-0">
-						<a class="cart-product-name w-auto" href="">TESTING</a>
-					</div>
-					<div class="row justify-content-end m-0">
-						<div class="quantity-container d-flex w-auto">
-							<span class="m-0 mx-3">Amount: </span>
-							<span class="ms-5 m-0">Price: €</span>
+			<?php $counter = 0; ?>
+			<?php foreach ($params['lastOrderLines'] as $orderLine): ?>
+				<?php if ($counter >= 3): ?>
+					<?php break; ?>
+				<?php endif; ?>
+				<div class="row cart-row">
+					<img class="p-0" src="<?= images($params['products'][$orderLine->getProductId()]->getImage()) ?>"
+						alt="<?= $params['products'][$orderLine->getProductId()]->getName() ?>">
+					<div class="col d-flex flex-column justify-content-between">
+						<div class="row d-flex align-items-center justify-content-between m-0">
+							<a class="cart-product-name w-auto"
+								href=""><?= $params['products'][$orderLine->getProductId()]->getName() ?></a>
+						</div>
+						<div class="row justify-content-end m-0">
+							<div class="quantity-container d-flex w-auto">
+								<span class="m-0 mx-3">Amount: <?= $orderLine->getAmount() ?></span>
+								<span class="ms-5 m-0">Price:
+									<?= number_format($orderLine->getUnitPrice() * $orderLine->getAmount(), 2) ?>€</span>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+				<?php $counter++; ?>
+			<?php endforeach; ?>
 		</div>
 		<div class="row w-100 py-2">
-			<span class="more-products">...and X more products. <a href="">Check full order</a> </span>
+			<span class="more-products"> <?php if (count($params['lastOrderLines']) > 3): ?>...and
+					<?= count($params['lastOrderLines']) - 3 ?> more
+					products.<?php endif; ?> <a href="">Check more details</a> </span>
 		</div>
 		<div class="row">
 			<a class="btn btn-primary rounded-0" href=""><i class="bi-cart-fill"></i>REPEAT ORDER</a>
@@ -30,16 +42,27 @@
 	<div class="container d-flex flex-column align-items-center py-4">
 		<h2 class="dark">Order History</h2>
 		<div class="container my-2">
-			<div class="row cart-row d-flex justify-content-between align-items-center">
-				<div class="w-auto order-info">
-					<span class="me-5">Date: </span>
-					<span class="me-5">Amount of products: </span>
-					<span>Total price: </span>
+			<?php foreach ($params['orders'] as $order): ?>
+				<div class="row cart-row d-flex justify-content-between align-items-center">
+					<div class="w-auto order-info">
+						<span class="me-5">Date: <?= date('d-m-Y', strtotime($order->getDate())) ?></span>
+						<?php
+						$totalPrice = 0;
+						$totalAmount = 0;
+						foreach ($order->getOrderLines() as $orderLine) {
+							$totalPrice += number_format($orderLine->getUnitPrice() * $orderLine->getAmount(), 2);
+							$totalAmount += $orderLine->getAmount();
+						}
+						?>
+						<span class="me-5">Amount of products: <?= $totalAmount ?></span>
+						<span class="me-5">Total price: <?= number_format($totalPrice + $totalPrice * 0.1, 2) ?>€</span>
+						<span>Status: <?= $order->getStatus() ?></span>
+					</div>
+					<div class="w-auto">
+						<a href=""><i class="bi bi-eye-fill"></i></a>
+					</div>
 				</div>
-				<div class="w-auto">
-					<a href=""><i class="bi bi-eye-fill"></i></a>
-				</div>
-			</div>
+			<?php endforeach; ?>
 		</div>
 	</div>
 </main>

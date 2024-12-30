@@ -32,6 +32,11 @@ class Order
 		return $this->orderlines;
 	}
 
+	public function setOrderLines($orderLines)
+	{
+		$this->orderlines = $orderLines;
+	}
+
 	public function toArray()
 	{
 		return [

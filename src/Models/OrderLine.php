@@ -27,7 +27,7 @@ class OrderLine
 		return $this->product_modified;
 	}
 
-	public function getQuantity()
+	public function getAmount()
 	{
 		return $this->quantity;
 	}
@@ -44,7 +44,7 @@ class OrderLine
 			'line_id' => $this->getLineId(),
 			'product_id' => $this->getProductId(),
 			'product_modified' => $this->getProductModified(),
-			'quantity' => $this->getQuantity(),
+			'quantity' => $this->getAmount(),
 			'unit_price' => $this->getUnitPrice()
 		];
 	}

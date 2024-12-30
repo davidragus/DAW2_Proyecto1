@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\OrderDAO;
+use App\Models\ProductDAO;
 
 class ordersController extends commonController
 {
@@ -14,13 +15,36 @@ class ordersController extends commonController
 			exit;
 		}
 
-		$pageParams = [
-			'pageTitle' => "Tiefling's Tavern - Your Profile",
-			'pageHeader' => $this->pageHeader,
-			'pageContent' => 'orders/index',
-			'pageFooter' => $this->pageFooter,
-			'variables' => []
-		];
+		$orders = OrderDAO::getOrdersByUserId($_SESSION[USER_SESSION_VAR]);
+
+		if (!empty($orders)) {
+
+			$lastOrderLines = $orders['0']->getOrderLines();
+			$products = [];
+			foreach ($lastOrderLines as $orderLine) {
+				$products[$orderLine->getProductId()] = ProductDAO::getProductById($orderLine->getProductId());
+			}
+
+			$pageParams = [
+				'pageTitle' => "Tiefling's Tavern - Your Orders",
+				'pageHeader' => $this->pageHeader,
+				'pageContent' => 'orders/index',
+				'pageFooter' => $this->pageFooter,
+				'variables' => [
+					'orders' => $orders,
+					'lastOrderLines' => $lastOrderLines,
+					'products' => $products
+				]
+			];
+		} else {
+			$pageParams = [
+				'pageTitle' => "Tiefling's Tavern - Your Orders",
+				'pageHeader' => $this->pageHeader,
+				'pageContent' => 'orders/index',
+				'pageFooter' => $this->pageFooter,
+				'variables' => []
+			];
+		}
 		view('template', $pageParams);
 	}
 
@@ -33,8 +57,7 @@ class ordersController extends commonController
 
 		OrderDAO::insertOrder(null);
 		unset($_SESSION[CART_SESSION_VAR]);
-		// TODO: Redirect to your orders page
-		redirect('');
+		redirect('orders');
 	}
 
 }
