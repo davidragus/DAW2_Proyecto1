@@ -51,7 +51,7 @@
 			<?php $taxPrice = $productsPrice * 0.1; ?>
 		</div>
 	</div>
-	<div class="container amount-container w-auto d-flex flex-column align-items-end py-4 mx-0">
+	<div class="container amount-container w-auto d-flex flex-column align-items-end py-4 mb-3 mx-0">
 		<h2 class="dark">Total amount</h2>
 		<span>Products price: <?= number_format($productsPrice, 2) ?>€</span>
 		<span>Taxes (10%): <?= number_format($taxPrice, 2) ?>€</span>

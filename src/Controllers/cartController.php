@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\ProductDAO, App\Models\AddressDAO;
+use App\Models\ProductDAO, App\Models\AddressDAO, App\Models\OrderDAO;
 
 class cartController extends commonController
 {
@@ -125,4 +125,31 @@ class cartController extends commonController
 
 		redirect('cart');
 	}
+
+	public function repeatLastOrder()
+	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect('users/login');
+			exit;
+		}
+		if (!isset($_GET['id'])) {
+			redirect('orders');
+			exit;
+		}
+
+		$order = OrderDAO::getOrderById($_GET['id']);
+		if ($order->getUserId() != $_SESSION[USER_SESSION_VAR]) {
+			redirect('orders');
+			exit;
+		}
+
+		$orderLines = $order->getOrderLines();
+		unset($_SESSION[CART_SESSION_VAR]);
+		foreach ($orderLines as $orderLine) {
+			$_SESSION[CART_SESSION_VAR][$orderLine->getProductId()] = $orderLine->getAmount();
+		}
+		redirect('cart');
+
+	}
+
 }

@@ -5,12 +5,6 @@
 	<?php if (isset($params['orders'])): ?>
 		<div class="container last-order-container d-flex flex-column align-items-center py-4">
 			<h2 class="dark">Your Last Order</h2>
-			<div class="row">
-				<span class="w-auto">Test</span>
-				<span class="w-auto">Test</span>
-				<span class="w-auto">Test</span>
-				<span class="w-auto">Test</span>
-			</div>
 			<div class="container my-2">
 				<?php $counter = 0; ?>
 				<?php foreach ($params['lastOrderLines'] as $orderLine): ?>
@@ -40,12 +34,14 @@
 			<div class="row w-100 py-2">
 				<span class="more-products"> <?php if (count($params['lastOrderLines']) > 3): ?>...and
 						<?= count($params['lastOrderLines']) - 3 ?> more
-						products.<?php endif; ?> <a
-						href="<?= url('orders/show/' . $params['orders'][0]->getOrderId()) ?>">Check more details</a>
+						products.<?php endif; ?> <a href="<?= url('orders/show/' . $params['orders'][0]->getOrderId()) ?>">Check
+						more details</a>
 				</span>
 			</div>
 			<div class="row">
-				<a class="btn btn-primary rounded-0" href=""><i class="bi-cart-fill"></i>REPEAT ORDER</a>
+				<a class="btn btn-primary rounded-0"
+					href="<?= url('cart/repeatLastOrder/' . $params['orders'][0]->getOrderId()) ?>"><i
+						class="bi-cart-fill"></i>REPEAT ORDER</a>
 			</div>
 		</div>
 		<div class="container d-flex flex-column align-items-center py-4">
