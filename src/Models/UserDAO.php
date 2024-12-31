@@ -58,28 +58,10 @@ abstract class UserDAO
 	}
 
 	// TODO: Modificar esta función para que siempre pille todos los usuarios y gestionar el filtrado desde js
-	public static function getUsersArray($filters)
+	public static function getUsersArray()
 	{
 		$conn = DBConnection::connect();
-		$query = "SELECT * FROM users";
-		if (!empty($filters)) {
-			$whereStatements = [];
-			foreach ($filters as $key => $value) {
-				$whereStatements[] = "$key LIKE ?";
-			}
-			$query .= " WHERE " . implode(" AND ", $whereStatements);
-		}
-		$stmt = $conn->prepare($query);
-
-		$bindings = [];
-		if (!empty($filters)) {
-			foreach ($filters as $value) {
-				$bindings[] = $value;
-			}
-			$types = str_repeat('s', count($bindings));
-			$stmt->bind_param($types, ...$bindings);
-		}
-
+		$stmt = $conn->prepare("SELECT * FROM users");
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$users = [];

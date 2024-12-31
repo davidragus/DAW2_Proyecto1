@@ -21,18 +21,21 @@ filtersForm.addEventListener('submit', function (e) {
 });
 
 async function getUsers(params = []) {
-	const urlSearch = new URLSearchParams(params);
-	const url = new URL(`${API_URL}getUsers?${urlSearch}`);
+	const url = new URL(`${API_URL}getUsers`);
 	const response = await fetch(url)
 		.then(response => response.json())
 		.then(responseJson => {
-			modifyTableDom(responseJson)
+			let data = responseJson.data;
+			Object.keys(params).forEach((key) => {
+				data = data.filter((row) => row[key].toString().includes(params[key]));
+			});
+			modifyTableDom(data);
 		})
 }
 
 function modifyTableDom(jsonResponse) {
 	const dataRows = document.querySelectorAll('.data-row').forEach(e => e.remove());
-	jsonResponse.data.forEach((user) => {
+	jsonResponse.forEach((user) => {
 		const currentUser = new User(user);
 		usersTable.appendChild(currentUser.createRowOfData());
 	});
