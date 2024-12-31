@@ -40,7 +40,9 @@
 			<div class="row w-100 py-2">
 				<span class="more-products"> <?php if (count($params['lastOrderLines']) > 3): ?>...and
 						<?= count($params['lastOrderLines']) - 3 ?> more
-						products.<?php endif; ?> <a href="">Check more details</a> </span>
+						products.<?php endif; ?> <a
+						href="<?= url('orders/show/' . $params['orders'][0]->getOrderId()) ?>">Check more details</a>
+				</span>
 			</div>
 			<div class="row">
 				<a class="btn btn-primary rounded-0" href=""><i class="bi-cart-fill"></i>REPEAT ORDER</a>
@@ -72,7 +74,7 @@
 						<td><?= $totalAmount ?> products</td>
 						<td><?= number_format($totalPrice + $totalPrice * 0.1, 2) ?>€</td>
 						<td><?= $order->getStatus() ?></td>
-						<td><a href=""><i class="bi bi-eye-fill"></i></a></td>
+						<td><a href="<?= url('orders/show/' . $order->getOrderId()) ?>"><i class="bi bi-eye-fill"></i></a></td>
 					</tr>
 				<?php endforeach; ?>
 			</table>

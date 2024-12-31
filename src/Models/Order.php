@@ -5,7 +5,7 @@ namespace App\Models;
 class Order
 {
 
-	protected $order_id, $user_id, $date, $status, $orderlines;
+	protected $order_id, $user_id, $address_id, $date, $status, $orderlines;
 
 	public function getOrderId()
 	{
@@ -15,6 +15,11 @@ class Order
 	public function getUserId()
 	{
 		return $this->user_id;
+	}
+
+	public function getAddressId()
+	{
+		return $this->address_id;
 	}
 
 	public function getDate()

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\AddressDAO;
 use App\Models\OrderDAO;
 use App\Models\ProductDAO;
 
@@ -46,6 +47,43 @@ class ordersController extends commonController
 			];
 		}
 		view('template', $pageParams);
+	}
+
+	public function show()
+	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect("users/login");
+			exit;
+		}
+
+		// TODO: Añadir variación para cuando no se ha definido una ID o la ID es incorrecta
+		if (isset($_GET['id'])) {
+			$order = OrderDAO::getOrderById($_GET['id']);
+
+			// TODO: Añadir variación para cuando el usuario no es dueño del pedido
+			if ($order->getUserId() == $_SESSION[USER_SESSION_VAR]) {
+				$address = AddressDAO::getAddressById($order->getAddressId());
+				$orderLines = $order->getOrderLines();
+				$products = [];
+				foreach ($orderLines as $orderLine) {
+					$products[$orderLine->getProductId()] = ProductDAO::getProductById($orderLine->getProductId());
+				}
+
+				$pageParams = [
+					'pageTitle' => "Tiefling's Tavern - Show Order",
+					'pageHeader' => $this->pageHeader,
+					'pageContent' => 'orders/show',
+					'pageFooter' => $this->pageFooter,
+					'variables' => [
+						'order' => $order,
+						'address' => $address,
+						'products' => $products
+					]
+				];
+				view('template', $pageParams);
+			}
+
+		}
 	}
 
 	public function store()
