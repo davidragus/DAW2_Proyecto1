@@ -81,21 +81,29 @@
 			<span class="d-flex justify-content-center">Limited to 5 addresses per user</span>
 		</div>
 		<div class="container">
-			<?php foreach ($params['addresses'] as $address): ?>
-				<div class="row address-row d-flex justify-content-between py-2">
-					<div class="w-auto d-flex flex-column">
-						<h3 class="dark m-0"><?= $address->getAlias() ?></h3>
-						<span><?= $address->getAddress() ?></span>
-						<span><?= $address->getCity() ?> 	<?= $address->getCP() ?></span>
+			<?php if (isset($params['addresses'])): ?>
+				<?php foreach ($params['addresses'] as $address): ?>
+					<div class="row address-row d-flex justify-content-between py-2">
+						<div class="w-auto d-flex flex-column">
+							<h3 class="dark m-0"><?= $address->getAlias() ?></h3>
+							<span><?= $address->getAddress() ?></span>
+							<span><?= $address->getCity() ?> 		<?= $address->getCP() ?></span>
+						</div>
+						<div class="w-auto d-flex align-items-center">
+							<a href="<?= url('addresses/edit/' . $address->getAddressId()) ?>" class="me-2"><i
+									class="bi bi-pencil-fill"></i></a>
+							<a href="<?= url('addresses/destroy/' . $address->getAddressId()) ?>"><i
+									class="bi bi-trash-fill"></i></a>
+						</div>
 					</div>
-					<div class="w-auto d-flex align-items-center">
-						<a href="<?= url('addresses/edit/' . $address->getAddressId()) ?>" class="me-2"><i
-								class="bi bi-pencil-fill"></i></a>
-						<a href="<?= url('addresses/destroy/' . $address->getAddressId()) ?>"><i
-								class="bi bi-trash-fill"></i></a>
-					</div>
+				<?php endforeach; ?>
+			<?php else: ?>
+				<div class="row mt-5">
+					<h2 class="dark d-flex justify-content-center">There isn't any address available :(</h2>
+					<p class="d-flex justify-content-center">Your addresses will be displayed here after you create them.
+					</p>
 				</div>
-			<?php endforeach; ?>
+			<?php endif; ?>
 		</div>
 	</div>
 </main>
