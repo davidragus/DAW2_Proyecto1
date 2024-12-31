@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\ProductDAO;
+use App\Models\ProductDAO, App\Models\AddressDAO;
 
 class cartController extends commonController
 {
@@ -31,6 +31,8 @@ class cartController extends commonController
 				];
 			}
 
+			$addresses = AddressDAO::getAddressesByUserId($_SESSION[USER_SESSION_VAR]);
+
 			$pageParams = [
 				'pageTitle' => "Tiefling's Tavern",
 				'pageHeader' => $this->pageHeader,
@@ -40,6 +42,9 @@ class cartController extends commonController
 					'userCart' => $userCart
 				]
 			];
+			if ($addresses) {
+				$pageParams['variables'] += ['addresses' => $addresses];
+			}
 			view('template', $pageParams);
 			exit;
 		}

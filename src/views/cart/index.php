@@ -33,26 +33,33 @@
 			<div class="row justify-content-between">
 				<div class="container addresses-container w-auto d-flex flex-column pb-4 mx-0">
 					<h2 class="dark">Addresses</h2>
-					<form action="">
-						<div class="row address-row align-items-center">
-							<div class="form-check w-auto">
-								<input class="form-check-input" type="radio" name="addressId" id="addressId" value=""
-									required>
-							</div>
-							<div class="w-auto d-flex flex-column">
-								<h3 class="dark m-0">Test</h3>
-								<span>Fortnite Burger Street 14</span>
-								<span>Fortnite City 42069</span>
-							</div>
-						</div>
-					</form>
+					<?php if (isset($params['addresses'])): ?>
+						<form method="post" action="<?= url('orders/store') ?>" id="orderForm">
+							<?php foreach ($params['addresses'] as $address): ?>
+								<div class="row address-row align-items-center py-2">
+									<div class="form-check w-auto">
+										<input class="form-check-input" type="radio" name="addressId" id="addressId"
+											value="<?= $address->getAddressId() ?>" required>
+									</div>
+									<div class="w-auto d-flex flex-column">
+										<h3 class="dark m-0"><?= $address->getAlias() ?></h3>
+										<span><?= $address->getAddress() ?></span>
+										<span><?= $address->getCity() ?> 			<?= $address->getCP() ?></span>
+									</div>
+								</div>
+							<?php endforeach; ?>
+						</form>
+					<?php else: ?>
+						<p>You need to <a href="<?= url('users') ?>">create an address</a> before placing an order.</p>
+					<?php endif; ?>
 				</div>
 				<div class="container amount-container w-auto d-flex flex-column align-items-end pb-4 mx-0">
 					<h2 class="dark">Total amount</h2>
 					<span>Products price: <?= number_format($productsPrice, 2) ?>€</span>
 					<span>Taxes (10%): <?= number_format($taxPrice, 2) ?>€</span>
 					<span class="total-price pt-2">Total price: <?= number_format($productsPrice + $taxPrice, 2) ?>€</span>
-					<a class="btn btn-primary rounded-0 mt-4" href="<?= url('orders/store') ?>">PLACE ORDER</a>
+					<button class="btn btn-primary rounded-0 mt-4" type="submit" form="orderForm"
+						<?= !isset($params['addresses']) ? 'disabled' : '' ?>>PLACE ORDER</button>
 				</div>
 			</div>
 		</div>

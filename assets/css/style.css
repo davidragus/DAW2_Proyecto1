@@ -35,6 +35,14 @@ p {
 	font-size: 21px;
 }
 
+p a {
+	color: var(--color2);
+}
+
+p a:hover {
+	color: var(--color1);
+}
+
 h1 {
 	font-family: 'DIN Next LT Pro', sans-serif;
 	font-weight: 700;
@@ -94,6 +102,11 @@ h4 {
 .btn-primary:hover {
 	border: 2px solid var(--color4);
 	filter: brightness(110%);
+}
+
+.btn-primary:disabled {
+	background: linear-gradient(90deg, #5A5A5A 0%, #AFAFAF 100%);
+	border: 2px solid #B7B7B7;
 }
 
 .btn-primary:active {

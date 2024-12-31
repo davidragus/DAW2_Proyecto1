@@ -54,8 +54,12 @@ class ordersController extends commonController
 			redirect("users/login");
 			exit;
 		}
+		if (!isset($_POST['addressId'])) {
+			redirect("");
+			exit;
+		}
 
-		OrderDAO::insertOrder($_SESSION[CART_SESSION_VAR], $_SESSION[USER_SESSION_VAR]);
+		OrderDAO::insertOrder($_SESSION[CART_SESSION_VAR], $_SESSION[USER_SESSION_VAR], $_POST['addressId']);
 		unset($_SESSION[CART_SESSION_VAR]);
 		redirect('orders');
 	}

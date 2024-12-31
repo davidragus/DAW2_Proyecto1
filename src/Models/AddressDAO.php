@@ -34,6 +34,9 @@ abstract class AddressDAO
 	public static function deleteAddress($addressId)
 	{
 		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("UPDATE orders SET address_id = NULL WHERE address_id = ?");
+		$stmt->bind_param("i", $addressId);
+		$stmt->execute();
 		$stmt = $conn->prepare("DELETE FROM addresses WHERE address_id = ?");
 		$stmt->bind_param("i", $addressId);
 		$stmt->execute();

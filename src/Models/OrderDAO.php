@@ -23,12 +23,12 @@ abstract class OrderDAO
 		return $orders;
 	}
 
-	public static function insertOrder($productsData, $userId)
+	public static function insertOrder($productsData, $userId, $addressId)
 	{
 		$conn = DBConnection::connect();
-		$query = "INSERT INTO orders(user_id) VALUES (?)";
+		$query = "INSERT INTO orders(user_id, address_id) VALUES (?, ?)";
 		$stmt = $conn->prepare($query);
-		$stmt->bind_param("i", $userId);
+		$stmt->bind_param("ii", $userId, $addressId);
 		$stmt->execute();
 
 		$products = ProductDAO::getProductsByIds(array_keys($productsData));
