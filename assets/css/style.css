@@ -534,6 +534,21 @@ table i:hover {
 	color: var(--color1);
 }
 
+.address-row input {
+	width: 24px;
+	height: 24px;
+}
+
+.address-row input:checked {
+	background-color: var(--color2);
+	border-color: var(--color2);
+}
+
+.address-row input:focus {
+	border-color: var(--color2);
+	box-shadow: none;
+}
+
 @media (max-width: 1399px) {
 	.category-container {
 		max-width: 280px !important;

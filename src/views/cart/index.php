@@ -1,4 +1,4 @@
-<main class="mb-5">
+<main class="container mb-5">
 	<div class="row pt-4">
 		<h1 class="dark d-flex justify-content-center">Your Cart</h1>
 	</div>
@@ -29,12 +29,32 @@
 			<?php endforeach; ?>
 		</div>
 		<?php $taxPrice = $productsPrice * .1; ?>
-		<div class="container amount-container d-flex flex-column align-items-end pb-4">
-			<h2>Total amount</h2>
-			<span>Products price: <?= number_format($productsPrice, 2) ?>€</span>
-			<span>Taxes (10%): <?= number_format($taxPrice, 2) ?>€</span>
-			<span class="total-price pt-2">Total price: <?= number_format($productsPrice + $taxPrice, 2) ?>€</span>
-			<a class="btn btn-primary rounded-0 mt-4" href="<?= url('orders/store') ?>">PLACE ORDER</a>
+		<div class="container mt-5">
+			<div class="row justify-content-between">
+				<div class="container addresses-container w-auto d-flex flex-column pb-4 mx-0">
+					<h2 class="dark">Addresses</h2>
+					<form action="">
+						<div class="row address-row align-items-center">
+							<div class="form-check w-auto">
+								<input class="form-check-input" type="radio" name="addressId" id="addressId" value=""
+									required>
+							</div>
+							<div class="w-auto d-flex flex-column">
+								<h3 class="dark m-0">Test</h3>
+								<span>Fortnite Burger Street 14</span>
+								<span>Fortnite City 42069</span>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="container amount-container w-auto d-flex flex-column align-items-end pb-4 mx-0">
+					<h2 class="dark">Total amount</h2>
+					<span>Products price: <?= number_format($productsPrice, 2) ?>€</span>
+					<span>Taxes (10%): <?= number_format($taxPrice, 2) ?>€</span>
+					<span class="total-price pt-2">Total price: <?= number_format($productsPrice + $taxPrice, 2) ?>€</span>
+					<a class="btn btn-primary rounded-0 mt-4" href="<?= url('orders/store') ?>">PLACE ORDER</a>
+				</div>
+			</div>
 		</div>
 	<?php else: ?>
 		<div class="container py-4 d-flex flex-column align-items-center">
