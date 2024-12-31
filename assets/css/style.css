@@ -562,6 +562,10 @@ table i:hover {
 	box-shadow: none;
 }
 
+.information-text {
+	font-size: 20px;
+}
+
 @media (max-width: 1399px) {
 	.category-container {
 		max-width: 280px !important;

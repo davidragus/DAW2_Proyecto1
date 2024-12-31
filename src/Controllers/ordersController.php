@@ -70,7 +70,7 @@ class ordersController extends commonController
 				}
 
 				$pageParams = [
-					'pageTitle' => "Tiefling's Tavern - Show Order",
+					'pageTitle' => "Tiefling's Tavern - Order Details",
 					'pageHeader' => $this->pageHeader,
 					'pageContent' => 'orders/show',
 					'pageFooter' => $this->pageFooter,
