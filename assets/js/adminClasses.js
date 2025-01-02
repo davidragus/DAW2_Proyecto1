@@ -184,3 +184,14 @@ class Category {
 		this.parent_id = parent_id;
 	}
 }
+
+class Address {
+	constructor({ id, user_id, alias, city, cp, address }) {
+		this.id = id;
+		this.user_id = user_id;
+		this.alias = alias;
+		this.city = city;
+		this.cp = cp;
+		this.address = address;
+	}
+}

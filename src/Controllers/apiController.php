@@ -7,7 +7,7 @@ header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-use App\Models\UserDAO, App\Models\ProductDAO, App\Models\CategoryDAO, App\Models\OrderDAO;
+use App\Models\UserDAO, App\Models\ProductDAO, App\Models\CategoryDAO, App\Models\OrderDAO, App\Models\AddressDAO;
 
 class apiController
 {
@@ -91,6 +91,27 @@ class apiController
 		echo json_encode([
 			'status' => 'success',
 			'data' => $categories
+		]);
+	}
+
+	public function getAddressesByUserId()
+	{
+		if (isset($_GET['id'])) {
+			$addresses = AddressDAO::getAddressesArrayByUserId($_GET['id']);
+
+			if ($addresses) {
+				echo json_encode([
+					'status' => 'success',
+					'data' => $addresses
+				]);
+				exit;
+			}
+		}
+
+		http_response_code(404);
+		echo json_encode([
+			'status' => 'error',
+			'data' => 'No addresses found'
 		]);
 	}
 

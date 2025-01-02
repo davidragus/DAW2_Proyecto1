@@ -56,6 +56,20 @@ abstract class AddressDAO
 		return $addresses;
 	}
 
+	public static function getAddressesArrayByUserId($userId)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("SELECT * FROM addresses WHERE user_id = ?");
+		$stmt->bind_param("i", $userId);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$addresses = [];
+		while ($rows = $result->fetch_object("App\\Models\\Address")) {
+			$addresses[] = $rows->toArray();
+		}
+		return $addresses;
+	}
+
 	public static function getAddressById($id)
 	{
 		$conn = DBConnection::connect();
