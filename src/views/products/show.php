@@ -8,11 +8,7 @@
 			alt="<?= $params['product']->getName() ?>">
 		<div class="col container">
 			<h1 class="dark"><?= $params['product']->getName() ?></h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit ante sit amet enim
-				vehicula, et molestie ante semper. Praesent sagittis, lorem sit amet eleifend iaculis, neque erat
-				suscipit lorem, ut sodales urna justo eget magna. Mauris non tincidunt diam. Aliquam a purus vitae risus
-				tristique facilisis. Aliquam erat volutpat. Nulla at rutrum mauris, eu accumsan urna. Donec nec tortor
-				sed sapien porta vehicula. </p>
+			<p><?= $params['product']->getDescription() ?></p>
 		</div>
 	</div>
 	<div class="row pt-4 d-flex justify-content-between">
@@ -27,12 +23,22 @@
 		</div>
 		<div class="w-auto">
 			<div class="d-flex justify-content-end mb-1">
+				<?php if (isset($params['productInOffer'])): ?>
+					<h4 class="dark m-0 text-decoration-line-through me-2" id="oldPrice">
+						<?= $params['product']->getPrice() ?>€</h4>
+					<span
+						class="offer-value d-flex align-items-center px-2"><?= $params['productInOffer']['isPercentage'] ? intval($params['productInOffer']['offerValue']) . '%' : $params['productInOffer']['offerValue'] . '€' ?></span>
+				<?php endif; ?>
+			</div>
+			<div class="d-flex justify-content-end mb-1">
 				<button class="product-quantity-buttons border-0 bg-transparent" id="lessButton"><i
 						class="bi bi-dash-lg"></i></button>
 				<h3 class="dark m-0 mx-3" id="counter">1</h3>
 				<button class="product-quantity-buttons border-0 bg-transparent" id="moreButton"><i
 						class="bi bi-plus-lg"></i></button>
-				<h3 class="dark m-0 ms-5" id="price"><?= $params['product']->getPrice() ?>€</h3>
+				<h3 class="dark m-0 ms-5" id="price">
+					<?= isset($params['productInOffer']) ? number_format(round($params['productInOffer']['productPrice'], 2, PHP_ROUND_HALF_DOWN), 2) : $params['product']->getPrice() ?>€
+				</h3>
 			</div>
 			<form class="d-flex justify-content-end" method="post" id="addToCart"
 				action="<?= url('cart/addToCart/' . $params['product']->getId()) ?>">

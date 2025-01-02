@@ -17,11 +17,11 @@
 						<div class="row justify-content-center p-0">
 							<h3 class="dark text-center mt-5"><?= $subcategoryName ?></h3>
 							<?php foreach ($value as $products): ?>
-								<?= view('common/productContainer', $products) ?>
+								<?= view('common/productContainer', ['product' => $products, 'productsInOffer' => $params['productsInOffer']]) ?>
 							<?php endforeach; ?>
 						</div>
 					<?php else: ?>
-						<?= view('common/productContainer', $value) ?>
+						<?= view('common/productContainer', ['product' => $value, 'productsInOffer' => $params['productsInOffer']]) ?>
 					<?php endif; ?>
 				<?php endforeach; ?>
 			</div>

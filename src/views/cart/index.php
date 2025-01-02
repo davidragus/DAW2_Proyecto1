@@ -20,12 +20,24 @@
 								<a href="<?= url('cart/removeOneFromCart/' . $data['id']) ?>"><i class="bi bi-dash-lg"></i></a>
 								<span class="m-0 mx-3"><?= $data['quantity'] ?></span>
 								<a href="<?= url('cart/addOneToCart/' . $data['id']) ?>"><i class="bi bi-plus-lg"></i></a>
-								<span class="ms-5 m-0"><?= $data['price'] ?>€</span>
+								<?php if (isset($data['offerPrice'])): ?>
+									<span class="ms-5 m-0 text-decoration-line-through"><?= $data['price'] ?>€</span>
+									<span
+										class="offer-value d-flex align-items-center px-2 mx-2"><?= $data['isPercentage'] ? intval($data['offerValue']) . '%' : $data['offerValue'] . '€' ?></span>
+								<?php endif; ?>
+								<span
+									class="m-0"><?= isset($data['offerPrice']) ? number_format(round($data['offerPrice'], 2, PHP_ROUND_HALF_DOWN), 2) : $data['price'] ?>€</span>
 							</div>
 						</div>
 					</div>
 				</div>
-				<?php $productsPrice += $data['price'] ?>
+				<?php
+				if (isset($data['offerPrice'])) {
+					$productsPrice += $data['offerPrice'];
+				} else {
+					$productsPrice += $data['price'];
+				}
+				?>
 			<?php endforeach; ?>
 		</div>
 		<?php $taxPrice = $productsPrice * .1; ?>

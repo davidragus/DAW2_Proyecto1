@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\ProductDAO, App\Models\AddressDAO, App\Models\OrderDAO;
+use App\Models\ProductDAO, App\Models\AddressDAO, App\Models\OrderDAO, App\Models\OfferDAO;
 
 class cartController extends commonController
 {
@@ -21,6 +21,7 @@ class cartController extends commonController
 
 		if (checkSessionVar(CART_SESSION_VAR) && !empty($_SESSION[CART_SESSION_VAR])) {
 			$products = ProductDAO::getProductsByIds(array_keys($_SESSION[CART_SESSION_VAR]));
+			$offers = OfferDAO::getActiveOffers();
 			$userCart = [];
 			foreach ($products as $product) {
 				$userCart[$product->getName()] = [
@@ -29,6 +30,19 @@ class cartController extends commonController
 					'quantity' => $_SESSION[CART_SESSION_VAR][$product->getId()],
 					'price' => number_format($product->getPrice() * $_SESSION[CART_SESSION_VAR][$product->getId()], 2)
 				];
+				foreach ($offers as $offer) {
+					foreach ($offer->getProducts() as $currentProduct) {
+						if ($product->getId() == $currentProduct->getId()) {
+							$userCart[$product->getName()] += [
+								'isPercentage' => $offer->getIsPercentage(),
+								'offerValue' => $offer->getOfferValue(),
+								'offerPrice' => $offer->getIsPercentage() ? ($product->getPrice() - $product->getPrice() * ($offer->getOfferValue() / 100)) * $_SESSION[CART_SESSION_VAR][$product->getId()] : ($product->getPrice() - $offer->getOfferValue()) * $_SESSION[CART_SESSION_VAR][$product->getId()]
+							];
+							break;
+						}
+
+					}
+				}
 			}
 
 			$addresses = AddressDAO::getAddressesByUserId($_SESSION[USER_SESSION_VAR]);

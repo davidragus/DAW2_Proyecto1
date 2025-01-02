@@ -45,9 +45,17 @@ abstract class OrderDAO
 		$stmt->execute();
 
 		$products = ProductDAO::getProductsByIds(array_keys($productsData));
+		$offers = OfferDAO::getActiveOffers();
+		$unitPriceInOffer = [];
+		foreach ($offers as $offer) {
+			foreach ($offer->getProducts() as $product) {
+				$unitPriceInOffer[$product->getId()] = $offer->getIsPercentage() ? $product->getPrice() - $product->getPrice() * ($offer->getOfferValue() / 100) : $product->getPrice() - $offer->getOfferValue();
+			}
+		}
+
 		$unitPrice = [];
 		foreach ($products as $product) {
-			$unitPrice[$product->getId()] = $product->getPrice();
+			$unitPrice[$product->getId()] = array_key_exists($product->getId(), $unitPriceInOffer) ? $unitPriceInOffer[$product->getId()] : $product->getPrice();
 		}
 
 		$orderLines = [];

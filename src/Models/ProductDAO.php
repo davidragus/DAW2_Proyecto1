@@ -48,6 +48,20 @@ abstract class ProductDAO
 		return $product;
 	}
 
+	public static function getProductsInOffer($offerId)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("SELECT * FROM products WHERE product_id IN (SELECT product_id FROM offers_products WHERE offer_id = ?)");
+		$stmt->bind_param("i", $offerId);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$products = [];
+		while ($rows = $result->fetch_object("App\\Models\\Product")) {
+			$products[] = $rows;
+		}
+		return $products;
+	}
+
 	public static function getProductsArray()
 	{
 		$conn = DBConnection::connect();

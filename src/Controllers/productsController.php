@@ -2,8 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\CategoryDAO;
-use App\Models\ProductDAO;
+use App\Models\CategoryDAO, App\Models\ProductDAO, App\Models\OfferDAO;
 
 class productsController extends commonController
 {
@@ -15,7 +14,15 @@ class productsController extends commonController
 	public function index()
 	{
 
-		$categories = $this->getCategories();
+		$offers = OfferDAO::getActiveOffers();
+		$productsInOffer = [];
+		foreach ($offers as $offer) {
+			foreach ($offer->getProducts() as $product) {
+				$productsInOffer[] = $product->getId();
+			}
+		}
+
+		$categories = CategoryDAO::getCategories();
 		$finalArray = [];
 		foreach ($categories as $category) {
 			$categoryId = $category->getCategoryId();
@@ -50,7 +57,8 @@ class productsController extends commonController
 			'pageFooter' => $this->pageFooter,
 			'variables' => [
 				'categories' => $categories,
-				'products' => $finalArray
+				'products' => $finalArray,
+				'productsInOffer' => $productsInOffer
 			]
 		];
 		view('template', $pageParams);
@@ -60,11 +68,26 @@ class productsController extends commonController
 	public function show()
 	{
 
+		// TODO: Agregar comprobaciones
+
 		if (isset($_GET['id'])) {
 
 			$product = ProductDAO::getProductById($_GET['id']);
 
 			if ($product) {
+				$offers = OfferDAO::getActiveOffers();
+				$productInOffer = null;
+				foreach ($offers as $offer) {
+					foreach ($offer->getProducts() as $offerProduct) {
+						if ($offerProduct->getId() == $product->getId())
+							$productInOffer = [
+								'isPercentage' => $offer->getIsPercentage(),
+								'offerValue' => $offer->getOfferValue(),
+								'productPrice' => $offer->getIsPercentage() ? $product->getPrice() - $product->getPrice() * ($offer->getOfferValue() / 100) : $product->getPrice() - $offer->getOfferValue()
+							];
+					}
+				}
+
 				$pageParams = [
 					'pageTitle' => "Tiefling's Tavern - Products",
 					'pageHeader' => $this->pageHeader,
@@ -74,19 +97,15 @@ class productsController extends commonController
 						'product' => $product
 					]
 				];
+				if (isset($productInOffer)) {
+					$pageParams['variables'] += ['productInOffer' => $productInOffer];
+				}
 				view('template', $pageParams);
 				exit;
 			}
-			echo 'not found';
 		} else {
-			echo 'not found';
 		}
 
-	}
-
-	public static function getCategories()
-	{
-		return CategoryDAO::getCategories();
 	}
 
 }
