@@ -22,6 +22,27 @@ class apiController
 		]);
 	}
 
+	public function getUserById()
+	{
+		if (isset($_GET['id'])) {
+			$user = UserDAO::getUserArrayById($_GET['id']);
+
+			if ($user) {
+				echo json_encode([
+					'status' => 'success',
+					'data' => $user
+				]);
+				exit;
+			}
+		}
+
+		http_response_code(404);
+		echo json_encode([
+			'status' => 'error',
+			'data' => 'No user found'
+		]);
+	}
+
 	public function getProducts()
 	{
 		$products = ProductDAO::getProductsArray();
@@ -29,6 +50,27 @@ class apiController
 		echo json_encode([
 			'status' => 'success',
 			'data' => $products
+		]);
+	}
+
+	public function getProductById()
+	{
+		if (isset($_GET['id'])) {
+			$product = ProductDAO::getProductArrayById($_GET['id']);
+
+			if ($product) {
+				echo json_encode([
+					'status' => 'success',
+					'data' => $product
+				]);
+				exit;
+			}
+		}
+
+		http_response_code(404);
+		echo json_encode([
+			'status' => 'error',
+			'data' => 'No product found'
 		]);
 	}
 

@@ -62,4 +62,17 @@ class adminController extends commonController
 
 		view('template', $pageParams);
 	}
+
+	public function showUser()
+	{
+		$pageParams = [
+			'pageTitle' => "Tiefling's Tavern",
+			'pageHeader' => $this->pageHeader,
+			'pageContent' => 'admin/showUser',
+			'pageFooter' => $this->pageFooter,
+			'variables' => []
+		];
+
+		view('template', $pageParams);
+	}
 }

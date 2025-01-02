@@ -18,15 +18,22 @@ class User {
 			userRow.appendChild(userCell);
 		});
 
+		const baseUrl = window.location.origin;
+
 		const showUserButton = document.createElement('a');
+		showUserButton.href = `${baseUrl}/admin/showUser/${this.id}`;
 		const showUserIcon = document.createElement('i');
 		showUserIcon.classList.add('show-button', 'bi', 'bi-eye-fill', 'mx-1');
 		showUserButton.appendChild(showUserIcon);
+
 		const editUserButton = document.createElement('a');
+		editUserButton.href = `${baseUrl}/admin/editUser/${this.id}`;
 		const editUserIcon = document.createElement('i');
 		editUserIcon.classList.add('edit-button', 'bi', 'bi-pencil-fill', 'mx-1');
 		editUserButton.appendChild(editUserIcon);
+
 		const deleteUserButton = document.createElement('a');
+		deleteUserButton.href = `${baseUrl}/admin/deleteUser/${this.id}`;
 		const deleteUserIcon = document.createElement('i');
 		deleteUserIcon.classList.add('delete-button', 'bi', 'bi-trash-fill', 'mx-1');
 		deleteUserButton.appendChild(deleteUserIcon);

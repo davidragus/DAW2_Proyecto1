@@ -70,4 +70,15 @@ abstract class UserDAO
 		return $users;
 	}
 
+	public static function getUserArrayById($id)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("SELECT * FROM users WHERE user_id = ?");
+		$stmt->bind_param("i", $id);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$user = $result->fetch_object("App\\Models\\User");
+		return $user->toArray();
+	}
+
 }

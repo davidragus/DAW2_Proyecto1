@@ -75,4 +75,15 @@ abstract class ProductDAO
 		return $products;
 	}
 
+	public static function getProductArrayById($id)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("SELECT * FROM products WHERE product_id = ?");
+		$stmt->bind_param("i", $id);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$product = $result->fetch_object("App\\Models\\Product");
+		return $product->toArray();
+	}
+
 }
