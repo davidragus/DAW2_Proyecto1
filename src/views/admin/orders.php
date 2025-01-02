@@ -4,7 +4,7 @@
 	</div>
 	<div class="container mb-2">
 		<form method="get" action="" class="d-flex flex-column align-items-center my-2" id="filtersForm">
-			<fieldset class="d-flex flex-column align-items-center p-4 mb-5 w-100">
+			<fieldset class="d-flex flex-column align-items-center p-4 w-100">
 				<legend class="float-none w-auto">
 					<h2 class="dark px-2">Filters</h2>
 				</legend>
@@ -49,6 +49,17 @@
 			</fieldset>
 		</form>
 	</div>
+	<div class="container d-flex justify-content-end mb-2">
+		<div class="form-floating">
+			<select class="form-select" id="changeCurrency" name="currency">
+				<option value="EUR">Euro (€)</option>
+				<option value="USD">United States Dollar ($)</option>
+				<option value="CAD">Canadian Dollar (C$)</option>
+				<option value="AUD">Australian Dollar (A$)</option>
+			</select>
+			<label for="changeCurrency">Currency</label>
+		</div>
+	</div>
 	<table id="ordersTable" class="container admin-table mb-5">
 		<tr>
 			<th>ID</th>
@@ -58,30 +69,6 @@
 			<th>Total Price</th>
 			<th>Actions</th>
 		</tr>
-		<!-- <tr>
-			<td>1</td>
-			<td>ADMIN</td>
-			<td>johndoe@test.com</td>
-			<td>John</td>
-			<td>Doe</td>
-			<td>Test</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>ADMIN</td>
-			<td>johndoe@test.com</td>
-			<td>John</td>
-			<td>Doe</td>
-			<td>Test</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>ADMIN</td>
-			<td>johndoe@test.com</td>
-			<td>John</td>
-			<td>Doe</td>
-			<td>Test</td>
-		</tr> -->
 	</table>
 </main>
 <script src="<?= js('adminClasses') ?>"></script>
