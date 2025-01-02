@@ -66,4 +66,18 @@ abstract class OrderDAO
 		OrderLineDAO::insertOrderLines($orderLines);
 	}
 
+	public static function getOrdersArray()
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("SELECT * FROM orders");
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$orders = [];
+		while ($rows = $result->fetch_object("App\\Models\\Order")) {
+			$rows->setOrderLines(OrderLineDAO::getOrderLinesArrayByOrderId($rows->getOrderId()));
+			$orders[] = $rows->toArray();
+		}
+		return $orders;
+	}
+
 }

@@ -45,8 +45,9 @@ class Order
 	public function toArray()
 	{
 		return [
-			'order_id' => $this->getOrderId(),
+			'id' => $this->getOrderId(),
 			'user_id' => $this->getUserId(),
+			'address_id' => $this->getAddressId(),
 			'date' => $this->getDate(),
 			'status' => $this->getStatus(),
 			'order_lines' => $this->getOrderLines()

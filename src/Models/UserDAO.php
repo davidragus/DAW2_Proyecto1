@@ -57,7 +57,6 @@ abstract class UserDAO
 		$stmt->execute();
 	}
 
-	// TODO: Modificar esta función para que siempre pille todos los usuarios y gestionar el filtrado desde js
 	public static function getUsersArray()
 	{
 		$conn = DBConnection::connect();

@@ -48,7 +48,7 @@ abstract class ProductDAO
 		return $product;
 	}
 
-	public static function getProductsArray($filters)
+	public static function getProductsArray()
 	{
 		$conn = DBConnection::connect();
 		$stmt = $conn->prepare("SELECT * FROM products");

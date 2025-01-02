@@ -33,4 +33,18 @@ abstract class OrderLineDAO
 		}
 	}
 
+	public static function getOrderLinesArrayByOrderId($orderId)
+	{
+		$conn = DBConnection::connect();
+		$query = "SELECT * FROM orderlines WHERE order_id = ?";
+		$stmt = $conn->prepare($query);
+		$stmt->bind_param("i", $orderId);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$orderLines = [];
+		while ($rows = $result->fetch_object("App\\Models\\OrderLine")) {
+			$orderLines[] = $rows->toArray();
+		}
+		return $orderLines;
+	}
 }
