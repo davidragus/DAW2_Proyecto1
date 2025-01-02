@@ -117,13 +117,16 @@ class Order {
 		};
 
 		Object.entries(desiredCells).forEach(([key, value]) => {
-			const productCell = document.createElement('td');
+			const orderCell = document.createElement('td');
 			if (key == 'user') {
-				productCell.innerHTML = users[value];
+				orderCell.innerHTML = users[value];
+			} else if (key == 'total_price') {
+				orderCell.innerHTML = value + '€';
+				orderCell.classList.add('price-cell');
 			} else {
-				productCell.innerHTML = value;
+				orderCell.innerHTML = value;
 			}
-			orderRow.appendChild(productCell);
+			orderRow.appendChild(orderCell);
 		});
 
 		const showUserButton = document.createElement('a');
@@ -152,7 +155,7 @@ class Order {
 			totalPrice += orderline['unit_price'] * orderline['quantity'];
 		});
 		const taxes = totalPrice * 0.1;
-		return (totalPrice + taxes).toFixed(2) + "€";
+		return (totalPrice + taxes).toFixed(2);
 	}
 
 	formatDate(date) {

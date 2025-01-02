@@ -1,8 +1,10 @@
 const API_URL = new URL('http://www.tieflingstavern.com/api/');
+const CURRENCY_API_URL = new URL('https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_mkNxscddgzGXvN8olFxoM3jPMgTIHXLWk0EfPwHF&currencies=EUR%2CUSD%2CCAD%2CAUD&base_currency=EUR');
 const filtersForm = document.getElementById('filtersForm');
 const ordersTable = document.getElementById('ordersTable');
 const userSelect = document.getElementById('userFilter');
 let users = [];
+let priceInEuro = [];
 
 document.addEventListener('DOMContentLoaded', async (e) => {
 	await getUsers();
@@ -11,6 +13,19 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
 document.getElementById('clearFilter').addEventListener('click', function (e) {
 	filtersForm.reset();
+});
+
+document.getElementById('changeCurrency').addEventListener('change', async function (e) {
+	const response = await fetch(CURRENCY_API_URL)
+		.then(response => response.json())
+		.then(responseJson => {
+			const data = responseJson.data;
+			const prices = document.getElementsByClassName('price-cell');
+			const currencySymbol = { 'EUR': '€', 'USD': '$', 'CAD': 'C$', 'AUD': 'A$' };
+			for (let i = 0; i < priceInEuro.length; i++) {
+				prices[i].innerHTML = (priceInEuro * data[document.getElementById('changeCurrency').value]).toFixed(2) + currencySymbol[document.getElementById('changeCurrency').value];
+			}
+		});
 });
 
 filtersForm.addEventListener('submit', function (e) {
@@ -45,9 +60,11 @@ async function getOrders(params = []) {
 }
 
 async function modifyTableDom(jsonResponse) {
+	priceInEuro = [];
 	const dataRows = document.querySelectorAll('.data-row').forEach(e => e.remove());
 	jsonResponse.forEach((order) => {
 		const currentOrder = new Order(order);
+		priceInEuro.push(currentOrder.getTotalPrice());
 		ordersTable.appendChild(currentOrder.createRowOfData(users));
 	});
 }
