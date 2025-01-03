@@ -570,6 +570,10 @@ table i:hover {
 	background-color: var(--color3);
 }
 
+.success-container {
+	background-color: #115c39;
+}
+
 @media (max-width: 1399px) {
 	.category-container {
 		max-width: 280px !important;

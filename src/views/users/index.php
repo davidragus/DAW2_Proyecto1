@@ -9,6 +9,18 @@
 				<legend class="float-none w-auto">
 					<h2 class="dark px-2">Change your information</h2>
 				</legend>
+				<?php if (isset($_SESSION['dataUpdateError'])): ?>
+					<div class="row error-container w-100 py-2 mb-2 d-flex justify-content-center">
+						<p class="m-0 w-auto text-light"><?= $_SESSION['dataUpdateError'] ?></p>
+					</div>
+					<?php unset($_SESSION['dataUpdateError']) ?>
+				<?php endif; ?>
+				<?php if (isset($_SESSION['dataUpdateSuccess'])): ?>
+					<div class="row success-container w-100 py-2 mb-2 d-flex justify-content-center">
+						<p class="m-0 w-auto text-light"><?= $_SESSION['dataUpdateSuccess'] ?></p>
+					</div>
+					<?php unset($_SESSION['dataUpdateSuccess']) ?>
+				<?php endif; ?>
 				<div class="row w-100 mb-4">
 					<div class="col-4">
 						<div class="form-floating">
@@ -44,6 +56,18 @@
 				<legend class="float-none w-auto">
 					<h2 class="dark px-2">Change your password</h2>
 				</legend>
+				<?php if (isset($_SESSION['passwordError'])): ?>
+					<div class="row error-container w-100 py-2 mb-2 d-flex justify-content-center">
+						<p class="m-0 w-auto text-light"><?= $_SESSION['passwordError'] ?></p>
+					</div>
+					<?php unset($_SESSION['passwordError']) ?>
+				<?php endif; ?>
+				<?php if (isset($_SESSION['passwordSuccess'])): ?>
+					<div class="row success-container w-100 py-2 mb-2 d-flex justify-content-center">
+						<p class="m-0 w-auto text-light"><?= $_SESSION['passwordSuccess'] ?></p>
+					</div>
+					<?php unset($_SESSION['passwordSuccess']) ?>
+				<?php endif; ?>
 				<div class="row w-100 mb-4">
 					<div class="col-4">
 						<div class="form-floating">
@@ -64,6 +88,10 @@
 								required>
 							<label for="confirmPassword">Confirm new password</label>
 						</div>
+					</div>
+					<div id="passwordHelpBlock" class="form-text d-flex justify-content-center">
+						Your password must be 8-20 characters long, contain a upper case letter, a lower case letter and
+						a number.
 					</div>
 				</div>
 				<div class="row">
