@@ -78,7 +78,28 @@ abstract class UserDAO
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$user = $result->fetch_object("App\\Models\\User");
-		return $user->toArray();
+		return isset($user) ? $user->toArray() : null;
+	}
+
+	public static function resetUserPassword($id)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("UPDATE users SET password = ? WHERE user_id = ?");
+		$defaultPass = DEFAULT_PASS;
+		$userId = intval($id);
+		$stmt->bind_param("si", $defaultPass, $userId);
+		$stmt->execute();
+	}
+
+	public static function deleteUserById($id)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("DELETE FROM users WHERE user_id = ?");
+		$userId = intval($id);
+		$stmt->bind_param("i", $userId);
+		OrderDAO::deleteOrdersByUserId($id);
+		AddressDAO::deleteAddressByUserId($id);
+		$stmt->execute();
 	}
 
 }

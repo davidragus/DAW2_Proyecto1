@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use Exception;
+
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
@@ -11,6 +13,11 @@ use App\Models\UserDAO, App\Models\ProductDAO, App\Models\CategoryDAO, App\Model
 
 class apiController
 {
+
+	public function __construct()
+	{
+		session_start();
+	}
 
 	public function getUsers()
 	{
@@ -41,6 +48,49 @@ class apiController
 			'status' => 'error',
 			'data' => 'No user found'
 		]);
+	}
+
+	public function resetUserPassword()
+	{
+		$data = json_decode(file_get_contents('php://input'), true);
+		try {
+			UserDAO::resetUserPassword($data);
+			echo json_encode([
+				'status' => 'success',
+				'data' => 'Password resetted to "Tavernkeeper1"'
+			]);
+		} catch (Exception $exception) {
+			http_response_code(500);
+			echo json_encode([
+				'status' => 'error',
+				'data' => 'An unexpected error occurred'
+			]);
+		}
+	}
+
+	public function deleteUser()
+	{
+		$data = json_decode(file_get_contents('php://input'), true);
+		if ($data == $_SESSION[USER_SESSION_VAR]) {
+			echo json_encode([
+				'status' => 'error',
+				'data' => "You can't delete your own user."
+			]);
+			exit;
+		}
+		try {
+			UserDAO::deleteUserById($data);
+			echo json_encode([
+				'status' => 'success',
+				'data' => 'User deleted successfully'
+			]);
+		} catch (Exception $exception) {
+			http_response_code(500);
+			echo json_encode([
+				'status' => 'error',
+				'data' => 'An unexpected error occurred'
+			]);
+		}
 	}
 
 	public function getProducts()

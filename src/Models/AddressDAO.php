@@ -81,4 +81,12 @@ abstract class AddressDAO
 		return $address;
 	}
 
+	public static function deleteAddressByUserId($userId)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("DELETE FROM addresses WHERE user_id = ?");
+		$stmt->bind_param("i", $userId);
+		$stmt->execute();
+	}
+
 }

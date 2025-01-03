@@ -1,11 +1,16 @@
 const API_URL = new URL('http://www.tieflingstavern.com/api/');
 const filtersForm = document.getElementById('filtersForm');
 const usersTable = document.getElementById('usersTable');
+let deleteButtons = [];
 
 document.addEventListener('DOMContentLoaded', (e) => getUsers());
 
 document.getElementById('clearFilter').addEventListener('click', function (e) {
 	filtersForm.reset();
+});
+
+document.getElementById('clearFilter').addEventListener('click', async function (e) {
+
 });
 
 filtersForm.addEventListener('submit', function (e) {
@@ -39,4 +44,35 @@ function modifyTableDom(jsonResponse) {
 		const currentUser = new User(user);
 		usersTable.appendChild(currentUser.createRowOfData());
 	});
+	deleteButtons = document.getElementsByClassName('delete-button');
+	giveEventToButton(deleteButtons);
+}
+
+async function giveEventToButton(deleteButtons) {
+	Array.from(deleteButtons).forEach((element) => {
+		element.addEventListener('click', function (ev) {
+			ev.preventDefault();
+			if (confirm('Are you sure that you want to delete this user?')) {
+				const userId = element.getAttribute('userid');
+				deleteUser(userId);
+			}
+		});
+	});
+}
+
+async function deleteUser(id) {
+	const url = new URL(`${API_URL}deleteUser`);
+	const response = await fetch(url, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(id)
+	})
+		.then(response => response.json())
+		.then(responseJson => {
+			alert(responseJson.data);
+			getUsers();
+		})
+		.catch(error => alert(error));
 }

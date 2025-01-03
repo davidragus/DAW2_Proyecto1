@@ -88,4 +88,19 @@ abstract class OrderDAO
 		return $orders;
 	}
 
+	public static function deleteOrdersByUserId($userId)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("SELECT * FROM orders WHERE user_id = ?");
+		$stmt->bind_param("i", $userId);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		while ($rows = $result->fetch_object("App\\Models\\Order")) {
+			OrderLineDAO::deleteOrderLinesByOrderId($rows->getOrderId());
+		}
+		$stmt = $conn->prepare("DELETE FROM orders WHERE user_id = ?");
+		$stmt->bind_param("i", $userId);
+		$stmt->execute();
+	}
+
 }

@@ -12,6 +12,7 @@ define('ASSETS_PATH', '/assets/');
 define('BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/");
 define('APPLICATION_PATH', BASE_PATH . 'src/');
 define('VIEWS_PATH', APPLICATION_PATH . "Views/");
+define('DEFAULT_PASS', '$2y$10$Qq3vSiBKGHxBX6aB8C2Ayu/a6QlEedRKDIU6R9UZstLtJue7fvVLe');
 
 define('USER_SESSION_VAR', 'userSession');
 define('ROLE_SESSION_VAR', 'roleSession');

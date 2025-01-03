@@ -47,4 +47,12 @@ abstract class OrderLineDAO
 		}
 		return $orderLines;
 	}
+
+	public static function deleteOrderLinesByOrderId($orderId)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("DELETE FROM orderlines WHERE order_id = ?");
+		$stmt->bind_param("i", $orderId);
+		$stmt->execute();
+	}
 }

@@ -23,27 +23,19 @@
 							<label for="role">Role</label>
 						</div>
 					</div>
-					<div class="col-5">
+					<div class="col-4">
 						<div class="form-floating">
 							<input type="email" class="form-control" id="email" name="email" required>
 							<label for="email">Email</label>
 						</div>
 					</div>
-					<div class="col-5">
-						<div class="form-floating">
-							<input type="password" class="form-control" id="password" name="password" required>
-							<label for="password">Password</label>
-						</div>
-					</div>
-				</div>
-				<div class="row w-100 mb-4">
-					<div class="col-4">
+					<div class="col-3">
 						<div class="form-floating">
 							<input type="text" class="form-control" id="first_name" name="first_name" required>
 							<label for="first_name">First Name</label>
 						</div>
 					</div>
-					<div class="col-4">
+					<div class="col-3">
 						<div class="form-floating">
 							<input type="text" class="form-control" id="last_name" name="last_name" required>
 							<label for="last_name">Last Name</label>
@@ -51,10 +43,15 @@
 					</div>
 				</div>
 				<div class="row">
-					<button class="btn btn-primary rounded-0 col mx-2" form="userForm" type="submit">SAVE</button>
+					<button class="btn btn-primary rounded-0 col mx-2" form="userForm" type="submit">SAVE USER</button>
+					<?php if (isset($params['form_type'])): ?>
+						<button class="btn btn-primary rounded-0 col mx-2 text-nowrap" id="resetPassword">RESET
+							PASSWORD</button>
+					<?php endif; ?>
 				</div>
 			</fieldset>
 		</form>
 	</div>
 </main>
 <script src="<?= js('adminClasses') ?>"></script>
+<script src="<?= js('userForm') ?>"></script>

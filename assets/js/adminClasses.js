@@ -33,9 +33,11 @@ class User {
 		editUserButton.appendChild(editUserIcon);
 
 		const deleteUserButton = document.createElement('a');
-		deleteUserButton.href = `${baseUrl}/admin/deleteUser/${this.id}`;
+		deleteUserButton.href = '';
+		deleteUserButton.setAttribute('userId', this.id);
+		deleteUserButton.classList.add('delete-button');
 		const deleteUserIcon = document.createElement('i');
-		deleteUserIcon.classList.add('delete-button', 'bi', 'bi-trash-fill', 'mx-1');
+		deleteUserIcon.classList.add('bi', 'bi-trash-fill', 'mx-1');
 		deleteUserButton.appendChild(deleteUserIcon);
 
 		const actionsCell = document.createElement('td');
