@@ -29,7 +29,46 @@ class adminController extends commonController
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
-			'pageContent' => 'admin/products',
+			'pageContent' => 'admin/products/products',
+			'pageFooter' => $this->pageFooter,
+			'variables' => []
+		];
+
+		view('template', $pageParams);
+	}
+
+	public function showProduct()
+	{
+		$pageParams = [
+			'pageTitle' => "Tiefling's Tavern",
+			'pageHeader' => $this->pageHeader,
+			'pageContent' => 'admin/products/products',
+			'pageFooter' => $this->pageFooter,
+			'variables' => []
+		];
+
+		view('template', $pageParams);
+	}
+
+	public function createProduct()
+	{
+		$pageParams = [
+			'pageTitle' => "Tiefling's Tavern",
+			'pageHeader' => $this->pageHeader,
+			'pageContent' => 'admin/products/products',
+			'pageFooter' => $this->pageFooter,
+			'variables' => []
+		];
+
+		view('template', $pageParams);
+	}
+
+	public function editProduct()
+	{
+		$pageParams = [
+			'pageTitle' => "Tiefling's Tavern",
+			'pageHeader' => $this->pageHeader,
+			'pageContent' => 'admin/products/products',
 			'pageFooter' => $this->pageFooter,
 			'variables' => []
 		];
@@ -42,7 +81,44 @@ class adminController extends commonController
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
-			'pageContent' => 'admin/orders',
+			'pageContent' => 'admin/orders/orders',
+			'pageFooter' => $this->pageFooter,
+			'variables' => []
+		];
+
+		view('template', $pageParams);
+	}
+	public function showOrder()
+	{
+		$pageParams = [
+			'pageTitle' => "Tiefling's Tavern",
+			'pageHeader' => $this->pageHeader,
+			'pageContent' => 'admin/orders/showOrder',
+			'pageFooter' => $this->pageFooter,
+			'variables' => []
+		];
+
+		view('template', $pageParams);
+	}
+
+	public function createOrder()
+	{
+		$pageParams = [
+			'pageTitle' => "Tiefling's Tavern",
+			'pageHeader' => $this->pageHeader,
+			'pageContent' => 'admin/orders/orders',
+			'pageFooter' => $this->pageFooter,
+			'variables' => []
+		];
+
+		view('template', $pageParams);
+	}
+	public function editOrder()
+	{
+		$pageParams = [
+			'pageTitle' => "Tiefling's Tavern",
+			'pageHeader' => $this->pageHeader,
+			'pageContent' => 'admin/orders/orders',
 			'pageFooter' => $this->pageFooter,
 			'variables' => []
 		];
@@ -55,7 +131,7 @@ class adminController extends commonController
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
-			'pageContent' => 'admin/users',
+			'pageContent' => 'admin/users/users',
 			'pageFooter' => $this->pageFooter,
 			'variables' => []
 		];
@@ -68,9 +144,37 @@ class adminController extends commonController
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
-			'pageContent' => 'admin/showUser',
+			'pageContent' => 'admin/users/showUser',
 			'pageFooter' => $this->pageFooter,
 			'variables' => []
+		];
+
+		view('template', $pageParams);
+	}
+
+	public function createUser()
+	{
+		$pageParams = [
+			'pageTitle' => "Tiefling's Tavern",
+			'pageHeader' => $this->pageHeader,
+			'pageContent' => 'admin/users/common/userForm',
+			'pageFooter' => $this->pageFooter,
+			'variables' => []
+		];
+
+		view('template', $pageParams);
+	}
+
+	public function editUser()
+	{
+		$pageParams = [
+			'pageTitle' => "Tiefling's Tavern",
+			'pageHeader' => $this->pageHeader,
+			'pageContent' => 'admin/users/common/userForm',
+			'pageFooter' => $this->pageFooter,
+			'variables' => [
+				'form_type' => 'edit'
+			]
 		];
 
 		view('template', $pageParams);
