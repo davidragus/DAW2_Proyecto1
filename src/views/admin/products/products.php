@@ -40,6 +40,10 @@
 			</fieldset>
 		</form>
 	</div>
+	<div class="container d-flex justify-content-end mb-2">
+		<a class="btn btn-primary btn-primary-small rounded-0" href="<?= url('products') ?>"><i
+				class="bi bi-plus-lg"></i>ADD PRODUCT</a>
+	</div>
 	<table id="productsTable" class="container admin-table mb-5">
 		<tr>
 			<th>ID</th>

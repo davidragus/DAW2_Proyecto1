@@ -4,7 +4,7 @@
 	</div>
 	<div class="container mb-2">
 		<form method="get" action="" class="d-flex flex-column align-items-center my-2" id="filtersForm">
-			<fieldset class="d-flex flex-column align-items-center p-4 w-100">
+			<fieldset class="d-flex flex-column align-items-center p-4 mb-5 w-100">
 				<legend class="float-none w-auto">
 					<h2 class="dark px-2">Filters</h2>
 				</legend>
@@ -49,7 +49,7 @@
 			</fieldset>
 		</form>
 	</div>
-	<div class="container d-flex justify-content-end mb-2">
+	<div class="container d-flex justify-content-end align-items-center mb-2">
 		<div class="form-floating">
 			<select class="form-select" id="changeCurrency" name="currency">
 				<option value="EUR">Euro (€)</option>
@@ -59,6 +59,8 @@
 			</select>
 			<label for="changeCurrency">Currency</label>
 		</div>
+		<a class="btn btn-primary btn-primary-small rounded-0 ms-3" href="<?= url('products') ?>"><i
+				class="bi bi-plus-lg"></i>ADD ORDER</a>
 	</div>
 	<table id="ordersTable" class="container admin-table mb-5">
 		<tr>
