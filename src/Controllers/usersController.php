@@ -67,10 +67,12 @@ class usersController extends commonController
 		$user = UserDAO::getUserByMail($_POST['email']);
 		if (!$user) {
 			redirect('users/login');
+			$_SESSION['error'] = 'ERROR: The email used is not registered';
 			exit;
 		}
 		if (!password_verify($_POST['password'], $user->getPassword())) {
 			redirect('users/login');
+			$_SESSION['error'] = 'ERROR: The password is incorrect';
 			exit;
 		}
 
@@ -109,10 +111,17 @@ class usersController extends commonController
 		$user = UserDAO::getUserByMail($_POST['email']);
 		if ($user) {
 			redirect('users/signup');
+			$_SESSION['error'] = 'ERROR: The email is already registered';
 			exit;
 		}
 		if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,20}$/', $_POST['password'])) {
 			redirect('users/signup');
+			$_SESSION['error'] = 'ERROR: The password doesn\'t match the criteria';
+			exit;
+		}
+		if ($_POST['password'] != $_POST['confirmPassword']) {
+			redirect('users/signup');
+			$_SESSION['error'] = 'ERROR: The confirmation doesn\'t match with the password';
 			exit;
 		}
 		$password = password_hash($_POST['password'], PASSWORD_DEFAULT);

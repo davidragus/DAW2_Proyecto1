@@ -3,6 +3,12 @@
 		<div class="col-4 login-form bg-black py-5 px-3 d-flex flex-column align-items-center"
 			style="--bs-bg-opacity: .9;">
 			<h1 class="text-white">Log In</h1>
+			<?php if (isset($_SESSION['error'])): ?>
+				<div class="row error-container w-100 py-2 my-2 d-flex justify-content-center">
+					<p class="m-0 w-auto text-light"><?= $_SESSION['error'] ?></p>
+				</div>
+				<?php unset($_SESSION['error']) ?>
+			<?php endif; ?>
 			<form method="post" action="<?= url('users/checkLogin') ?>"
 				class="d-flex flex-column align-items-center my-2 w-75">
 				<div class="row mb-3 w-100">

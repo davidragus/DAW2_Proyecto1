@@ -566,6 +566,10 @@ table i:hover {
 	font-size: 20px;
 }
 
+.error-container {
+	background-color: var(--color3);
+}
+
 @media (max-width: 1399px) {
 	.category-container {
 		max-width: 280px !important;
