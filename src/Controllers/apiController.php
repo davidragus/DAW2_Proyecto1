@@ -157,6 +157,43 @@ class apiController
 		]);
 	}
 
+	public function insertProduct()
+	{
+		$data = json_decode(file_get_contents('php://input'), true);
+		try {
+
+			$response = ProductDAO::insertNewProduct($data);
+			echo json_encode([
+				'status' => 'success',
+				'data' => $response
+			]);
+		} catch (Exception $exception) {
+			http_response_code(500);
+			echo json_encode([
+				'status' => 'error',
+				'data' => 'An unexpected error occurred'
+			]);
+		}
+	}
+
+	public function updateProduct()
+	{
+		$data = json_decode(file_get_contents('php://input'), true);
+		try {
+			$response = ProductDAO::updateProduct($data);
+			echo json_encode([
+				'status' => 'success',
+				'data' => $response
+			]);
+		} catch (Exception $exception) {
+			http_response_code(500);
+			echo json_encode([
+				'status' => 'error',
+				'data' => 'An unexpected error occurred'
+			]);
+		}
+	}
+
 	public function getProductById()
 	{
 		if (isset($_GET['id'])) {
@@ -254,6 +291,25 @@ class apiController
 			'status' => 'error',
 			'data' => 'No addresses found'
 		]);
+	}
+
+	public function uploadImage()
+	{
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			if ($_FILES["image"]["type"] == "image/webp") {
+				if (move_uploaded_file($_FILES['image']['tmp_name'], BASE_PATH . 'assets/images/' . $_FILES['image']['name'])) {
+					echo json_encode([
+						'status' => 'success',
+						'data' => 'Image uploaded successfully'
+					]);
+				} else {
+					echo json_encode([
+						'status' => 'error',
+						'data' => 'Unexpected error when uploading the image'
+					]);
+				}
+			}
+		}
 	}
 
 }

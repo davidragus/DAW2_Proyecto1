@@ -97,4 +97,32 @@ abstract class ProductDAO
 		$stmt->execute();
 	}
 
+	public static function insertNewProduct($data)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("INSERT INTO products(category_id, subcategory_id, name, description, price, image, adults_only) VALUES(?, ?, ?, ?, ?, ?, ?)");
+		$params = array_values($data);
+		$stmt->bind_param("iissdsi", ...$params);
+		$stmt->execute();
+		return $stmt->insert_id;
+	}
+
+	public static function updateProduct($data)
+	{
+		$conn = DBConnection::connect();
+		if (isset($data['image'])) {
+			$stmt = $conn->prepare("UPDATE products SET category_id = ?, subcategory_id = ?, name = ?, description = ?, price = ?, image = ?, adults_only = ? WHERE product_id = ?");
+		} else {
+			$stmt = $conn->prepare("UPDATE products SET category_id = ?, subcategory_id = ?, name = ?, description = ?, price = ?, adults_only = ? WHERE product_id = ?");
+		}
+		$params = array_values($data);
+		if (isset($data['image'])) {
+			$stmt->bind_param("iissdsii", ...$params);
+		} else {
+			$stmt->bind_param("iissdii", ...$params);
+		}
+		$stmt->execute();
+		return $params[count($params) - 1];
+	}
+
 }
