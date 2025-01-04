@@ -11,6 +11,7 @@ const categoryElement = document.getElementById('category');
 const subcategoryElement = document.getElementById('subcategory');
 const onlyAdultsElement = document.getElementById('onlyAdults');
 const unitPriceElement = document.getElementById('unitPrice');
+const descriptionElement = document.getElementById('description');
 
 document.addEventListener('DOMContentLoaded', async (e) => {
 	await getProduct();
@@ -63,4 +64,5 @@ async function modifyDom(jsonResponse, categoryData, subcategoryData = null) {
 	}
 	onlyAdultsElement.innerHTML += product.adults_only ? 'Yes' : 'No';
 	unitPriceElement.innerHTML += product.price + '€';
+	descriptionElement.innerHTML += product.description;
 }

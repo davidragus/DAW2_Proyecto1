@@ -86,4 +86,15 @@ abstract class ProductDAO
 		return $product->toArray();
 	}
 
+	public static function deleteProductById($id)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("DELETE FROM products WHERE product_id = ?");
+		$productId = intval($id);
+		$stmt->bind_param("i", $productId);
+		OrderLineDAO::deleteOrderLinesByProductId($id);
+		OfferProductDAO::deleteProductFromOffer($id);
+		$stmt->execute();
+	}
+
 }

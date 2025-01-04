@@ -96,8 +96,11 @@ class Product {
 		editProductButton.appendChild(editProductIcon);
 
 		const deleteProductButton = document.createElement('a');
+		deleteProductButton.href = '';
+		deleteProductButton.setAttribute('productId', this.id);
+		deleteProductButton.classList.add('delete-button');
 		const deleteProductIcon = document.createElement('i');
-		deleteProductIcon.classList.add('delete-button', 'bi', 'bi-trash-fill', 'mx-1');
+		deleteProductIcon.classList.add('bi', 'bi-trash-fill', 'mx-1');
 		deleteProductButton.appendChild(deleteProductIcon);
 
 		const actionsCell = document.createElement('td');

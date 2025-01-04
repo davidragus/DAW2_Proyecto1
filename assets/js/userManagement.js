@@ -9,10 +9,6 @@ document.getElementById('clearFilter').addEventListener('click', function (e) {
 	filtersForm.reset();
 });
 
-document.getElementById('clearFilter').addEventListener('click', async function (e) {
-
-});
-
 filtersForm.addEventListener('submit', function (e) {
 	e.preventDefault();
 	const data = new FormData(filtersForm);

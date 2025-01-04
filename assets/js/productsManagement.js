@@ -5,6 +5,7 @@ const categorySelect = document.getElementById('categoryFilter');
 const subcategorySelect = document.getElementById('subcategoryFilter');
 let categories = [];
 let subcategories = [];
+let deleteButtons = [];
 
 document.addEventListener('DOMContentLoaded', async (e) => {
 	await getCategories();
@@ -63,6 +64,22 @@ async function modifyTableDom(jsonResponse) {
 		const currentProduct = new Product(product);
 		productsTable.appendChild(currentProduct.createRowOfData(categories, subcategories));
 	});
+	deleteButtons = document.getElementsByClassName('delete-button');
+	giveEventToButton(deleteButtons);
+}
+
+async function giveEventToButton(deleteButtons) {
+	Array.from(deleteButtons).forEach((element) => {
+		element.addEventListener('click', function (ev) {
+			ev.preventDefault();
+			if (confirm('Are you sure that you want to delete this product?')) {
+				console.log(element);
+				const productId = element.getAttribute('productid');
+				console.log(productId);
+				deleteProduct(productId);
+			}
+		});
+	});
 }
 
 function modifyCategoriesFilters() {
@@ -79,4 +96,24 @@ function modifyCategoriesFilters() {
 		subcategoryOption.innerHTML = value;
 		subcategorySelect.append(subcategoryOption);
 	});
+}
+
+async function deleteProduct(id) {
+	const url = new URL(`${API_URL}deleteProduct`);
+	const response = await fetch(url, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(id)
+	})
+		.then(response => response.json())
+		.then(responseJson => {
+			if (responseJson.status == 'error') {
+				throw new Error(responseJson.data);
+			}
+			alert(responseJson.data);
+			getProducts();
+		})
+		.catch(error => alert(error));
 }

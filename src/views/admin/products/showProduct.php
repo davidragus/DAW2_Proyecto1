@@ -29,6 +29,9 @@
 						<span class="information-text w-auto me-3" id="onlyAdults"><b>Only for adults:</b> </span>
 						<span class="information-text w-auto me-3" id="unitPrice"><b>Price:</b> </span>
 					</div>
+					<div class="row mt-2">
+						<span class="information-text w-auto me-3" id="description"><b>Description:</b> </span>
+					</div>
 				</div>
 			</div>
 		</fieldset>

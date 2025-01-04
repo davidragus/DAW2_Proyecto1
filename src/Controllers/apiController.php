@@ -178,6 +178,24 @@ class apiController
 		]);
 	}
 
+	public function deleteProduct()
+	{
+		$data = json_decode(file_get_contents('php://input'), true);
+		try {
+			ProductDAO::deleteProductById($data);
+			echo json_encode([
+				'status' => 'success',
+				'data' => 'Product deleted successfully'
+			]);
+		} catch (Exception $exception) {
+			http_response_code(500);
+			echo json_encode([
+				'status' => 'error',
+				'data' => 'An unexpected error occurred'
+			]);
+		}
+	}
+
 	public function getOrders()
 	{
 		$orders = OrderDAO::getOrdersArray();

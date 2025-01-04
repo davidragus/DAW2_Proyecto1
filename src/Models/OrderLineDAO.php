@@ -55,4 +55,12 @@ abstract class OrderLineDAO
 		$stmt->bind_param("i", $orderId);
 		$stmt->execute();
 	}
+
+	public static function deleteOrderLinesByProductId($productId)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("DELETE FROM orderlines WHERE product_id = ?");
+		$stmt->bind_param("i", $productId);
+		$stmt->execute();
+	}
 }
