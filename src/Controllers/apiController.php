@@ -50,6 +50,60 @@ class apiController
 		]);
 	}
 
+	public function insertUser()
+	{
+		$data = json_decode(file_get_contents('php://input'), true);
+		try {
+			$user = UserDAO::getUserByMail($data['email']);
+			if ($user) {
+				echo json_encode([
+					'status' => 'error',
+					'data' => 'The email introduced is already registered.'
+				]);
+				exit;
+			}
+
+			$response = UserDAO::insertNewUser($data);
+			echo json_encode([
+				'status' => 'success',
+				'data' => $response
+			]);
+		} catch (Exception $exception) {
+			http_response_code(500);
+			echo json_encode([
+				'status' => 'error',
+				'data' => 'An unexpected error occurred'
+			]);
+		}
+	}
+
+	public function updateUser()
+	{
+		$data = json_decode(file_get_contents('php://input'), true);
+		try {
+			$user = UserDAO::getUserByMail($data['email']);
+			if ($user && ($user->getUserId() != $_SESSION[USER_SESSION_VAR] && $user->getEmail() != $data['email'])) {
+				echo json_encode([
+					'status' => 'error',
+					'data' => 'The email introduced is already registered.'
+				]);
+				exit;
+			}
+
+			$response = UserDAO::updateUser($data);
+			echo json_encode([
+				'status' => 'success',
+				'data' => $response
+			]);
+		} catch (Exception $exception) {
+			http_response_code(500);
+			echo json_encode([
+				'status' => 'error',
+				'data' => 'An unexpected error occurred'
+			]);
+		}
+	}
+
 	public function resetUserPassword()
 	{
 		$data = json_decode(file_get_contents('php://input'), true);

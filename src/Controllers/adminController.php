@@ -13,6 +13,11 @@ class adminController extends commonController
 
 	public function index()
 	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect("users/login");
+			exit;
+		}
+
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
@@ -26,6 +31,11 @@ class adminController extends commonController
 
 	public function products()
 	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect("users/login");
+			exit;
+		}
+
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
@@ -39,6 +49,11 @@ class adminController extends commonController
 
 	public function showProduct()
 	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect("users/login");
+			exit;
+		}
+
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
@@ -52,6 +67,11 @@ class adminController extends commonController
 
 	public function createProduct()
 	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect("users/login");
+			exit;
+		}
+
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
@@ -65,6 +85,11 @@ class adminController extends commonController
 
 	public function editProduct()
 	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect("users/login");
+			exit;
+		}
+
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
@@ -78,6 +103,11 @@ class adminController extends commonController
 
 	public function orders()
 	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect("users/login");
+			exit;
+		}
+
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
@@ -90,6 +120,11 @@ class adminController extends commonController
 	}
 	public function showOrder()
 	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect("users/login");
+			exit;
+		}
+
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
@@ -103,6 +138,11 @@ class adminController extends commonController
 
 	public function createOrder()
 	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect("users/login");
+			exit;
+		}
+
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
@@ -115,6 +155,11 @@ class adminController extends commonController
 	}
 	public function editOrder()
 	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect("users/login");
+			exit;
+		}
+
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
@@ -128,6 +173,11 @@ class adminController extends commonController
 
 	public function users()
 	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect("users/login");
+			exit;
+		}
+
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
@@ -141,6 +191,11 @@ class adminController extends commonController
 
 	public function showUser()
 	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect("users/login");
+			exit;
+		}
+
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
@@ -154,6 +209,11 @@ class adminController extends commonController
 
 	public function createUser()
 	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect("users/login");
+			exit;
+		}
+
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
@@ -167,6 +227,11 @@ class adminController extends commonController
 
 	public function editUser()
 	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect("users/login");
+			exit;
+		}
+
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,

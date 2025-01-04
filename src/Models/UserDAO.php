@@ -41,6 +41,29 @@ abstract class UserDAO
 		return $stmt->insert_id;
 	}
 
+	public static function insertNewUser($data)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("INSERT INTO users(password, role, email, first_name, last_name) VALUES(?, ?, ?, ?, ?)");
+		$params = [
+			DEFAULT_PASS
+		];
+		array_push($params, ...array_values($data));
+		$stmt->bind_param("sssss", ...$params);
+		$stmt->execute();
+		return $stmt->insert_id;
+	}
+
+	public static function updateUser($data)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("UPDATE users SET role = ?, email = ?, first_name = ?, last_name = ? WHERE user_id = ?");
+		$params = array_values($data);
+		$stmt->bind_param("ssssi", ...$params);
+		$stmt->execute();
+		return $params[count($params) - 1];
+	}
+
 	public static function updateUserInfo($id, $firstName, $lastName, $email)
 	{
 		$conn = DBConnection::connect();
