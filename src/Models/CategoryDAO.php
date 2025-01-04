@@ -63,4 +63,15 @@ abstract class CategoryDAO
 		return $categories;
 	}
 
+	public static function getCategoryArray($categoryId)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("SELECT * FROM categories WHERE category_id = ?");
+		$stmt->bind_param("i", $categoryId);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$category = $result->fetch_object('App\\Models\\Category');
+		return $category->toArray();
+	}
+
 }

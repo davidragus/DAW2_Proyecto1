@@ -198,6 +198,25 @@ class apiController
 		]);
 	}
 
+	public function getCategory()
+	{
+		if (isset($_GET['id'])) {
+			$category = CategoryDAO::getCategoryArray($_GET['id']);
+
+			if ($category) {
+				echo json_encode([
+					'status' => 'success',
+					'data' => $category
+				]);
+			} else {
+				echo json_encode([
+					'status' => 'error',
+					'data' => 'The category does not exist'
+				]);
+			}
+		}
+	}
+
 	public function getAddressesByUserId()
 	{
 		if (isset($_GET['id'])) {

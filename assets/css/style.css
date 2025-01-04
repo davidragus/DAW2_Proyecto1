@@ -566,6 +566,12 @@ table i:hover {
 	font-size: 20px;
 }
 
+.information-image {
+	width: 300px;
+	height: 200px;
+	object-fit: cover;
+}
+
 .error-container {
 	background-color: var(--color3);
 }

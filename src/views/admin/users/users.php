@@ -1,4 +1,8 @@
 <main class="container pb-5">
+	<div class="row pt-4">
+		<a href="<?= url('admin') ?>" class="go-back-button"><i class="bi bi-arrow-left pe-2"></i>Back to admin main
+			page</a>
+	</div>
 	<div class="row py-4">
 		<h1 class="dark d-flex justify-content-center">Manage Users</h1>
 	</div>
