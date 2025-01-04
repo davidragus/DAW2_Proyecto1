@@ -562,6 +562,16 @@ table i:hover {
 	box-shadow: none;
 }
 
+.input-check:checked {
+	background-color: var(--color2);
+	border-color: var(--color2);
+}
+
+.input-check:focus {
+	border-color: var(--color2);
+	box-shadow: none;
+}
+
 .information-text {
 	font-size: 20px;
 }
@@ -578,6 +588,11 @@ table i:hover {
 
 .success-container {
 	background-color: #115c39;
+}
+
+.input-description {
+	height: 90px !important;
+	resize: none;
 }
 
 @media (max-width: 1399px) {

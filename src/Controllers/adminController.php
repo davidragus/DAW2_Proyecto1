@@ -75,7 +75,7 @@ class adminController extends commonController
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
-			'pageContent' => 'admin/products/products',
+			'pageContent' => 'admin/products/common/productForm',
 			'pageFooter' => $this->pageFooter,
 			'variables' => []
 		];
@@ -93,9 +93,11 @@ class adminController extends commonController
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
-			'pageContent' => 'admin/products/products',
+			'pageContent' => 'admin/products/common/productForm',
 			'pageFooter' => $this->pageFooter,
-			'variables' => []
+			'variables' => [
+				'form_type' => 'edit'
+			]
 		];
 
 		view('template', $pageParams);

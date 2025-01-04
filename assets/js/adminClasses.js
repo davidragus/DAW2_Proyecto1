@@ -91,6 +91,7 @@ class Product {
 		showProductButton.appendChild(showProductIcon);
 
 		const editProductButton = document.createElement('a');
+		editProductButton.href = `${baseUrl}/admin/editProduct/${this.id}`;
 		const editProductIcon = document.createElement('i');
 		editProductIcon.classList.add('edit-button', 'bi', 'bi-pencil-fill', 'mx-1');
 		editProductButton.appendChild(editProductIcon);
