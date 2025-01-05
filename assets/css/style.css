@@ -675,6 +675,29 @@ table i:hover {
 		background-image: none;
 	}
 
+	.cart-row img {
+		width: 50%;
+		height: auto;
+		object-fit: cover;
+	}
+
+	.cart-product-name {
+		width: 80% !important;
+	}
+
+	h2 {
+		font-size: 38px;
+	}
+
+	.carousel-inner .carousel-item>div {
+		display: none;
+	}
+
+	.carousel-inner .carousel-item>div:first-child {
+		display: block;
+		margin: 10px;
+	}
+
 }
 
 .offer-value {

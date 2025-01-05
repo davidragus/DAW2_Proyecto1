@@ -1,6 +1,6 @@
 <main class="container body-content login-form-container w-100 py-5">
 	<div class="row justify-content-center">
-		<div class="col-4 login-form bg-black py-5 px-3 d-flex flex-column align-items-center"
+		<div class="col-lg-4 login-form bg-black py-5 px-3 d-flex flex-column align-items-center"
 			style="--bs-bg-opacity: .9;">
 			<h1 class="text-white">Log In</h1>
 			<?php if (isset($_SESSION['error'])): ?>

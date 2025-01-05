@@ -6,8 +6,8 @@
 			href="#top">
 			<i class="bi bi-chevron-compact-up position-absolute"></i>BACK TO TOP</a>
 	</div>
-	<div class="row footer-content h-auto">
-		<div class="col-6 p-0 pe-5">
+	<div class="row footer-content h-auto p-lg-0 px-3">
+		<div class="col-lg-6 p-0 pe-lg-5 mb-3">
 			<ul class="m-0 p-0">
 				<li class="mb-4">
 					<span class="list-header pb-1 text-white">SOCIAL NETWORKS</span>
@@ -35,9 +35,9 @@
 				</li>
 			</ul>
 		</div>
-		<div class="col-6 p-0 ps-5">
+		<div class="col-lg-6 p-0 ps-lg-5">
 			<div class="row">
-				<ul class="col-4 m-0 p-0">
+				<ul class="col-lg-4 col-6 m-0 p-0">
 					<li class="mb-4">
 						<span class="list-header pb-1 text-white">WEBSITE POLICIES</span>
 						<ul class="m-0 px-0 pt-3">
@@ -47,7 +47,7 @@
 						</ul>
 					</li>
 				</ul>
-				<ul class="col-4 m-0 p-0">
+				<ul class="col-lg-4 col-6 m-0 p-0">
 					<li class="mb-4">
 						<span class="list-header pb-1 text-white">COMPANY</span>
 						<ul class="m-0 px-0 pt-3">
@@ -59,7 +59,7 @@
 						</ul>
 					</li>
 				</ul>
-				<ul class="col-4 m-0 p-0">
+				<ul class="col-lg-4 col-6 m-0 p-0">
 					<li class="mb-4">
 						<span class="list-header pb-1 text-white">BRANDS</span>
 						<ul class="m-0 px-0 pt-3">

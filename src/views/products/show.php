@@ -4,14 +4,14 @@
 			products</a>
 	</div>
 	<div class="row pt-4">
-		<img class="product-image col-5 ps-0" src="<?= images($params['product']->getImage()) ?>"
+		<img class="product-image col-lg-5 col-12 mb-lg-0 mb-3 ps-0" src="<?= images($params['product']->getImage()) ?>"
 			alt="<?= $params['product']->getName() ?>">
 		<div class="col container">
 			<h1 class="dark"><?= $params['product']->getName() ?></h1>
 			<p><?= $params['product']->getDescription() ?></p>
 		</div>
 	</div>
-	<div class="row pt-4 d-flex justify-content-between">
+	<div class="row pt-lg-4 d-flex justify-content-lg-between justify-content-center mb-3">
 		<?php //TODO: Agregar alergenos e ingredientes ?>
 		<?php if (false): ?>
 			<div class="col-4 card rounded-0 border-0 px-0 d-flex align-items-center">
@@ -34,7 +34,7 @@
 						class="offer-value d-flex align-items-center px-2"><?= $params['productInOffer']['isPercentage'] ? intval($params['productInOffer']['offerValue']) . '%' : $params['productInOffer']['offerValue'] . '€' ?></span>
 				<?php endif; ?>
 			</div>
-			<div class="d-flex justify-content-end mb-1">
+			<div class="d-flex justify-content-lg-end mb-1">
 				<button class="product-quantity-buttons border-0 bg-transparent" id="lessButton"><i
 						class="bi bi-dash-lg"></i></button>
 				<h3 class="dark m-0 mx-3" id="counter">1</h3>

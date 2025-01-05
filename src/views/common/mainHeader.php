@@ -5,10 +5,10 @@
 			data-bs-target="#offcanvasNav" aria-controls="offcanvasNav">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<button id="yourCartButtonNavMobile" class="navbar-toggler d-lg-none position-absolute end-0 p-1 m-2"
-			type="button">
+		<a id="yourCartButtonNavMobile" class="navbar-toggler d-lg-none position-absolute end-0 p-1 m-2" type="button"
+			href="<?= url('cart') ?>">
 			<i class="bi-cart-fill"></i>
-		</button>
+		</a>
 		<div class="offcanvas offcanvas-start d-lg-flex justify-content-lg-center" tabindex="-1" id="offcanvasNav"
 			aria-labelledby="offcanvasExampleLabel">
 			<div class="navbar-nav-container d-lg-flex justify-content-lg-between">
@@ -66,7 +66,7 @@
 							id="userSettingsDropdown">
 							<a class="nav-link d-lg-flex align-items-lg-center p-lg-0 dropdown-toggle"
 								href="<?= url("users") ?>" aria-expanded=" false">
-								<span>YOUR PROFILE</span>
+								<span>YOUR PROFILE</span><i class="bi bi-chevron-right d-lg-none"></i>
 							</a>
 							<div class="dropdown-menu pb-0 start-0 end-0 rounded-0 bg-black justify-content-center">
 								<ul class="dropdown-list px-0 d-flex">
@@ -93,6 +93,20 @@
 							<a class="btn btn-primary btn-primary-small rounded-0" href="<?= url('cart') ?>"><i
 									class="bi-cart-fill"></i>YOUR
 								CART</a>
+						</li>
+						<li class="nav-item d-lg-none align-items-lg-center dropdown position-static px-lg-2"
+							id="userSettingsDropdown">
+							<a class="nav-link d-lg-flex align-items-lg-center p-lg-0 dropdown-toggle"
+								href="<?= url("orders") ?>" aria-expanded=" false">
+								<span>YOUR ORDERS</span><i class="bi bi-chevron-right d-lg-none"></i>
+							</a>
+						</li>
+						<li class="nav-item d-lg-none align-items-lg-center dropdown position-static px-lg-2"
+							id="userSettingsDropdown">
+							<a class="nav-link d-lg-flex align-items-lg-center p-lg-0 dropdown-toggle"
+								href="<?= url("users/logout") ?>" aria-expanded=" false">
+								<span>LOG OUT</span><i class="bi bi-chevron-right d-lg-none"></i>
+							</a>
 						</li>
 					<?php endif; ?>
 				</ul>

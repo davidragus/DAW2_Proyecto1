@@ -7,16 +7,16 @@
 			<?php $productsPrice = 0; ?>
 			<?php foreach ($params['userCart'] as $productName => $data): ?>
 				<div class="row cart-row">
-					<img class="p-0" src="<?= images($data['image']) ?>" alt="<?= $productName ?>">
+					<img class="p-0 mx-auto" src="<?= images($data['image']) ?>" alt="<?= $productName ?>">
 					<div class="col d-flex flex-column justify-content-between">
-						<div class="row d-flex align-items-center justify-content-between m-0">
+						<div class="row d-flex align-items-center justify-content-between m-0 mb-lg-0 mb-3">
 							<a class="cart-product-name w-auto"
 								href="<?= url('products/show/' . $data['id']) ?>"><?= $productName ?></a>
 							<a class="w-auto" href="<?= url('cart/deleteFromCart/' . $data['id']) ?>"><i
 									class="bi bi-trash-fill"></i></a>
 						</div>
 						<div class="row justify-content-end m-0">
-							<div class="quantity-container d-flex w-auto">
+							<div class="quantity-container d-flex w-auto mb-lg-0 mb-3">
 								<a href="<?= url('cart/removeOneFromCart/' . $data['id']) ?>"><i class="bi bi-dash-lg"></i></a>
 								<span class="m-0 mx-3"><?= $data['quantity'] ?></span>
 								<a href="<?= url('cart/addOneToCart/' . $data['id']) ?>"><i class="bi bi-plus-lg"></i></a>
@@ -42,7 +42,7 @@
 		</div>
 		<?php $taxPrice = $productsPrice * .1; ?>
 		<div class="container mt-5">
-			<div class="row justify-content-between">
+			<div class="row justify-content-lg-between justify-content-center">
 				<div class="container addresses-container w-auto d-flex flex-column pb-4 mx-0">
 					<h2 class="dark">Addresses</h2>
 					<?php if (isset($params['addresses'])): ?>

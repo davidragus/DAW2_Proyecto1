@@ -18,7 +18,7 @@
 					<h2 class="dark px-2">Address information</h2>
 				</legend>
 				<div class="row w-100 mb-4">
-					<div class="col-3">
+					<div class="col-lg-3 col-12 mb-lg-0 mb-3">
 						<div class="form-floating">
 							<input type="text" class="form-control" id="alias" name="alias"
 								value="<?= $params['formType'] == 'edit' ? $params['address']->getAlias() : '' ?>"
@@ -26,7 +26,7 @@
 							<label for="alias">Alias</label>
 						</div>
 					</div>
-					<div class="col-4">
+					<div class="col-lg-4 col-12 mb-lg-0 mb-3">
 						<div class="form-floating">
 							<input type="text" class="form-control" id="address" name="address"
 								value="<?= $params['formType'] == 'edit' ? $params['address']->getAddress() : '' ?>"
@@ -34,7 +34,7 @@
 							<label for="address">Address</label>
 						</div>
 					</div>
-					<div class="col-3">
+					<div class="col-lg-3 col-12 mb-lg-0 mb-3">
 						<div class="form-floating">
 							<input type="text" class="form-control" id="city" name="city"
 								value="<?= $params['formType'] == 'edit' ? $params['address']->getCity() : '' ?>"
@@ -42,7 +42,7 @@
 							<label for="city">City</label>
 						</div>
 					</div>
-					<div class="col-2">
+					<div class="col-lg-2 col-12 mb-lg-0">
 						<div class="form-floating">
 							<input type="text" class="form-control" id="cp" name="cp"
 								value="<?= $params['formType'] == 'edit' ? $params['address']->getCP() : '' ?>"

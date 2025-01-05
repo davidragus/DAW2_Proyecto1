@@ -12,16 +12,17 @@
 						<?php break; ?>
 					<?php endif; ?>
 					<div class="row cart-row">
-						<img class="p-0" src="<?= images($params['products'][$orderLine->getProductId()]->getImage()) ?>"
+						<img class="p-0 mx-auto mb-lg-0 mb-3"
+							src="<?= images($params['products'][$orderLine->getProductId()]->getImage()) ?>"
 							alt="<?= $params['products'][$orderLine->getProductId()]->getName() ?>">
 						<div class="col d-flex flex-column justify-content-between">
 							<div class="row d-flex align-items-center justify-content-between m-0">
 								<a class="cart-product-name w-auto"
 									href=""><?= $params['products'][$orderLine->getProductId()]->getName() ?></a>
 							</div>
-							<div class="row justify-content-end m-0">
-								<div class="quantity-container d-flex w-auto">
-									<span class="m-0 mx-3">Amount: <?= $orderLine->getAmount() ?></span>
+							<div class="row justify-content-lg-end justify-content-start m-0">
+								<div class="quantity-container d-flex w-auto mb-lg-0 mb-3">
+									<span class="m-0 mx-lg-3">Amount: <?= $orderLine->getAmount() ?></span>
 									<span class="ms-5 m-0">Price:
 										<?= number_format($orderLine->getUnitPrice() * $orderLine->getAmount(), 2) ?>€</span>
 								</div>
@@ -50,8 +51,8 @@
 				<tr>
 					<th>ID</th>
 					<th>Date</th>
-					<th>Amount of products</th>
-					<th>Total price</th>
+					<th class="d-lg-table-cell d-none">Amount of products</th>
+					<th class="d-lg-table-cell d-none">Total price</th>
 					<th>Status</th>
 					<th>Actions</th>
 				</tr>
@@ -67,8 +68,8 @@
 					<tr>
 						<td><?= $order->getOrderId() ?></td>
 						<td><?= date('d-m-Y', strtotime($order->getDate())) ?></td>
-						<td><?= $totalAmount ?> products</td>
-						<td><?= number_format($totalPrice + $totalPrice * 0.1, 2) ?>€</td>
+						<td class="d-lg-table-cell d-none"><?= $totalAmount ?> products</td>
+						<td class="d-lg-table-cell d-none"><?= number_format($totalPrice + $totalPrice * 0.1, 2) ?>€</td>
 						<td><?= $order->getStatus() ?></td>
 						<td><a href="<?= url('orders/show/' . $order->getOrderId()) ?>"><i class="bi bi-eye-fill"></i></a></td>
 					</tr>

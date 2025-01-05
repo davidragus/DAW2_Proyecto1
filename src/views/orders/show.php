@@ -20,8 +20,13 @@
 			</div>
 			<div class="row w-100 mt-3	">
 				<span class="information-text w-auto"><b>Delivery Address:</b>
-					<?= $params['address']->getAddress() ?>, <?= $params['address']->getCity() ?>
-					<?= $params['address']->getCP() ?></span>
+					<?php if (isset($params['address'])): ?>
+						<?= $params['address']->getAddress() ?>, <?= $params['address']->getCity() ?>
+						<?= $params['address']->getCP() ?>
+					<?php else: ?>
+						-
+					<?php endif; ?>
+				</span>
 			</div>
 		</fieldset>
 	</div>
@@ -30,16 +35,17 @@
 		<div class="container py-2">
 			<?php foreach ($params['order']->getOrderLines() as $orderLine): ?>
 				<div class="row cart-row">
-					<img class="p-0" src="<?= images($params['products'][$orderLine->getProductId()]->getImage()) ?>"
+					<img class="p-0 mx-auto mb-lg-0 mb-3"
+						src="<?= images($params['products'][$orderLine->getProductId()]->getImage()) ?>"
 						alt="<?= $params['products'][$orderLine->getProductId()]->getName() ?>">
 					<div class="col d-flex flex-column justify-content-between">
 						<div class="row d-flex align-items-center justify-content-between m-0">
 							<a class="cart-product-name w-auto"
 								href="<?= url('products/show/' . $orderLine->getProductId()) ?>"><?= $params['products'][$orderLine->getProductId()]->getName() ?></a>
 						</div>
-						<div class="row justify-content-end m-0">
-							<div class="quantity-container d-flex w-auto">
-								<span class="m-0 mx-3">Amount: <?= $orderLine->getAmount() ?></span>
+						<div class="row justify-content-lg-end justify-content-start m-0">
+							<div class="quantity-container d-flex w-auto mb-lg-0 mb-3">
+								<span class="m-0 mx-lg-3">Amount: <?= $orderLine->getAmount() ?></span>
 								<span class="ms-5 m-0">Price:
 									<?= number_format($orderLine->getUnitPrice() * $orderLine->getAmount(), 2) ?>€</span>
 							</div>
@@ -51,10 +57,12 @@
 			<?php $taxPrice = $productsPrice * 0.1; ?>
 		</div>
 	</div>
-	<div class="container amount-container w-auto d-flex flex-column align-items-end py-4 mb-3 mx-0">
-		<h2 class="dark">Total amount</h2>
-		<span>Products price: <?= number_format($productsPrice, 2) ?>€</span>
-		<span>Taxes (10%): <?= number_format($taxPrice, 2) ?>€</span>
-		<span class="total-price pt-2">Total price: <?= number_format($productsPrice + $taxPrice, 2) ?>€</span>
+	<div class="d-flex justify-content-lg-end justify-content-center">
+		<div class="container amount-container w-auto d-flex flex-column align-items-end py-4 mb-3 mx-lg-0 mx-auto">
+			<h2 class="dark">Total amount</h2>
+			<span>Products price: <?= number_format($productsPrice, 2) ?>€</span>
+			<span>Taxes (10%): <?= number_format($taxPrice, 2) ?>€</span>
+			<span class="total-price pt-2">Total price: <?= number_format($productsPrice + $taxPrice, 2) ?>€</span>
+		</div>
 	</div>
 </main>

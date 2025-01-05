@@ -1,6 +1,6 @@
 <main class="container body-content login-form-container w-100 py-5">
 	<div class="row justify-content-center">
-		<div class="col-4 login-form bg-black py-5 px-3 d-flex flex-column align-items-center"
+		<div class="col-lg-4 login-form bg-black py-5 px-3 d-flex flex-column align-items-center"
 			style="--bs-bg-opacity: .9;">
 			<h1 class="text-white">Sign Up</h1>
 			<?php if (isset($_SESSION['error'])): ?>
@@ -12,14 +12,14 @@
 			<form method="post" action="<?= url('users/register') ?>"
 				class="d-flex flex-column align-items-center my-2 w-75">
 				<div class="row mb-3 w-100">
-					<div class="col">
+					<div class="col-lg-6 col-12 mb-lg-0 mb-3">
 						<div class="form-floating">
 							<input type="text" class="form-control" id="firstNameInput" name="firstName"
 								placeholder="John" maxlength="30" required>
 							<label for="firstNameInput">First Name</label>
 						</div>
 					</div>
-					<div class="col">
+					<div class="col-lg-6 col-12">
 						<div class="form-floating">
 							<input type="text" class="form-control" id="lastNameInput" name="lastName" placeholder="Doe"
 								maxlength="60" required>
@@ -37,14 +37,14 @@
 					</div>
 				</div>
 				<div class="row mb-3 w-100">
-					<div class="col">
+					<div class="col-lg-6 col-12 mb-lg-0 mb-3">
 						<div class="form-floating">
 							<input type="password" class="form-control" id="passwordInput" name="password"
 								placeholder="Password" required>
 							<label for="passwordInput">Password</label>
 						</div>
 					</div>
-					<div class="col">
+					<div class="col-lg-6 col-12">
 						<div class="form-floating">
 							<input type="password" class="form-control" id="confirmPasswordInput" name="confirmPassword"
 								placeholder="Confirm Password" required>

@@ -22,21 +22,21 @@
 					<?php unset($_SESSION['dataUpdateSuccess']) ?>
 				<?php endif; ?>
 				<div class="row w-100 mb-4">
-					<div class="col-4">
+					<div class="col-lg-4 col-12 mb-lg-0 mb-3">
 						<div class="form-floating">
 							<input type="text" class="form-control" id="firstName" name="firstName"
 								value="<?= $params['user']->getFirstName() ?>">
 							<label for="firstName">First name</label>
 						</div>
 					</div>
-					<div class="col-4">
+					<div class="col-lg-4 col-12 mb-lg-0 mb-3">
 						<div class="form-floating">
 							<input type="text" class="form-control" id="lastName" name="lastName"
 								value="<?= $params['user']->getLastName() ?>">
 							<label for="lastName">Last name</label>
 						</div>
 					</div>
-					<div class="col-4">
+					<div class="col-lg-4 col-12 mb-lg-0">
 						<div class="form-floating">
 							<input type="email" class="form-control" id="email" name="email"
 								value="<?= $params['user']->getEmail() ?>">
@@ -69,20 +69,20 @@
 					<?php unset($_SESSION['passwordSuccess']) ?>
 				<?php endif; ?>
 				<div class="row w-100 mb-4">
-					<div class="col-4">
+					<div class="col-lg-4 col-12 mb-lg-0 mb-3">
 						<div class="form-floating">
 							<input type="password" class="form-control" id="currentPassword" name="currentPassword"
 								required>
 							<label for="currentPassword">Current password</label>
 						</div>
 					</div>
-					<div class="col-4">
+					<div class="col-lg-4 col-12 mb-lg-0 mb-3">
 						<div class="form-floating">
 							<input type="password" class="form-control" id="newPassword" name="newPassword" required>
 							<label for="newPassword">New password</label>
 						</div>
 					</div>
-					<div class="col-4">
+					<div class="col-lg-4 col-12 mb-lg-0">
 						<div class="form-floating">
 							<input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
 								required>

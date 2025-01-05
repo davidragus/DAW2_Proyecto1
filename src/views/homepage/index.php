@@ -8,7 +8,7 @@
 		</div>
 	</div>
 	<article class="container first-banner mb-5">
-		<div class="container d-flex flex-column justify-content-between w-50 h-100 m-0 p-5">
+		<div class="container d-flex flex-column justify-content-between w-lg-50 h-100 m-0 p-lg-5 py-5">
 			<div>
 				<h2 class="text-light">New ordering system</h2>
 				<p class="text-light">The new ordering system is now launched. Order now to have supplies for your next
@@ -20,7 +20,7 @@
 		</div>
 	</article>
 	<article class="container second-banner mb-5">
-		<div class="container d-flex flex-column justify-content-between w-50 h-100 m-0 p-5">
+		<div class="container d-flex flex-column justify-content-between w-lg-50 h-100 m-0 p-lg-5 py-5">
 			<div>
 				<h2 class="text-light">Sign up!</h2>
 				<p class="text-light">Create an account if you want to be able to create orders!</p>
