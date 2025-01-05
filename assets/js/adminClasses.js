@@ -186,8 +186,7 @@ class Order {
 	}
 
 	formatDate(date) {
-		let dateFormatted = new Date(date);
-		dateFormatted = dateFormatted.toLocaleDateString('es-ES', {
+		let dateFormatted = new Date(date).toLocaleDateString('es-ES', {
 			day: '2-digit',
 			month: '2-digit',
 			year: 'numeric',
@@ -213,5 +212,56 @@ class Address {
 		this.city = city;
 		this.cp = cp;
 		this.address = address;
+	}
+}
+
+class Log {
+	constructor({ log_id, user_id, action, type, id, timestamp }) {
+		this.log_id = log_id;
+		this.user_id = user_id;
+		this.action = action;
+		this.type = type;
+		this.id = id;
+		this.timestamp = timestamp;
+	}
+
+	createRowOfData(users) {
+		const logRow = document.createElement('tr');
+		logRow.className = 'data-row';
+		const desiredCells = {
+			date: this.formatDate(this.timestamp),
+			user: this.user_id,
+			action: this.action,
+			type: this.type,
+			id: this.id
+		};
+
+		Object.entries(desiredCells).forEach(([key, value]) => {
+			const logCell = document.createElement('td');
+			if (key == 'user') {
+				logCell.innerHTML = users[value];
+			} else if (key == 'total_price') {
+				logCell.innerHTML = value + '€';
+				logCell.classList.add('price-cell');
+			} else {
+				logCell.innerHTML = value;
+			}
+			logRow.appendChild(logCell);
+		});
+
+		return logRow;
+	}
+
+	formatDate(date) {
+		let dateFormatted = new Date(date).toLocaleString('es-ES', {
+			day: '2-digit',
+			month: '2-digit',
+			year: 'numeric',
+			hour: '2-digit',
+			minute: '2-digit',
+			second: '2-digit',
+			hour12: false
+		}).replace(/\//g, '-');
+		return dateFormatted;
 	}
 }

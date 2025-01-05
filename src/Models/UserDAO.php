@@ -93,6 +93,19 @@ abstract class UserDAO
 		return $users;
 	}
 
+	public static function getAdminsArray()
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("SELECT * FROM users WHERE role = 'ADMIN'");
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$users = [];
+		while ($rows = $result->fetch_object("App\\Models\\User")) {
+			$users[] = $rows->toArray();
+		}
+		return $users;
+	}
+
 	public static function getUserArrayById($id)
 	{
 		$conn = DBConnection::connect();

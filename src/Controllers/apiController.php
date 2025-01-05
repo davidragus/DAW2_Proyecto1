@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\LogDAO;
 use Exception;
 
 header("Access-Control-Allow-Origin: *");
@@ -22,6 +23,16 @@ class apiController
 	public function getUsers()
 	{
 		$users = UserDAO::getUsersArray();
+
+		echo json_encode([
+			'status' => 'success',
+			'data' => $users
+		]);
+	}
+
+	public function getAdmins()
+	{
+		$users = UserDAO::getAdminsArray();
 
 		echo json_encode([
 			'status' => 'success',
@@ -64,6 +75,7 @@ class apiController
 			}
 
 			$response = UserDAO::insertNewUser($data);
+			LogDAO::insertLog($_SESSION[USER_SESSION_VAR], 'CREATE', 'USER', $response);
 			echo json_encode([
 				'status' => 'success',
 				'data' => $response
@@ -91,6 +103,7 @@ class apiController
 			}
 
 			$response = UserDAO::updateUser($data);
+			LogDAO::insertLog($_SESSION[USER_SESSION_VAR], 'UPDATE', 'USER', $response);
 			echo json_encode([
 				'status' => 'success',
 				'data' => $response
@@ -109,6 +122,7 @@ class apiController
 		$data = json_decode(file_get_contents('php://input'), true);
 		try {
 			UserDAO::resetUserPassword($data);
+			LogDAO::insertLog($_SESSION[USER_SESSION_VAR], 'UPDATE', 'USER', $data);
 			echo json_encode([
 				'status' => 'success',
 				'data' => 'Password resetted to "Tavernkeeper1"'
@@ -134,6 +148,7 @@ class apiController
 		}
 		try {
 			UserDAO::deleteUserById($data);
+			LogDAO::insertLog($_SESSION[USER_SESSION_VAR], 'DELETE', 'USER', $data);
 			echo json_encode([
 				'status' => 'success',
 				'data' => 'User deleted successfully'
@@ -163,6 +178,7 @@ class apiController
 		try {
 
 			$response = ProductDAO::insertNewProduct($data);
+			LogDAO::insertLog($_SESSION[USER_SESSION_VAR], 'CREATE', 'PRODUCT', $response);
 			echo json_encode([
 				'status' => 'success',
 				'data' => $response
@@ -181,6 +197,7 @@ class apiController
 		$data = json_decode(file_get_contents('php://input'), true);
 		try {
 			$response = ProductDAO::updateProduct($data);
+			LogDAO::insertLog($_SESSION[USER_SESSION_VAR], 'UPDATE', 'PRODUCT', $response);
 			echo json_encode([
 				'status' => 'success',
 				'data' => $response
@@ -220,6 +237,7 @@ class apiController
 		$data = json_decode(file_get_contents('php://input'), true);
 		try {
 			ProductDAO::deleteProductById($data);
+			LogDAO::insertLog($_SESSION[USER_SESSION_VAR], 'DELETE', 'PRODUCT', $data);
 			echo json_encode([
 				'status' => 'success',
 				'data' => 'Product deleted successfully'
@@ -359,6 +377,7 @@ class apiController
 		$data = json_decode(file_get_contents('php://input'), true);
 		try {
 			OrderDAO::deleteOrderById($data);
+			LogDAO::insertLog($_SESSION[USER_SESSION_VAR], 'DELETE', 'ORDER', $data);
 			echo json_encode([
 				'status' => 'success',
 				'data' => 'Order deleted successfully'
@@ -377,6 +396,7 @@ class apiController
 		$data = json_decode(file_get_contents('php://input'), true);
 		try {
 			$order = OrderDAO::updateOrderStatus($data);
+			LogDAO::insertLog($_SESSION[USER_SESSION_VAR], 'UPDATE', 'ORDER', $order);
 			echo json_encode([
 				'status' => 'success',
 				'data' => $order
@@ -388,6 +408,16 @@ class apiController
 				'data' => 'An unexpected error occurred'
 			]);
 		}
+	}
+
+	public function getLogs()
+	{
+		$logs = LogDAO::getLogsArray();
+
+		echo json_encode([
+			'status' => 'success',
+			'data' => $logs
+		]);
 	}
 
 }

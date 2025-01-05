@@ -6,17 +6,22 @@
 				<ul class="navbar-nav d-flex justify-content-between">
 					<li class="nav-item d-flex align-items-center px-2">
 						<a class="nav-link d-flex align-items-center p-0 <?= $_GET['action'] == 'products' ? 'active' : '' ?>"
-							href="<?= url('admin/products') ?>"><span>MANAGE PRODUCTS</span><i
+							href="<?= url('admin/products') ?>"><span>PRODUCTS</span><i
 								class="bi bi-chevron-right d-none"></i></a>
 					</li>
 					<li class="nav-item d-flex align-items-center px-2">
 						<a class="nav-link d-flex align-items-center p-0 <?= $_GET['action'] == 'orders' ? 'active' : '' ?>"
-							href="<?= url('admin/orders') ?>"><span>MANAGE ORDERS</span><i
+							href="<?= url('admin/orders') ?>"><span>ORDERS</span><i
 								class="bi bi-chevron-right d-none"></i></a>
 					</li>
 					<li class="nav-item d-flex align-items-center px-2">
 						<a class="nav-link d-flex align-items-center p-0 <?= $_GET['action'] == 'users' ? 'active' : '' ?>"
-							href="<?= url('admin/users') ?>"><span>MANAGE USERS</span><i
+							href="<?= url('admin/users') ?>"><span>USERS</span><i
+								class="bi bi-chevron-right d-none"></i></a>
+					</li>
+					<li class="nav-item d-flex align-items-center px-2">
+						<a class="nav-link d-flex align-items-center p-0 <?= $_GET['action'] == 'logs' ? 'active' : '' ?>"
+							href="<?= url('admin/logs') ?>"><span>LOGS</span><i
 								class="bi bi-chevron-right d-none"></i></a>
 					</li>
 				</ul>
