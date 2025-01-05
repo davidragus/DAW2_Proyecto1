@@ -18,6 +18,11 @@ class adminController extends commonController
 			exit;
 		}
 
+		if (!checkSessionVarValue(ROLE_SESSION_VAR, 'ADMIN')) {
+			redirect("");
+			exit;
+		}
+
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
@@ -33,6 +38,10 @@ class adminController extends commonController
 	{
 		if (!checkSessionVar(USER_SESSION_VAR)) {
 			redirect("users/login");
+			exit;
+		}
+		if (!checkSessionVarValue(ROLE_SESSION_VAR, 'ADMIN')) {
+			redirect("");
 			exit;
 		}
 
@@ -53,6 +62,10 @@ class adminController extends commonController
 			redirect("users/login");
 			exit;
 		}
+		if (!checkSessionVarValue(ROLE_SESSION_VAR, 'ADMIN')) {
+			redirect("");
+			exit;
+		}
 
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
@@ -71,6 +84,10 @@ class adminController extends commonController
 			redirect("users/login");
 			exit;
 		}
+		if (!checkSessionVarValue(ROLE_SESSION_VAR, 'ADMIN')) {
+			redirect("");
+			exit;
+		}
 
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
@@ -87,6 +104,10 @@ class adminController extends commonController
 	{
 		if (!checkSessionVar(USER_SESSION_VAR)) {
 			redirect("users/login");
+			exit;
+		}
+		if (!checkSessionVarValue(ROLE_SESSION_VAR, 'ADMIN')) {
+			redirect("");
 			exit;
 		}
 
@@ -109,6 +130,10 @@ class adminController extends commonController
 			redirect("users/login");
 			exit;
 		}
+		if (!checkSessionVarValue(ROLE_SESSION_VAR, 'ADMIN')) {
+			redirect("");
+			exit;
+		}
 
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
@@ -124,6 +149,10 @@ class adminController extends commonController
 	{
 		if (!checkSessionVar(USER_SESSION_VAR)) {
 			redirect("users/login");
+			exit;
+		}
+		if (!checkSessionVarValue(ROLE_SESSION_VAR, 'ADMIN')) {
+			redirect("");
 			exit;
 		}
 
@@ -144,6 +173,10 @@ class adminController extends commonController
 			redirect("users/login");
 			exit;
 		}
+		if (!checkSessionVarValue(ROLE_SESSION_VAR, 'ADMIN')) {
+			redirect("");
+			exit;
+		}
 
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
@@ -160,6 +193,10 @@ class adminController extends commonController
 	{
 		if (!checkSessionVar(USER_SESSION_VAR)) {
 			redirect("users/login");
+			exit;
+		}
+		if (!checkSessionVarValue(ROLE_SESSION_VAR, 'ADMIN')) {
+			redirect("");
 			exit;
 		}
 
@@ -180,6 +217,10 @@ class adminController extends commonController
 			redirect("users/login");
 			exit;
 		}
+		if (!checkSessionVarValue(ROLE_SESSION_VAR, 'ADMIN')) {
+			redirect("");
+			exit;
+		}
 
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
@@ -196,6 +237,10 @@ class adminController extends commonController
 	{
 		if (!checkSessionVar(USER_SESSION_VAR)) {
 			redirect("users/login");
+			exit;
+		}
+		if (!checkSessionVarValue(ROLE_SESSION_VAR, 'ADMIN')) {
+			redirect("");
 			exit;
 		}
 
@@ -216,6 +261,10 @@ class adminController extends commonController
 			redirect("users/login");
 			exit;
 		}
+		if (!checkSessionVarValue(ROLE_SESSION_VAR, 'ADMIN')) {
+			redirect("");
+			exit;
+		}
 
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
@@ -234,6 +283,10 @@ class adminController extends commonController
 	{
 		if (!checkSessionVar(USER_SESSION_VAR)) {
 			redirect("users/login");
+			exit;
+		}
+		if (!checkSessionVarValue(ROLE_SESSION_VAR, 'ADMIN')) {
+			redirect("");
 			exit;
 		}
 
