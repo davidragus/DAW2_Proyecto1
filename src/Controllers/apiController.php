@@ -354,4 +354,40 @@ class apiController
 		]);
 	}
 
+	public function deleteOrder()
+	{
+		$data = json_decode(file_get_contents('php://input'), true);
+		try {
+			OrderDAO::deleteOrderById($data);
+			echo json_encode([
+				'status' => 'success',
+				'data' => 'Order deleted successfully'
+			]);
+		} catch (Exception $exception) {
+			http_response_code(500);
+			echo json_encode([
+				'status' => 'error',
+				'data' => 'An unexpected error occurred'
+			]);
+		}
+	}
+
+	public function updateStatus()
+	{
+		$data = json_decode(file_get_contents('php://input'), true);
+		try {
+			$order = OrderDAO::updateOrderStatus($data);
+			echo json_encode([
+				'status' => 'success',
+				'data' => $order
+			]);
+		} catch (Exception $exception) {
+			http_response_code(500);
+			echo json_encode([
+				'status' => 'error',
+				'data' => 'An unexpected error occurred'
+			]);
+		}
+	}
+
 }

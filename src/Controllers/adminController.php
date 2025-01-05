@@ -138,7 +138,7 @@ class adminController extends commonController
 		view('template', $pageParams);
 	}
 
-	public function editOrder()
+	public function editOrderStatus()
 	{
 		if (!checkSessionVar(USER_SESSION_VAR)) {
 			redirect("users/login");
@@ -148,7 +148,7 @@ class adminController extends commonController
 		$pageParams = [
 			'pageTitle' => "Tiefling's Tavern",
 			'pageHeader' => $this->pageHeader,
-			'pageContent' => 'admin/orders/orders',
+			'pageContent' => 'admin/orders/common/orderForm',
 			'pageFooter' => $this->pageFooter,
 			'variables' => []
 		];

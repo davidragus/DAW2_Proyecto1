@@ -145,7 +145,7 @@ async function insertOrUpdateProduct() {
 			if (responseJson.status == 'error') {
 				throw new Error(responseJson.data);
 			}
-			const message = apiFunction == 'updateProducts' ? 'Product updated successfully' : 'Product created successfully.';
+			const message = apiFunction == 'updateProduct' ? 'Product updated successfully' : 'Product created successfully.';
 			sessionStorage.setItem("confirmationMessage", message);
 			const redirectUrl = new URL(`http://www.tieflingstavern.com/admin/showProduct/${responseJson.data}`);
 			window.location.replace(redirectUrl);

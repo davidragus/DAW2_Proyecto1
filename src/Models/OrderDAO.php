@@ -116,4 +116,22 @@ abstract class OrderDAO
 		$stmt->execute();
 	}
 
+	public static function deleteOrderById($orderId)
+	{
+		$conn = DBConnection::connect();
+		OrderLineDAO::deleteOrderLinesByOrderId($orderId);
+		$stmt = $conn->prepare("DELETE FROM orders WHERE order_id = ?");
+		$stmt->bind_param("i", $orderId);
+		$stmt->execute();
+	}
+
+	public static function updateOrderStatus($data)
+	{
+		$conn = DBConnection::connect();
+		$stmt = $conn->prepare("UPDATE orders SET status = ? WHERE order_id = ?");
+		$params = array_values($data);
+		$stmt->bind_param("si", ...$params);
+		$stmt->execute();
+		return $params[count($params) - 1];
+	}
 }

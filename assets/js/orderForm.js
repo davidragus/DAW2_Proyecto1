@@ -1,4 +1,5 @@
 const API_URL = new URL('http://www.tieflingstavern.com/api/');
+const orderForm = document.getElementById('orderForm');
 const urlParams = document.location.pathname.split('/');
 const searchParam = new URLSearchParams({
 	id: urlParams[urlParams.length - 1]
@@ -10,17 +11,19 @@ const orderIdElement = document.getElementById('orderId');
 const userElement = document.getElementById('user');
 const dateElement = document.getElementById('date');
 const addressElement = document.getElementById('address');
-const statusElement = document.getElementById('status');
+const statusInputElement = document.getElementById('status');
 const orderLinesContainerElement = document.getElementById('orderLinesContainer');
 const productsPriceElement = document.getElementById('productsPrice');
 const taxesPriceElement = document.getElementById('taxesPrice');
 const totalPriceElement = document.getElementById('totalPrice');
 
 document.addEventListener('DOMContentLoaded', async (e) => {
-	if (sessionStorage.getItem('confirmationMessage')) {
-		displayConfirmMessage();
-	}
 	await getOrder();
+});
+
+orderForm.addEventListener('submit', async (ev) => {
+	ev.preventDefault();
+	await updateStatus();
 });
 
 async function getOrder() {
@@ -73,7 +76,7 @@ async function modifyDom(jsonResponse) {
 	userElement.innerHTML += user.email;
 	dateElement.innerHTML += order.formatDate(order.date);
 	addressElement.innerHTML += address ? `${address.address}, ${address.city} ${address.cp}` : '-';
-	statusElement.innerHTML += order.status;
+	statusInputElement.value = order.status;
 
 	for (const orderline of order.order_lines) {
 		const product = new Product(await getProduct(orderline.product_id));
@@ -127,16 +130,30 @@ async function modifyDom(jsonResponse) {
 	totalPriceElement.innerHTML += `${(productsPrice + (productsPrice * 0.1)).toFixed(2)}€`;
 }
 
-function displayConfirmMessage() {
-	const confirmationContainer = document.createElement('div');
-	confirmationContainer.className = 'row success-container w-100 py-2 mb-2 d-flex justify-content-center';
+async function updateStatus() {
+	const formData = new FormData(orderForm);
+	let data = {
+		status: formData.get('status'),
+		order_id: searchParam.get('id')
+	};
 
-	const confirmationMessage = document.createElement('p');
-	confirmationMessage.className = 'm-0 w-auto text-light';
-	confirmationMessage.innerHTML = sessionStorage.getItem('confirmationMessage');
-
-	confirmationContainer.appendChild(confirmationMessage);
-	document.getElementById('orderData').prepend(confirmationContainer);
-
-	sessionStorage.removeItem("confirmationMessage");
+	const url = new URL(`${API_URL}updateStatus`);
+	const response = await fetch(url, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(data)
+	})
+		.then(response => response.json())
+		.then(responseJson => {
+			if (responseJson.status == 'error') {
+				throw new Error(responseJson.data);
+			}
+			const message = 'Status updated successfully.';
+			sessionStorage.setItem("confirmationMessage", message);
+			const redirectUrl = new URL(`http://www.tieflingstavern.com/admin/showOrder/${responseJson.data}`);
+			window.location.replace(redirectUrl);
+		})
+		.catch(error => alert(error));
 }

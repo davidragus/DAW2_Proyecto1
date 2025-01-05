@@ -156,13 +156,17 @@ class Order {
 		showOrderButton.appendChild(showOrderIcon);
 
 		const editOrderButton = document.createElement('a');
+		editOrderButton.href = `${baseUrl}/admin/editOrderStatus/${this.id}`;
 		const editOrderIcon = document.createElement('i');
 		editOrderIcon.classList.add('edit-button', 'bi', 'bi-pencil-fill', 'mx-1');
 		editOrderButton.appendChild(editOrderIcon);
 
 		const deleteOrderButton = document.createElement('a');
+		deleteOrderButton.href = '';
+		deleteOrderButton.setAttribute('orderId', this.id);
+		deleteOrderButton.classList.add('delete-button');
 		const deleteOrderIcon = document.createElement('i');
-		deleteOrderIcon.classList.add('delete-button', 'bi', 'bi-trash-fill', 'mx-1');
+		deleteOrderIcon.classList.add('bi', 'bi-trash-fill', 'mx-1');
 		deleteOrderButton.appendChild(deleteOrderIcon);
 
 		const actionsCell = document.createElement('td');

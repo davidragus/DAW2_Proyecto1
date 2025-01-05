@@ -18,7 +18,22 @@
 			</div>
 			<div class="row w-100">
 				<span class="information-text w-auto me-3" id="address"><b>Address:</b> </span>
-				<span class="information-text w-auto me-3" id="status"><b>Status:</b> </span>
+				<form method="post" action="" class="w-auto" id="orderForm">
+					<div class="col">
+						<div class="form-floating">
+							<select class="form-select" id="status" name="status">
+								<option value="CANCELLED">CANCELLED</option>
+								<option value="PENDING">PENDING</option>
+								<option value="DELIVERED">DELIVERED</option>
+							</select>
+							<label for="status">Status</label>
+						</div>
+					</div>
+				</form>
+				<div class="col">
+					<button class="btn btn-primary rounded-0 col mx-2" form="orderForm" type="submit">SAVE
+						ORDER</button>
+				</div>
 			</div>
 		</fieldset>
 	</div>
@@ -37,4 +52,4 @@
 	</div>
 </main>
 <script src="<?= js('adminClasses') ?>"></script>
-<script src="<?= js('orderShow') ?>"></script>
+<script src="<?= js('orderForm') ?>"></script>

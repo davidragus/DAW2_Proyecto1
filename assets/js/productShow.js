@@ -14,6 +14,9 @@ const unitPriceElement = document.getElementById('unitPrice');
 const descriptionElement = document.getElementById('description');
 
 document.addEventListener('DOMContentLoaded', async (e) => {
+	if (sessionStorage.getItem('confirmationMessage')) {
+		displayConfirmMessage();
+	}
 	await getProduct();
 });
 
@@ -65,4 +68,18 @@ async function modifyDom(jsonResponse, categoryData, subcategoryData = null) {
 	onlyAdultsElement.innerHTML += product.adults_only ? 'Yes' : 'No';
 	unitPriceElement.innerHTML += product.price + '€';
 	descriptionElement.innerHTML += product.description;
+}
+
+function displayConfirmMessage() {
+	const confirmationContainer = document.createElement('div');
+	confirmationContainer.className = 'row success-container w-100 py-2 mb-2 d-flex justify-content-center';
+
+	const confirmationMessage = document.createElement('p');
+	confirmationMessage.className = 'm-0 w-auto text-light';
+	confirmationMessage.innerHTML = sessionStorage.getItem('confirmationMessage');
+
+	confirmationContainer.appendChild(confirmationMessage);
+	document.getElementById('productData').prepend(confirmationContainer);
+
+	sessionStorage.removeItem("confirmationMessage");
 }
