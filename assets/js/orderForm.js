@@ -1,4 +1,5 @@
 const API_URL = new URL('http://www.tieflingstavern.com/api/');
+const CURRENCY_API_URL = new URL('https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_mkNxscddgzGXvN8olFxoM3jPMgTIHXLWk0EfPwHF&currencies=EUR%2CUSD%2CCAD%2CAUD&base_currency=EUR');
 const orderForm = document.getElementById('orderForm');
 const urlParams = document.location.pathname.split('/');
 const searchParam = new URLSearchParams({
@@ -16,6 +17,24 @@ const orderLinesContainerElement = document.getElementById('orderLinesContainer'
 const productsPriceElement = document.getElementById('productsPrice');
 const taxesPriceElement = document.getElementById('taxesPrice');
 const totalPriceElement = document.getElementById('totalPrice');
+
+let priceInEuro = [];
+
+document.getElementById('changeCurrency').addEventListener('change', async function (e) {
+	const response = await fetch(CURRENCY_API_URL)
+		.then(response => response.json())
+		.then(responseJson => {
+			const data = responseJson.data;
+			const prices = document.getElementsByClassName('price');
+			const currencySymbol = { 'EUR': '€', 'USD': '$', 'CAD': 'C$', 'AUD': 'A$' };
+			for (let i = 0; i < priceInEuro.length; i++) {
+				prices[i].innerHTML = 'Price: ' + (priceInEuro * data[document.getElementById('changeCurrency').value]).toFixed(2) + currencySymbol[document.getElementById('changeCurrency').value];
+			}
+			productsPriceElement.innerHTML = 'Products price: ' + (productsPrice * data[document.getElementById('changeCurrency').value]).toFixed(2) + currencySymbol[document.getElementById('changeCurrency').value];
+			taxesPriceElement.innerHTML = 'Taxes (10%): ' + ((productsPrice * 0.1) * data[document.getElementById('changeCurrency').value]).toFixed(2) + currencySymbol[document.getElementById('changeCurrency').value];
+			totalPriceElement.innerHTML = 'Total price: ' + ((productsPrice + (productsPrice * 0.1)) * data[document.getElementById('changeCurrency').value]).toFixed(2) + currencySymbol[document.getElementById('changeCurrency').value];
+		});
+});
 
 document.addEventListener('DOMContentLoaded', async (e) => {
 	await getOrder();
@@ -111,8 +130,9 @@ async function modifyDom(jsonResponse) {
 		amountElement.classList = 'm-0 mx-3';
 		amountElement.innerHTML = `Amount: ${orderline.quantity}`;
 		const priceElement = document.createElement('span');
-		priceElement.classList = 'ms-5 m-0';
+		priceElement.classList = 'ms-5 m-0 price';
 		priceElement.innerHTML = `Price: ${(orderline.unit_price * orderline.quantity).toFixed(2)}€`;
+		priceInEuro.push((orderline.unit_price * orderline.quantity));
 		productQuantityContainer.appendChild(amountElement);
 		productQuantityContainer.appendChild(priceElement);
 		productQuantityRow.appendChild(productQuantityContainer);

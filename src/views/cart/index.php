@@ -26,7 +26,7 @@
 										class="offer-value d-flex align-items-center px-2 mx-2"><?= $data['isPercentage'] ? intval($data['offerValue']) . '%' : $data['offerValue'] . '€' ?></span>
 								<?php endif; ?>
 								<span
-									class="m-0"><?= isset($data['offerPrice']) ? number_format(round($data['offerPrice'], 2, PHP_ROUND_HALF_DOWN), 2) : $data['price'] ?>€</span>
+									class="m-0 ms-5"><?= isset($data['offerPrice']) ? number_format(round($data['offerPrice'], 2, PHP_ROUND_HALF_DOWN), 2) : $data['price'] ?>€</span>
 							</div>
 						</div>
 					</div>

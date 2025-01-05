@@ -1,8 +1,11 @@
 const API_URL = new URL('http://www.tieflingstavern.com/api/');
+const CURRENCY_API_URL = new URL('https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_mkNxscddgzGXvN8olFxoM3jPMgTIHXLWk0EfPwHF&currencies=EUR%2CUSD%2CCAD%2CAUD&base_currency=EUR');
 const urlParams = document.location.pathname.split('/');
 const searchParam = new URLSearchParams({
 	id: urlParams[urlParams.length - 1]
 });
+
+let priceInEuro = 0;
 
 const imageElement = document.getElementById('image');
 const productIdElement = document.getElementById('productId');
@@ -12,6 +15,16 @@ const subcategoryElement = document.getElementById('subcategory');
 const onlyAdultsElement = document.getElementById('onlyAdults');
 const unitPriceElement = document.getElementById('unitPrice');
 const descriptionElement = document.getElementById('description');
+
+document.getElementById('changeCurrency').addEventListener('change', async function (e) {
+	const response = await fetch(CURRENCY_API_URL)
+		.then(response => response.json())
+		.then(responseJson => {
+			const data = responseJson.data;
+			const currencySymbol = { 'EUR': '€', 'USD': '$', 'CAD': 'C$', 'AUD': 'A$' };
+			unitPriceElement.innerHTML = '<b>Price:</b> ' + (priceInEuro * data[document.getElementById('changeCurrency').value]).toFixed(2) + currencySymbol[document.getElementById('changeCurrency').value];
+		});
+});
 
 document.addEventListener('DOMContentLoaded', async (e) => {
 	if (sessionStorage.getItem('confirmationMessage')) {
@@ -67,6 +80,7 @@ async function modifyDom(jsonResponse, categoryData, subcategoryData = null) {
 	}
 	onlyAdultsElement.innerHTML += product.adults_only ? 'Yes' : 'No';
 	unitPriceElement.innerHTML += product.price + '€';
+	priceInEuro = product.price;
 	descriptionElement.innerHTML += product.description;
 }
 

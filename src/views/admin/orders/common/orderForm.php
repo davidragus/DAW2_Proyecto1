@@ -37,6 +37,17 @@
 			</div>
 		</fieldset>
 	</div>
+	<div class="container d-flex justify-content-end align-items-center mb-2">
+		<div class="form-floating">
+			<select class="form-select" id="changeCurrency" name="currency">
+				<option value="EUR">Euro (€)</option>
+				<option value="USD">United States Dollar ($)</option>
+				<option value="CAD">Canadian Dollar (C$)</option>
+				<option value="AUD">Australian Dollar (A$)</option>
+			</select>
+			<label for="changeCurrency">Currency</label>
+		</div>
+	</div>
 	<div class="container">
 		<div class="container pb-4" id="orderLinesContainer">
 			<div class="mb-3">

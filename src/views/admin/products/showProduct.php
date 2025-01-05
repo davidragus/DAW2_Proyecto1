@@ -7,6 +7,17 @@
 	<div class="row pt-4">
 		<h1 class="dark d-flex justify-content-center">Product Data</h1>
 	</div>
+	<div class="container d-flex justify-content-end align-items-center mb-2">
+		<div class="form-floating">
+			<select class="form-select" id="changeCurrency" name="currency">
+				<option value="EUR">Euro (€)</option>
+				<option value="USD">United States Dollar ($)</option>
+				<option value="CAD">Canadian Dollar (C$)</option>
+				<option value="AUD">Australian Dollar (A$)</option>
+			</select>
+			<label for="changeCurrency">Currency</label>
+		</div>
+	</div>
 	<div class="container" id="productData">
 		<fieldset class="d-flex flex-column px-4 pb-4 mb-5 w-100">
 			<legend class="float-none w-auto">
