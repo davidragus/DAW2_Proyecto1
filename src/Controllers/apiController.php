@@ -293,6 +293,27 @@ class apiController
 		]);
 	}
 
+	public function getAddressById()
+	{
+		if (isset($_GET['id'])) {
+			$address = AddressDAO::getAddressArrayById($_GET['id']);
+
+			if ($address) {
+				echo json_encode([
+					'status' => 'success',
+					'data' => $address
+				]);
+				exit;
+			}
+		}
+
+		http_response_code(404);
+		echo json_encode([
+			'status' => 'error',
+			'data' => 'No address found'
+		]);
+	}
+
 	public function uploadImage()
 	{
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -310,6 +331,27 @@ class apiController
 				}
 			}
 		}
+	}
+
+	public function getOrderById()
+	{
+		if (isset($_GET['id'])) {
+			$order = OrderDAO::getOrderArrayById($_GET['id']);
+
+			if ($order) {
+				echo json_encode([
+					'status' => 'success',
+					'data' => $order
+				]);
+				exit;
+			}
+		}
+
+		http_response_code(404);
+		echo json_encode([
+			'status' => 'error',
+			'data' => 'No order found'
+		]);
 	}
 
 }

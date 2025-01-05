@@ -5,7 +5,7 @@
 	</div>
 	<div class="row py-4">
 		<div class="container">
-			<div class="row d-flex justify-content-around">
+			<div class="row d-flex justify-content-around mb-4">
 				<a class="card rounded-0 border-0 p-0 py-4 col-3" href="<?= url('admin/products') ?>">
 					<div class="card-body d-flex align-items-center justify-content-center px-3">
 						<h3 class="dark card-text text-center">Manage products</h3>
@@ -19,6 +19,13 @@
 				<a class="card rounded-0 border-0 p-0 py-4 col-3" href="<?= url('admin/users') ?>">
 					<div class="card-body d-flex align-items-center justify-content-center px-3">
 						<h3 class="dark card-text text-center">Manage users</h3>
+					</div>
+				</a>
+			</div>
+			<div class="row d-flex justify-content-around">
+				<a class="card rounded-0 border-0 p-0 py-4 col-3" href="<?= url('admin/logs') ?>">
+					<div class="card-body d-flex align-items-center justify-content-center px-3">
+						<h3 class="dark card-text text-center">Show logs</h3>
 					</div>
 				</a>
 			</div>

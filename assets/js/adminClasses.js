@@ -147,21 +147,26 @@ class Order {
 			orderRow.appendChild(orderCell);
 		});
 
-		const showUserButton = document.createElement('a');
-		const showUserIcon = document.createElement('i');
-		showUserIcon.classList.add('show-button', 'bi', 'bi-eye-fill', 'mx-1');
-		showUserButton.appendChild(showUserIcon);
-		const editUserButton = document.createElement('a');
-		const editUserIcon = document.createElement('i');
-		editUserIcon.classList.add('edit-button', 'bi', 'bi-pencil-fill', 'mx-1');
-		editUserButton.appendChild(editUserIcon);
-		const deleteUserButton = document.createElement('a');
-		const deleteUserIcon = document.createElement('i');
-		deleteUserIcon.classList.add('delete-button', 'bi', 'bi-trash-fill', 'mx-1');
-		deleteUserButton.appendChild(deleteUserIcon);
+		const baseUrl = window.location.origin;
+
+		const showOrderButton = document.createElement('a');
+		showOrderButton.href = `${baseUrl}/admin/showOrder/${this.id}`;
+		const showOrderIcon = document.createElement('i');
+		showOrderIcon.classList.add('show-button', 'bi', 'bi-eye-fill', 'mx-1');
+		showOrderButton.appendChild(showOrderIcon);
+
+		const editOrderButton = document.createElement('a');
+		const editOrderIcon = document.createElement('i');
+		editOrderIcon.classList.add('edit-button', 'bi', 'bi-pencil-fill', 'mx-1');
+		editOrderButton.appendChild(editOrderIcon);
+
+		const deleteOrderButton = document.createElement('a');
+		const deleteOrderIcon = document.createElement('i');
+		deleteOrderIcon.classList.add('delete-button', 'bi', 'bi-trash-fill', 'mx-1');
+		deleteOrderButton.appendChild(deleteOrderIcon);
 
 		const actionsCell = document.createElement('td');
-		actionsCell.append(showUserButton, editUserButton, deleteUserButton);
+		actionsCell.append(showOrderButton, editOrderButton, deleteOrderButton);
 		orderRow.appendChild(actionsCell);
 
 		return orderRow;

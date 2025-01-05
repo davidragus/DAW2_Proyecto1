@@ -12,20 +12,24 @@
 		</div>
 	</div>
 	<div class="row pt-4 d-flex justify-content-between">
-		<div class="col-4 card rounded-0 border-0 px-0 d-flex align-items-center">
-			<h2 class="card-product-info w-100 text-center py-3 text-white">Product Information</h2>
-			<div class="container d-flex flex-column align-items-center py-4">
-				<h3 class="card-product-subtitle">Ingredients</h3>
+		<?php //TODO: Agregar alergenos e ingredientes ?>
+		<?php if (false): ?>
+			<div class="col-4 card rounded-0 border-0 px-0 d-flex align-items-center">
+				<h2 class="card-product-info w-100 text-center py-3 text-white">Product Information</h2>
+				<div class="container d-flex flex-column align-items-center py-4">
+					<h3 class="card-product-subtitle">Ingredients</h3>
+				</div>
+				<div class="container d-flex flex-column align-items-center pb-5">
+					<h3 class="card-product-subtitle">Allergens</h3>
+				</div>
 			</div>
-			<div class="container d-flex flex-column align-items-center pb-5">
-				<h3 class="card-product-subtitle">Allergens</h3>
-			</div>
-		</div>
+		<?php endif; ?>
 		<div class="w-auto">
 			<div class="d-flex justify-content-end mb-1">
 				<?php if (isset($params['productInOffer'])): ?>
 					<h4 class="dark m-0 text-decoration-line-through me-2" id="oldPrice">
-						<?= $params['product']->getPrice() ?>€</h4>
+						<?= $params['product']->getPrice() ?>€
+					</h4>
 					<span
 						class="offer-value d-flex align-items-center px-2"><?= $params['productInOffer']['isPercentage'] ? intval($params['productInOffer']['offerValue']) . '%' : $params['productInOffer']['offerValue'] . '€' ?></span>
 				<?php endif; ?>

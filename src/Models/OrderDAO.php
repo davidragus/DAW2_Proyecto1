@@ -36,6 +36,19 @@ abstract class OrderDAO
 		return $order;
 	}
 
+	public static function getOrderArrayById($orderId)
+	{
+		$conn = DBConnection::connect();
+		$query = "SELECT * FROM orders WHERE order_id = ?";
+		$stmt = $conn->prepare($query);
+		$stmt->bind_param("i", $orderId);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$order = $result->fetch_object("App\\Models\\Order");
+		$order->setOrderLines(OrderLineDAO::getOrderLinesArrayByOrderId($orderId));
+		return $order->toArray();
+	}
+
 	public static function insertOrder($productsData, $userId, $addressId)
 	{
 		$conn = DBConnection::connect();

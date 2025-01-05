@@ -63,8 +63,6 @@
 			</select>
 			<label for="changeCurrency">Currency</label>
 		</div>
-		<a class="btn btn-primary btn-primary-small rounded-0 ms-3" href="<?= url('products') ?>"><i
-				class="bi bi-plus-lg"></i>ADD ORDER</a>
 	</div>
 	<table id="ordersTable" class="container admin-table mb-5">
 		<tr>

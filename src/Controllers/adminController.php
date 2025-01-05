@@ -138,23 +138,6 @@ class adminController extends commonController
 		view('template', $pageParams);
 	}
 
-	public function createOrder()
-	{
-		if (!checkSessionVar(USER_SESSION_VAR)) {
-			redirect("users/login");
-			exit;
-		}
-
-		$pageParams = [
-			'pageTitle' => "Tiefling's Tavern",
-			'pageHeader' => $this->pageHeader,
-			'pageContent' => 'admin/orders/orders',
-			'pageFooter' => $this->pageFooter,
-			'variables' => []
-		];
-
-		view('template', $pageParams);
-	}
 	public function editOrder()
 	{
 		if (!checkSessionVar(USER_SESSION_VAR)) {
@@ -246,4 +229,23 @@ class adminController extends commonController
 
 		view('template', $pageParams);
 	}
+
+	public function logs()
+	{
+		if (!checkSessionVar(USER_SESSION_VAR)) {
+			redirect("users/login");
+			exit;
+		}
+
+		$pageParams = [
+			'pageTitle' => "Tiefling's Tavern",
+			'pageHeader' => $this->pageHeader,
+			'pageContent' => 'admin/logs/logs',
+			'pageFooter' => $this->pageFooter,
+			'variables' => []
+		];
+
+		view('template', $pageParams);
+	}
+
 }
