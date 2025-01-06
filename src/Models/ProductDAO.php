@@ -19,6 +19,9 @@ abstract class ProductDAO
 		while ($rows = $result->fetch_object("App\\Models\\Product")) {
 			$products[] = $rows;
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $products;
 	}
 
@@ -34,6 +37,9 @@ abstract class ProductDAO
 		while ($rows = $result->fetch_object("App\\Models\\Product")) {
 			$products[] = $rows;
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $products;
 	}
 
@@ -45,6 +51,9 @@ abstract class ProductDAO
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$product = $result->fetch_object("App\\Models\\Product");
+
+		$stmt->close();
+		$conn->close();
 		return $product;
 	}
 
@@ -59,6 +68,9 @@ abstract class ProductDAO
 		while ($rows = $result->fetch_object("App\\Models\\Product")) {
 			$products[] = $rows;
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $products;
 	}
 
@@ -72,6 +84,9 @@ abstract class ProductDAO
 		while ($rows = $result->fetch_object("App\\Models\\Product")) {
 			$products[] = $rows->toArray();
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $products;
 	}
 
@@ -83,6 +98,9 @@ abstract class ProductDAO
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$product = $result->fetch_object("App\\Models\\Product");
+
+		$stmt->close();
+		$conn->close();
 		return $product->toArray();
 	}
 
@@ -95,6 +113,9 @@ abstract class ProductDAO
 		OrderLineDAO::deleteOrderLinesByProductId($id);
 		OfferProductDAO::deleteProductFromOffer($id);
 		$stmt->execute();
+
+		$stmt->close();
+		$conn->close();
 	}
 
 	public static function insertNewProduct($data)
@@ -104,7 +125,11 @@ abstract class ProductDAO
 		$params = array_values($data);
 		$stmt->bind_param("iissdsi", ...$params);
 		$stmt->execute();
-		return $stmt->insert_id;
+		$insertId = $stmt->insert_id;
+
+		$stmt->close();
+		$conn->close();
+		return $insertId;
 	}
 
 	public static function updateProduct($data)
@@ -122,6 +147,9 @@ abstract class ProductDAO
 			$stmt->bind_param("iissdii", ...$params);
 		}
 		$stmt->execute();
+
+		$stmt->close();
+		$conn->close();
 		return $params[count($params) - 1];
 	}
 

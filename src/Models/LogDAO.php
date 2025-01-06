@@ -17,6 +17,9 @@ abstract class LogDAO
 		while ($rows = $result->fetch_object('App\\Models\\Log')) {
 			$categories[] = $rows->toArray();
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $categories;
 	}
 
@@ -26,6 +29,9 @@ abstract class LogDAO
 		$stmt = $conn->prepare("INSERT INTO logs(user_id, action, type, id) VALUES(?, ?, ?, ?)");
 		$stmt->bind_param("issi", $user_id, $type, $action, $id);
 		$stmt->execute();
+
+		$stmt->close();
+		$conn->close();
 	}
 
 }

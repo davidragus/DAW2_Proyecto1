@@ -18,6 +18,9 @@ abstract class OfferDAO
 			$rows->setProducts(ProductDAO::getProductsInOffer($rows->getOfferId()));
 			$offers[] = $rows;
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $offers;
 	}
 

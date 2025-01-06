@@ -13,6 +13,8 @@ abstract class OfferProductDAO
 		$stmt = $conn->prepare("DELETE FROM offers_products WHERE product_id = ?");
 		$stmt->bind_param("i", $productId);
 		$stmt->execute();
+		$stmt->close();
+		$conn->close();
 	}
 
 }

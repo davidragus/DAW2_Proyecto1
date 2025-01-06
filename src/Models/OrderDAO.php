@@ -20,6 +20,9 @@ abstract class OrderDAO
 			$rows->setOrderLines(OrderLineDAO::getOrderLinesByOrderId($rows->getOrderId()));
 			$orders[] = $rows;
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $orders;
 	}
 
@@ -33,6 +36,9 @@ abstract class OrderDAO
 		$result = $stmt->get_result();
 		$order = $result->fetch_object("App\\Models\\Order");
 		$order->setOrderLines(OrderLineDAO::getOrderLinesByOrderId($orderId));
+
+		$stmt->close();
+		$conn->close();
 		return $order;
 	}
 
@@ -46,6 +52,9 @@ abstract class OrderDAO
 		$result = $stmt->get_result();
 		$order = $result->fetch_object("App\\Models\\Order");
 		$order->setOrderLines(OrderLineDAO::getOrderLinesArrayByOrderId($orderId));
+
+		$stmt->close();
+		$conn->close();
 		return $order->toArray();
 	}
 
@@ -85,6 +94,8 @@ abstract class OrderDAO
 		}
 
 		OrderLineDAO::insertOrderLines($orderLines);
+		$stmt->close();
+		$conn->close();
 	}
 
 	public static function getOrdersArray()
@@ -98,6 +109,9 @@ abstract class OrderDAO
 			$rows->setOrderLines(OrderLineDAO::getOrderLinesArrayByOrderId($rows->getOrderId()));
 			$orders[] = $rows->toArray();
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $orders;
 	}
 
@@ -111,9 +125,14 @@ abstract class OrderDAO
 		while ($rows = $result->fetch_object("App\\Models\\Order")) {
 			OrderLineDAO::deleteOrderLinesByOrderId($rows->getOrderId());
 		}
+		$stmt->close();
+
 		$stmt = $conn->prepare("DELETE FROM orders WHERE user_id = ?");
 		$stmt->bind_param("i", $userId);
 		$stmt->execute();
+
+		$stmt->close();
+		$conn->close();
 	}
 
 	public static function deleteOrderById($orderId)
@@ -123,6 +142,9 @@ abstract class OrderDAO
 		$stmt = $conn->prepare("DELETE FROM orders WHERE order_id = ?");
 		$stmt->bind_param("i", $orderId);
 		$stmt->execute();
+
+		$stmt->close();
+		$conn->close();
 	}
 
 	public static function updateOrderStatus($data)
@@ -132,6 +154,9 @@ abstract class OrderDAO
 		$params = array_values($data);
 		$stmt->bind_param("si", ...$params);
 		$stmt->execute();
+
+		$stmt->close();
+		$conn->close();
 		return $params[count($params) - 1];
 	}
 }

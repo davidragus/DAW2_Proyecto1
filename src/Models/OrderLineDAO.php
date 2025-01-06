@@ -19,6 +19,9 @@ abstract class OrderLineDAO
 		while ($rows = $result->fetch_object("App\\Models\\OrderLine")) {
 			$orderLines[] = $rows;
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $orderLines;
 	}
 
@@ -31,6 +34,9 @@ abstract class OrderLineDAO
 			$stmt->bind_param('iiiid', ...$values);
 			$stmt->execute();
 		}
+
+		$stmt->close();
+		$conn->close();
 	}
 
 	public static function getOrderLinesArrayByOrderId($orderId)
@@ -45,6 +51,9 @@ abstract class OrderLineDAO
 		while ($rows = $result->fetch_object("App\\Models\\OrderLine")) {
 			$orderLines[] = $rows->toArray();
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $orderLines;
 	}
 
@@ -54,6 +63,9 @@ abstract class OrderLineDAO
 		$stmt = $conn->prepare("DELETE FROM orderlines WHERE order_id = ?");
 		$stmt->bind_param("i", $orderId);
 		$stmt->execute();
+
+		$stmt->close();
+		$conn->close();
 	}
 
 	public static function deleteOrderLinesByProductId($productId)
@@ -62,5 +74,8 @@ abstract class OrderLineDAO
 		$stmt = $conn->prepare("DELETE FROM orderlines WHERE product_id = ?");
 		$stmt->bind_param("i", $productId);
 		$stmt->execute();
+
+		$stmt->close();
+		$conn->close();
 	}
 }

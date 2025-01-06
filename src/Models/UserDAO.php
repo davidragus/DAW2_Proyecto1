@@ -18,6 +18,9 @@ abstract class UserDAO
 		while ($rows = $result->fetch_object("App\\Models\\User")) {
 			$user = $rows;
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $user;
 	}
 
@@ -29,6 +32,9 @@ abstract class UserDAO
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$user = $result->fetch_object("App\\Models\\User");
+
+		$stmt->close();
+		$conn->close();
 		return $user;
 	}
 
@@ -38,7 +44,11 @@ abstract class UserDAO
 		$stmt = $conn->prepare("INSERT INTO users(email, password, first_name, last_name) VALUES(?, ?, ?, ?)");
 		$stmt->bind_param("ssss", $email, $password, $firstName, $lastName);
 		$stmt->execute();
-		return $stmt->insert_id;
+		$insertId = $stmt->insert_id;
+
+		$stmt->close();
+		$conn->close();
+		return $insertId;
 	}
 
 	public static function insertNewUser($data)
@@ -51,7 +61,11 @@ abstract class UserDAO
 		array_push($params, ...array_values($data));
 		$stmt->bind_param("sssss", ...$params);
 		$stmt->execute();
-		return $stmt->insert_id;
+		$insertId = $stmt->insert_id;
+
+		$stmt->close();
+		$conn->close();
+		return $insertId;
 	}
 
 	public static function updateUser($data)
@@ -61,6 +75,9 @@ abstract class UserDAO
 		$params = array_values($data);
 		$stmt->bind_param("ssssi", ...$params);
 		$stmt->execute();
+
+		$stmt->close();
+		$conn->close();
 		return $params[count($params) - 1];
 	}
 
@@ -70,6 +87,9 @@ abstract class UserDAO
 		$stmt = $conn->prepare("UPDATE users SET first_name = ?, last_name = ?, email = ? WHERE user_id = ?");
 		$stmt->bind_param("sssi", $firstName, $lastName, $email, $id);
 		$stmt->execute();
+
+		$stmt->close();
+		$conn->close();
 	}
 
 	public static function updateUserPassword($id, $password)
@@ -78,6 +98,9 @@ abstract class UserDAO
 		$stmt = $conn->prepare("UPDATE users SET password = ? WHERE user_id = ?");
 		$stmt->bind_param("si", $password, $id);
 		$stmt->execute();
+
+		$stmt->close();
+		$conn->close();
 	}
 
 	public static function getUsersArray()
@@ -90,6 +113,9 @@ abstract class UserDAO
 		while ($rows = $result->fetch_object("App\\Models\\User")) {
 			$users[] = $rows->toArray();
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $users;
 	}
 
@@ -103,6 +129,9 @@ abstract class UserDAO
 		while ($rows = $result->fetch_object("App\\Models\\User")) {
 			$users[] = $rows->toArray();
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $users;
 	}
 
@@ -114,6 +143,9 @@ abstract class UserDAO
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$user = $result->fetch_object("App\\Models\\User");
+
+		$stmt->close();
+		$conn->close();
 		return isset($user) ? $user->toArray() : null;
 	}
 
@@ -125,6 +157,9 @@ abstract class UserDAO
 		$userId = intval($id);
 		$stmt->bind_param("si", $defaultPass, $userId);
 		$stmt->execute();
+
+		$stmt->close();
+		$conn->close();
 	}
 
 	public static function deleteUserById($id)
@@ -136,6 +171,9 @@ abstract class UserDAO
 		OrderDAO::deleteOrdersByUserId($id);
 		AddressDAO::deleteAddressByUserId($id);
 		$stmt->execute();
+
+		$stmt->close();
+		$conn->close();
 	}
 
 }

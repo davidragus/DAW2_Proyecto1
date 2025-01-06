@@ -17,6 +17,9 @@ abstract class AddressDAO
 		$address = $addressData['address'];
 		$stmt->bind_param("issss", $userId, $alias, $city, $cp, $address);
 		$stmt->execute();
+
+		$stmt->close();
+		$conn->close();
 	}
 
 	public static function updateAddress($addressId, $addressData)
@@ -29,6 +32,9 @@ abstract class AddressDAO
 		$address = $addressData['address'];
 		$stmt->bind_param("ssssi", $alias, $city, $cp, $address, $addressId);
 		$stmt->execute();
+
+		$stmt->close();
+		$conn->close();
 	}
 
 	public static function deleteAddress($addressId)
@@ -40,6 +46,9 @@ abstract class AddressDAO
 		$stmt = $conn->prepare("DELETE FROM addresses WHERE address_id = ?");
 		$stmt->bind_param("i", $addressId);
 		$stmt->execute();
+
+		$stmt->close();
+		$conn->close();
 	}
 
 	public static function getAddressesByUserId($userId)
@@ -53,6 +62,9 @@ abstract class AddressDAO
 		while ($rows = $result->fetch_object("App\\Models\\Address")) {
 			$addresses[] = $rows;
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $addresses;
 	}
 
@@ -67,6 +79,9 @@ abstract class AddressDAO
 		while ($rows = $result->fetch_object("App\\Models\\Address")) {
 			$addresses[] = $rows->toArray();
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $addresses;
 	}
 
@@ -78,6 +93,9 @@ abstract class AddressDAO
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$address = $result->fetch_object("App\\Models\\Address");
+
+		$stmt->close();
+		$conn->close();
 		return $address;
 	}
 
@@ -89,6 +107,9 @@ abstract class AddressDAO
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$address = $result->fetch_object("App\\Models\\Address");
+
+		$stmt->close();
+		$conn->close();
 		return $address->toArray();
 	}
 
@@ -98,6 +119,9 @@ abstract class AddressDAO
 		$stmt = $conn->prepare("DELETE FROM addresses WHERE user_id = ?");
 		$stmt->bind_param("i", $userId);
 		$stmt->execute();
+
+		$stmt->close();
+		$conn->close();
 	}
 
 }

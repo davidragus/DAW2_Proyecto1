@@ -17,6 +17,9 @@ abstract class CategoryDAO
 		while ($rows = $result->fetch_object('App\\Models\\Category')) {
 			$categories[] = $rows;
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $categories;
 	}
 
@@ -31,6 +34,9 @@ abstract class CategoryDAO
 		while ($rows = $result->fetch_object('App\\Models\\Category')) {
 			$categories[] = $rows;
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $categories;
 	}
 
@@ -46,6 +52,9 @@ abstract class CategoryDAO
 		while ($rows = $result->fetch_object('App\\Models\\Category')) {
 			$subcategories[] = $rows;
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $subcategories;
 	}
 
@@ -60,6 +69,9 @@ abstract class CategoryDAO
 		while ($rows = $result->fetch_object("App\\Models\\Category")) {
 			$categories[] = $rows->toArray();
 		}
+
+		$stmt->close();
+		$conn->close();
 		return $categories;
 	}
 
@@ -71,6 +83,9 @@ abstract class CategoryDAO
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$category = $result->fetch_object('App\\Models\\Category');
+
+		$stmt->close();
+		$conn->close();
 		return $category->toArray();
 	}
 
