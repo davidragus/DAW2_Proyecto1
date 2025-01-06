@@ -170,6 +170,7 @@ abstract class UserDAO
 		$stmt->bind_param("i", $userId);
 		OrderDAO::deleteOrdersByUserId($id);
 		AddressDAO::deleteAddressByUserId($id);
+		LogDAO::deleteLogsByUserId($id);
 		$stmt->execute();
 
 		$stmt->close();
