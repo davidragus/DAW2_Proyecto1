@@ -34,7 +34,7 @@ document.getElementById('changeCurrency').addEventListener('change', async funct
 			const prices = document.getElementsByClassName('price');
 			const currencySymbol = { 'EUR': '€', 'USD': '$', 'CAD': 'C$', 'AUD': 'A$' };
 			for (let i = 0; i < priceInEuro.length; i++) {
-				prices[i].innerHTML = 'Price: ' + (priceInEuro * data[document.getElementById('changeCurrency').value]).toFixed(2) + currencySymbol[document.getElementById('changeCurrency').value];
+				prices[i].innerHTML = 'Price: ' + (priceInEuro[i] * data[document.getElementById('changeCurrency').value]).toFixed(2) + currencySymbol[document.getElementById('changeCurrency').value];
 			}
 			productsPriceElement.innerHTML = 'Products price: ' + (productsPrice * data[document.getElementById('changeCurrency').value]).toFixed(2) + currencySymbol[document.getElementById('changeCurrency').value];
 			taxesPriceElement.innerHTML = 'Taxes (10%): ' + ((productsPrice * 0.1) * data[document.getElementById('changeCurrency').value]).toFixed(2) + currencySymbol[document.getElementById('changeCurrency').value];
