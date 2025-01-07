@@ -89,7 +89,7 @@ class productsController extends commonController
 				}
 
 				$pageParams = [
-					'pageTitle' => "Tiefling's Tavern - Products",
+					'pageTitle' => "Tiefling's Tavern - Product Details",
 					'pageHeader' => $this->pageHeader,
 					'pageContent' => 'products/show',
 					'pageFooter' => $this->pageFooter,

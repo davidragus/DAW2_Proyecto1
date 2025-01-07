@@ -48,7 +48,7 @@ class cartController extends commonController
 			$addresses = AddressDAO::getAddressesByUserId($_SESSION[USER_SESSION_VAR]);
 
 			$pageParams = [
-				'pageTitle' => "Tiefling's Tavern",
+				'pageTitle' => "Tiefling's Tavern - Your Cart",
 				'pageHeader' => $this->pageHeader,
 				'pageContent' => 'cart/index',
 				'pageFooter' => $this->pageFooter,
@@ -64,7 +64,7 @@ class cartController extends commonController
 		}
 
 		$pageParams = [
-			'pageTitle' => "Tiefling's Tavern",
+			'pageTitle' => "Tiefling's Tavern - Your Cart",
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'cart/index',
 			'pageFooter' => $this->pageFooter,

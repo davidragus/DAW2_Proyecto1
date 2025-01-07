@@ -72,7 +72,7 @@ class addressesController extends commonController
 			// TODO: Añadir trycatch por si no encuentra la dirección por la id
 			if ($address && $address->getUserId() == $_SESSION[USER_SESSION_VAR]) {
 				$pageParams = [
-					'pageTitle' => "Tiefling's Tavern - Create address",
+					'pageTitle' => "Tiefling's Tavern - Edit address",
 					'pageHeader' => $this->pageHeader,
 					'pageContent' => 'addresses/addressForm',
 					'pageFooter' => $this->pageFooter,
@@ -82,17 +82,8 @@ class addressesController extends commonController
 					]
 				];
 			} else {
-				// TODO: Modificar parametros para cuando la direccion no le pertenece al usuario
-				$pageParams = [
-					'pageTitle' => "Tiefling's Tavern - Create address",
-					'pageHeader' => $this->pageHeader,
-					'pageContent' => 'addresses/addressForm',
-					'pageFooter' => $this->pageFooter,
-					'variables' => [
-						'formType' => 'edit',
-						'address' => $address
-					]
-				];
+				redirect('users');
+				exit;
 			}
 			view('template', $pageParams);
 

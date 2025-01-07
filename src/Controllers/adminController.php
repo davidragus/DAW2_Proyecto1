@@ -24,7 +24,7 @@ class adminController extends commonController
 		}
 
 		$pageParams = [
-			'pageTitle' => "Tiefling's Tavern",
+			'pageTitle' => "Tiefling's Tavern - Admin Panel",
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'admin/index',
 			'pageFooter' => $this->pageFooter,
@@ -46,7 +46,7 @@ class adminController extends commonController
 		}
 
 		$pageParams = [
-			'pageTitle' => "Tiefling's Tavern",
+			'pageTitle' => "Tiefling's Tavern - Manage Products",
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'admin/products/products',
 			'pageFooter' => $this->pageFooter,
@@ -68,7 +68,7 @@ class adminController extends commonController
 		}
 
 		$pageParams = [
-			'pageTitle' => "Tiefling's Tavern",
+			'pageTitle' => "Tiefling's Tavern - Product Information",
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'admin/products/showProduct',
 			'pageFooter' => $this->pageFooter,
@@ -90,7 +90,7 @@ class adminController extends commonController
 		}
 
 		$pageParams = [
-			'pageTitle' => "Tiefling's Tavern",
+			'pageTitle' => "Tiefling's Tavern - Create Product",
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'admin/products/common/productForm',
 			'pageFooter' => $this->pageFooter,
@@ -112,7 +112,7 @@ class adminController extends commonController
 		}
 
 		$pageParams = [
-			'pageTitle' => "Tiefling's Tavern",
+			'pageTitle' => "Tiefling's Tavern - Edit Product",
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'admin/products/common/productForm',
 			'pageFooter' => $this->pageFooter,
@@ -136,7 +136,7 @@ class adminController extends commonController
 		}
 
 		$pageParams = [
-			'pageTitle' => "Tiefling's Tavern",
+			'pageTitle' => "Tiefling's Tavern - Manage Orders",
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'admin/orders/orders',
 			'pageFooter' => $this->pageFooter,
@@ -157,7 +157,7 @@ class adminController extends commonController
 		}
 
 		$pageParams = [
-			'pageTitle' => "Tiefling's Tavern",
+			'pageTitle' => "Tiefling's Tavern - Order Information",
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'admin/orders/showOrder',
 			'pageFooter' => $this->pageFooter,
@@ -179,7 +179,7 @@ class adminController extends commonController
 		}
 
 		$pageParams = [
-			'pageTitle' => "Tiefling's Tavern",
+			'pageTitle' => "Tiefling's Tavern - Edit Order",
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'admin/orders/common/orderForm',
 			'pageFooter' => $this->pageFooter,
@@ -201,7 +201,7 @@ class adminController extends commonController
 		}
 
 		$pageParams = [
-			'pageTitle' => "Tiefling's Tavern",
+			'pageTitle' => "Tiefling's Tavern - Manage Users",
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'admin/users/users',
 			'pageFooter' => $this->pageFooter,
@@ -223,7 +223,7 @@ class adminController extends commonController
 		}
 
 		$pageParams = [
-			'pageTitle' => "Tiefling's Tavern",
+			'pageTitle' => "Tiefling's Tavern - User Information",
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'admin/users/showUser',
 			'pageFooter' => $this->pageFooter,
@@ -245,7 +245,7 @@ class adminController extends commonController
 		}
 
 		$pageParams = [
-			'pageTitle' => "Tiefling's Tavern",
+			'pageTitle' => "Tiefling's Tavern - Create User",
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'admin/users/common/userForm',
 			'pageFooter' => $this->pageFooter,
@@ -267,7 +267,7 @@ class adminController extends commonController
 		}
 
 		$pageParams = [
-			'pageTitle' => "Tiefling's Tavern",
+			'pageTitle' => "Tiefling's Tavern - Edit User",
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'admin/users/common/userForm',
 			'pageFooter' => $this->pageFooter,
@@ -291,7 +291,7 @@ class adminController extends commonController
 		}
 
 		$pageParams = [
-			'pageTitle' => "Tiefling's Tavern",
+			'pageTitle' => "Tiefling's Tavern - Logs",
 			'pageHeader' => $this->pageHeader,
 			'pageContent' => 'admin/logs/logs',
 			'pageFooter' => $this->pageFooter,
