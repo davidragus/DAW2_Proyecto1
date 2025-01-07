@@ -15,7 +15,7 @@
 				<div class="row w-100 mb-4">
 					<div class="col-3">
 						<div class="form-floating">
-							<select class="form-select" id="userFilter" name="user">
+							<select class="form-select" id="userFilter" name="user_id">
 								<option value=""></option>
 							</select>
 							<label for="userFilter">User</label>

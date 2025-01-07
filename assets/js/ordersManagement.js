@@ -57,6 +57,7 @@ async function getOrders(params = []) {
 				}
 			});
 			modifyTableDom(data);
+			document.getElementById('changeCurrency').selectedIndex = 0;
 		})
 }
 
