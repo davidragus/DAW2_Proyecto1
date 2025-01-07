@@ -78,9 +78,7 @@ async function giveEventToButton(deleteButtons) {
 		element.addEventListener('click', function (ev) {
 			ev.preventDefault();
 			if (confirm('Are you sure that you want to delete this order?')) {
-				console.log(element);
 				const orderId = element.getAttribute('orderid');
-				console.log(orderId);
 				deleteOrder(orderId);
 			}
 		});
